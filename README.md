@@ -6,7 +6,7 @@ Welcome to my personal portfolio website! This site showcases my projects, skill
 
 ## 🚀 Live Preview
 
->[Click here to view the live site](http://127.0.0.1:5501/index.html?Name=Brian&Email=korosbrian574%40gmail.com&Message=test+3#header) 
+>[Click here to view the live site](https://kimutai99.github.io/briankimutai.github.io/) 
 
 ---
 
@@ -84,11 +84,12 @@ The contact form uses **Google Apps Script** to log submissions into a Google Sh
 
 I’m **Brian Kimutai Siele**, a data-driven problem solver with a strong foundation in Python, SQL, Power BI, Tableau, and Machine Learning. I build scalable analytics solutions, automate ETL pipelines, and create interactive dashboards.
 
-📧 Email: korosbrian574@gmail.com  
-📞 Phone: +254768518488  
-🔗 [LinkedIn](https://www.linkedin.com/in/brian-kimutai-0888352b6/)  
-💻 [GitHub](https://github.com/kimutai99)
-🌐 [Portfolio](http://127.0.0.1:5501/index.html?Name=Brian&Email=korosbrian574%40gmail.com&Message=test+3#header)
+
+📧 **Email**: [korosbrian574@gmail.com](mailto:korosbrian574@gmail.com)  
+📞 **Phone**: +254 768 518 488  
+🔗 **[LinkedIn](https://www.linkedin.com/in/brian-kimutai-0888352b6/)**  
+💻 **[GitHub](https://github.com/kimutai99)**  
+🌐 **[Portfolio](https://kimutai99.github.io/briankimutai.github.io/)**
 
 
 ---
