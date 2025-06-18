@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Portfolio Website</title>
+  <script src="https://kit.fontawesome.com/d18993cb4b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <div id="header">
+    <div class="container">
+      <nav>
+        <img src="images/logo.png" alt="Logo" class="logo" />
+        <ul>
+          <li><a href="#header" class="home">Home</a></li>
+          <li><a href="#about" class="about">About</a></li>
+          <li><a href="#services" class="services">Services</a></li>
+          <li><a href="#portfolio" class="portfolio">Portfolio</a></li>
+          <li><a href="#contact" class="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header_text">
+        <p>Data Scientist | Data Analyst | ML Developer</p>
+        <h1>Hi, I'm <span>Brian</span><br />Kimutai from Kenya</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+          <img src="images/background1.png" alt="User Photo" />
+        </div>
+        <div class="about-col-2">
+          <h1 class="sub-title">About Me</h1>
+          <p>
+            Data Scientist and Analyst skilled in Python, SQL, Excel, Power BI, and Tableau. I build predictive models,
+            dashboards, and data pipelines to support smart decisions and turn complex data into actionable insights.
+          </p>
+
+          <!-- Tabs -->
+          <div class="tab-titles">
+            <p class="tab-links active-link" onclick="opentab('skills', event)">Skills</p>
+            <p class="tab-links" onclick="opentab('experience', event)">Experience</p>
+            <p class="tab-links" onclick="opentab('education', event)">Education</p>
+          </div>
+
+          <!-- Skills -->
+          <div class="tab-contents active-tab" id="skills">
+            <ul>
+              <li><span>Programming Languages</span><br />Python, SQL</li>
+              <li><span>Data Science & Analysis</span><br />Data Cleaning, EDA, Feature Engineering, NLP, Time Series, ETL, A/B & Hypothesis Testing</li>
+              <li><span>Data Visualization & BI</span><br />Tableau, Power BI, Excel</li>
+              <li><span>Mark-up & Styling</span><br />HTML, CSS, SASS</li>
+              <li><span>Database Systems</span><br />PostgreSQL, MySQL</li>
+              <li><span>DevOps & Tools</span><br />Git, Azure DevOps, Docker</li>
+            </ul>
+          </div>
+
+          <!-- Experience -->
+          <div class="tab-contents" id="experience">
+            <ul>
+              <li>
+                <span>Feb 2025 – Present</span><br />
+                <strong>Junior Data Analyst | Prompt BI</strong><br />
+                • Optimized SQL queries improving BI response time by 25%<br />
+                • Ensured 99% accuracy by validating data pipelines before launch
+              </li>
+              <li>
+                <span>July 2024 – Feb 2025</span><br />
+                <strong>Data Science Fellow | Moringa School</strong><br />
+                • Built and deployed ML models increasing insight accuracy by 15%<br />
+                • Reduced ETL processing time by 30% using Azure pipelines
+              </li>
+              <li>
+                <span>July 2022 – Oct 2022</span><br />
+                <strong>IT Attaché | County Government of Kericho</strong><br />
+                • Configured systems for 50+ staff, improving operations<br />
+                • Built dashboards cutting report time by 40%
+              </li>
+            </ul>
+          </div>
+
+          <!-- Education -->
+          <div class="tab-contents" id="education">
+            <ul>
+              <li>
+                <span>Aug 2019 – May 2023</span><br />
+                <strong>BSc. Computer Science</strong><br />
+                Karatina University
+              </li>
+              <li>
+                <span>July 2024 – Mar 2025</span><br />
+                <strong>Data Science Certification</strong><br />
+                Moringa School
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <div id="services">
+    <div class="container">
+      <h1 class="sub-title">My Services</h1>
+      <div class="services-list">
+        <div class="service">
+          <i class="fas fa-chart-line"></i>
+          <h2>Data Analytics</h2>
+          <p>Analyzing data using Python, SQL, and BI tools to drive actionable insights.</p>
+          <a href="#">Learn more</a>
+        </div>
+        <div class="service">
+          <i class="fa-solid fa-robot"></i>
+          <h2>Machine Learning</h2>
+          <p>Building ML models for prediction, classification, and deployment via Flask & Docker.</p>
+          <a href="#">Learn more</a>
+        </div>
+        <div class="service">
+          <i class="fa-solid fa-diagram-project"></i>
+          <h2>Data Pipeline & Automation</h2>
+          <p>Designing ETL pipelines using Pandas, Azure, PostgreSQL for real-time analytics.</p>
+          <a href="#">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Section -->
+  <div id="portfolio">
+    <div class="container">
+      <h1 class="sub-title">My Work</h1>
+      <div class="work-list">
+
+        <div class="work">
+          <img src="images/work-1.png" alt="Ukraine War Data Pipeline" />
+          <div class="layer">
+            <h3>Ukraine War Data Pipeline</h3>
+            <p>Developed a Python ETL pipeline to load Kobo Toolbox data into PostgreSQL and visualize trends in Power BI.</p>
+            <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+          </div>
+        </div>
+
+        <div class="work">
+          <img src="images/work-2.png" alt="Climate Dashboard" />
+          <div class="layer">
+            <h3>Climate Change Insights Dashboard</h3>
+            <p>Interactive Tableau dashboard visualizing global climate metrics like AQI, temperature anomalies, and precipitation risks.</p>
+            <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+          </div>
+        </div>
+
+        <div class="work">
+          <img src="images/work-3.png" alt="Diamond Price Prediction" />
+          <div class="layer">
+            <h3>Diamond Price Prediction</h3>
+            <p>ML pipeline using Random Forest, XGBoost & Flask API. Dockerized for smooth deployment.</p>
+            <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+          </div>
+        </div>
+
+      </div>
+      <a href="#" class="btn">See more</a>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="contact-left">
+          <h1 class="sub-title">Contact Me</h1>
+          <p><i class="fa-regular fa-paper-plane"></i> korosbrian574@gmail.com</p>
+          <p><i class="fa-solid fa-square-phone-flip"></i> +254768518488</p>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/kimutai99"><i class="fa-brands fa-github"></i></a>
+          </div>
+          <a href="images/my cv.pdf" download class="btn btn2">Download CV</a>
+        </div>
+        <div class="contact-right">
+          <form name="submit-to-google-sheet">
+            <input type="text" name="Name" placeholder="Your Name" required />
+            <input type="email" name="Email" placeholder="Your Email" required />
+            <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn btn2">Submit</button>
+          </form>
+          <span id="msg"></span>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Brian Kimutai Siele <i class="fa-solid fa-heart"></i> All rights reserved.</p>
+    </div>
+  </div>
+
+  <!-- Tabs Script -->
+  <script>
+    const tablinks = document.getElementsByClassName("tab-links");
+    const tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname, event) {
+      for (let link of tablinks) {
+        link.classList.remove("active-link");
+      }
+      for (let content of tabcontents) {
+        content.classList.remove("active-tab");
+      }
+      event.currentTarget.classList.add("active-link");
+      document.getElementById(tabname).classList.add("active-tab");
+    }
+  </script>
+
+  <!-- Form Submission Script -->
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzP4Mc_sikGCq-LbpX4R5IJ5haDPgbptn1-bgHYw3Lp7-_PrAj5SSSTlKw2Bho0OXDp/exec';
+    const form = document.forms['submit-to-google-sheet'];
+    const msg = document.getElementById("msg");
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          msg.innerHTML = "Message sent successfully";
+          setTimeout(() => {
+            msg.innerHTML = "";
+          }, 5000);
+          form.reset();
+        })
+        .catch(error => {
+          console.error('Error!', error.message);
+          msg.innerHTML = "Error sending message.";
+        });
+    });
+  </script>
+
+</body>
+</html>
