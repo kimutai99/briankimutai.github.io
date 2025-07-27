@@ -1,192 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Machine Failure Predictor | Brian Kimutai</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@600;700&display=swap">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Industrial AI Predictive Maintenance Solution by Brian Kimutai">
+  <title>Predictive Maintenance AI | Brian Kimutai | Machine Learning Engineer</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #ec4899;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --background: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      text-decoration: none;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Inter', sans-serif;
     }
 
     body {
-      background: linear-gradient(to right, #2980b9, #6dd5fa);
-      color: #333;
-      line-height: 1.6;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
     /* Header Section */
     header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 4rem 0 2rem;
       text-align: center;
-      padding: 80px 0;
-      background-color: rgba(0, 0, 0, 0.7);
-      border-bottom: 2px solid #00b4d8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
     }
 
     header h1 {
-      font-size: 3.5rem;
-      color: #fff;
-      font-weight: 800;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      font-family: 'Poppins', sans-serif;
-      margin-bottom: 15px;
-    }
-
-    header h2 {
-      font-size: 1.8rem;
-      color: #ff007f;
-      margin: 15px 0;
-      font-weight: 600;
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
     }
 
     header p {
-      font-size: 1.2rem;
-      color: #ecf0f1;
-      max-width: 800px;
-      margin: 0 auto;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      opacity: 0.9;
     }
 
-    /* Section Styling */
-    .container {
-      padding: 50px 10%;
-      text-align: left;
-      background-color: #f9f9f9;
-      margin-bottom: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      max-width: 1200px;
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
     }
 
-    .container h2 {
-      color: #2c3e50;
-      font-size: 2.2rem;
-      margin-bottom: 25px;
-      font-family: 'Poppins', sans-serif;
-      border-bottom: 2px solid #00b4d8;
-      padding-bottom: 10px;
-      display: inline-block;
-    }
-
+    /* Button Styles */
     .btn {
-      background: #00b4d8;
-      color: white;
-      padding: 12px 30px;
-      border-radius: 6px;
-      margin: 20px 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 0.4rem;
+      font-weight: 600;
+      font-size: 0.95rem;
       text-decoration: none;
-      font-weight: bold;
-      text-transform: uppercase;
-      transition: all 0.3s ease-in-out;
-      border: 2px solid #00b4d8;
-      display: inline-block;
-      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: 2px solid transparent;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
     .btn:hover {
-      background: #90e0ef;
-      transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
     }
 
-    .btn-secondary {
-      background: transparent;
-      color: #00b4d8;
-      border: 2px solid #00b4d8;
-      margin-left: 15px;
+    /* Project Section */
+    .project-section {
+      padding: 2.5rem 0;
     }
 
-    .btn-secondary:hover {
-      background: rgba(0, 180, 216, 0.1);
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50%;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
     }
 
     .project-description {
-      margin: 30px 0;
-      font-size: 1.1rem;
-      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      color: var(--text-light);
     }
 
-    .project-description h3 {
-      font-size: 1.8rem;
-      color: #00b4d8;
-      margin: 25px 0 15px;
-      font-family: 'Poppins', sans-serif;
+    .feature-list {
+      margin: 1.25rem 0;
+      list-style: none;
     }
 
+    .feature-list li {
+      margin-bottom: 0.75rem;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+
+    /* Image Container */
     .image-container {
-      margin: 30px 0;
-      text-align: center;
+      margin: 1.75rem 0;
+      border-radius: 0.6rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
     }
 
-    img {
-      max-width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    .image-container img {
+      width: 100%;
+      display: block;
       transition: transform 0.3s ease;
     }
 
-    img:hover {
-      transform: scale(1.02);
+    /* Metrics */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.25rem;
+      margin: 1.75rem 0;
     }
 
-    ul {
-      margin: 20px 0;
-      padding-left: 30px;
+    .metric-card {
+      padding: 1.25rem 0.75rem;
+      background: var(--card-bg);
+      border-radius: 0.6rem;
+      box-shadow: var(--shadow);
     }
 
-    li {
-      margin-bottom: 10px;
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
     }
 
-    strong {
-      color: #2c3e50;
+    /* Cards Layout */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 1.75rem 0;
     }
 
-    /* Footer Section */
+    .card {
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border-radius: 0.6rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Tech Stack */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #e0e7ff;
+      color: var(--primary);
+      padding: 0.4rem 0.8rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Footer */
     footer {
+      background: var(--text);
+      color: white;
+      padding: 2.5rem 0 1.5rem;
       text-align: center;
-      background: #2c3e50;
-      padding: 40px;
-      font-size: 1rem;
-      color: #fff;
-      border-top: 2px solid #00b4d8;
     }
 
     .social-links {
-      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
     }
 
     .social-links a {
-      display: inline-block;
-      margin: 0 10px;
-      color: #fff;
-      font-size: 1.2rem;
+      color: white;
+      font-size: 1.1rem;
       transition: color 0.3s;
     }
 
     .social-links a:hover {
-      color: #00b4d8;
+      color: var(--accent);
     }
 
+    .copyright {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Responsive Design */
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.5rem;
+      header {
+        padding: 3rem 0 1.5rem;
       }
-
-      header p {
-        font-size: 1rem;
-      }
-
-      .container {
-        padding: 30px 5%;
-      }
-
-      .metrics {
+      
+      .header-actions {
         flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+      
+      .metrics {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -194,124 +294,172 @@
 <body>
 
   <header>
-    <h1>Machine Failure Predictor</h1>
-    <h2>Revolutionizing Industrial Maintenance with AI</h2>
-    <p>A predictive maintenance solution that reduces downtime by 30% through machine learning-powered failure prediction</p>
+    <div class="container">
+      <h1>Predictive Maintenance AI</h1>
+      <p>Machine learning solution reducing industrial downtime by 30% through proactive failure prediction</p>
+      <div class="header-actions">
+        <a href="https://kimutai99-predictive-maintenance-insights-app-rwqdx4.streamlit.app/" target="_blank" class="btn btn-primary">
+          <i class="fas fa-external-link-alt"></i> View Live Demo
+        </a>
+        <a href="#technical-details" class="btn btn-outline">
+          <i class="fas fa-code"></i> Technical Details
+        </a>
+      </div>
+    </div>
   </header>
 
-  <div class="container">
-    <h2>📌 Project Overview</h2>
-    <p>This application represents a paradigm shift in industrial maintenance strategies. By leveraging advanced machine learning algorithms, the system predicts equipment failures with 98.6% accuracy, transforming reactive maintenance into proactive intervention.</p>
+  <main>
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-title">Solution Overview</h2>
+        <p class="project-description">
+          This AI-powered predictive maintenance system analyzes equipment sensor data to forecast failures with 98.6% accuracy,
+          transforming maintenance operations from reactive to proactive.
+        </p>
 
-    <div class="image-container">
-      <img src="images/login.png" alt="Machine Failure Predictor Dashboard" />
-      <p class="caption">Interactive dashboard showing machine health status and failure predictions</p>
-    </div>
+        <div class="image-container">
+          <img src="images/login.png" alt="Predictive Maintenance Dashboard" loading="lazy">
+        </div>
 
-    <div class="project-description">
-      <h3>Core Value Proposition</h3>
-      <p>The Machine Failure Predictor addresses critical pain points in industrial operations:</p>
-      <ul>
-        <li><strong>Unplanned Downtime:</strong> Average mining operation loses $180,000 per hour during unplanned outages</li>
-        <li><strong>Maintenance Costs:</strong> Reactive maintenance costs 3-5 times more than planned maintenance</li>
-        <li><strong>Safety Risks:</strong> Equipment failures account for 23% of mining industry accidents</li>
-      </ul>
-    </div>
+        <div class="metrics">
+          <div class="metric-card">
+            <div class="metric-value">98.6%</div>
+            <p>Prediction Accuracy</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">30%</div>
+            <p>Reduction in Downtime</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">25%</div>
+            <p>Maintenance Cost Savings</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <a href="https://kimutai99-predictive-maintenance-insights-app-rwqdx4.streamlit.app/" target="_blank" class="btn">View Live Application</a>
-    <a href="#technical-details" class="btn btn-secondary">Technical Details</a>
+    <section class="project-section" style="background-color: #f8fafc;">
+      <div class="container">
+        <h2 class="section-title">Business Impact</h2>
+        
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-money-bill-wave"></i> Cost Reduction</h3>
+            <ul class="feature-list">
+              <li>30% decrease in unplanned maintenance costs</li>
+              <li>20% reduction in spare parts inventory</li>
+              <li>15% improvement in equipment lifespan</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-chart-line"></i> Operational Efficiency</h3>
+            <ul class="feature-list">
+              <li>40% improvement in maintenance planning</li>
+              <li>25% increase in equipment availability</li>
+              <li>60% faster failure diagnosis</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-shield-alt"></i> Safety Improvements</h3>
+            <ul class="feature-list">
+              <li>40% reduction in equipment-related incidents</li>
+              <li>Early warning for critical failures</li>
+              <li>Reduced emergency maintenance work</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="project-description">
-      <h3>Business Impact & Strategic Value</h3>
-      <ul>
-        <li><strong>Cost Reduction:</strong> 30% decrease in maintenance costs through optimized scheduling</li>
-        <li><strong>Productivity:</strong> 25% improvement in equipment availability and utilization</li>
-        <li><strong>Safety:</strong> 40% reduction in equipment-related incidents through early detection</li>
-        <li><strong>Inventory:</strong> 20% reduction in spare parts inventory through better planning</li>
-      </ul>
-    </div>
-  </div>
+    <section class="project-section" id="technical-details">
+      <div class="container">
+        <h2 class="section-title">Technical Implementation</h2>
+        
+        <h3>Technology Stack</h3>
+        <div class="tech-stack">
+          <span class="tech-badge"><i class="fas fa-chart-line"></i> Machine Learning</span>
+          <span class="tech-badge"><i class="fas fa-database"></i> Data Pipeline</span>
+          <span class="tech-badge"><i class="fas fa-laptop-code"></i> Streamlit</span>
+          <span class="tech-badge"><i class="fas fa-project-diagram"></i> SHAP</span>
+          <span class="tech-badge"><i class="fas fa-cloud"></i> Docker</span>
+        </div>
 
-  <div class="container" id="technical-details">
-    <h2>🛠️ Technical Implementation</h2>
-    
-    <div class="project-description">
-      <h3>Data Pipeline Architecture</h3>
-      <ul>
-        <li>Real-time sensor data ingestion via API</li>
-        <li>Automated feature engineering pipeline</li>
-        <li>Data validation and quality checks</li>
-        <li>Batch processing for historical analysis</li>
-      </ul>
-    </div>
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+            <ul class="feature-list">
+              <li>Random Forest Classifier (98.6% accuracy)</li>
+              <li>XGBoost for component failure prediction</li>
+              <li>SHAP values for model explainability</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-database"></i> Data Pipeline</h3>
+            <ul class="feature-list">
+              <li>Real-time sensor data ingestion</li>
+              <li>Automated feature engineering</li>
+              <li>Data validation and quality checks</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-tv"></i> Dashboard</h3>
+            <ul class="feature-list">
+              <li>Interactive failure probability visualization</li>
+              <li>Component-specific health monitoring</li>
+              <li>Exportable reports and alerts</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="project-description">
-      <h3>Machine Learning Models</h3>
-      <ul>
-        <li>Random Forest Classifier (98.6% accuracy)</li>
-        <li>XGBoost for component failure prediction</li>
-        <li>SHAP values for explainability</li>
-        <li>Automated model retraining</li>
-      </ul>
-    </div>
-
-    <div class="project-description">
-      <h3>Application Features</h3>
-      <ul>
-        <li>Interactive failure probability dashboard</li>
-        <li>Component-specific failure predictions</li>
-        <li>Multilingual support (English/French)</li>
-        <li>Exportable reports and alerts</li>
-      </ul>
-    </div>
-
-    <div class="project-description">
-      <h3>Technology Stack</h3>
-      <ul>
-        <li><strong>Frontend:</strong> Streamlit for interactive dashboards, Plotly for visualizations</li>
-        <li><strong>Backend:</strong> Python, Pandas, NumPy for data processing</li>
-        <li><strong>Machine Learning:</strong> Scikit-learn, XGBoost, SHAP</li>
-        <li><strong>Statistical Analysis:</strong> SciPy, Statsmodels for hypothesis testing</li>
-        <li><strong>Deployment:</strong> Streamlit Cloud, Docker containerization</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="container">
-    <h2>🚀 Future Enhancements</h2>
-    
-    <div class="project-description">
-      <h3>Planned Development Roadmap</h3>
-      <ul>
-        <li><strong>IoT Integration:</strong> Direct connection to equipment sensors for real-time monitoring</li>
-        <li><strong>Predictive Analytics:</strong> Forecasting maintenance needs weeks in advance</li>
-        <li><strong>Mobile App:</strong> Push notifications for critical alerts</li>
-        <li><strong>Advanced Analytics:</strong> Anomaly detection for emerging failure patterns</li>
-        <li><strong>Integration:</strong> ERP and CMMS system connectivity</li>
-      </ul>
-    </div>
-
-    <div class="project-description">
-      <h3>Technology Expansion</h3>
-      <ul>
-        <li>Deep learning models for complex failure patterns</li>
-        <li>Digital twin integration for simulation</li>
-        <li>Augmented reality for maintenance guidance</li>
-        <li>Blockchain for maintenance record integrity</li>
-      </ul>
-    </div>
-  </div>
+    <section class="project-section" style="background-color: #f1f5f9;">
+      <div class="container">
+        <h2 class="section-title">Future Roadmap</h2>
+        
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-plug"></i> IoT Integration</h3>
+            <ul class="feature-list">
+              <li>Direct equipment sensor connectivity</li>
+              <li>Edge computing for real-time analysis</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-robot"></i> Advanced Analytics</h3>
+            <ul class="feature-list">
+              <li>Deep learning for complex patterns</li>
+              <li>Digital twin integration</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-mobile-alt"></i> Mobile Experience</h3>
+            <ul class="feature-list">
+              <li>Push notifications for critical alerts</li>
+              <li>AR maintenance guidance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <h3>Connect With Me</h3>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" target="_blank">LinkedIn</a>
-      <a href="https://github.com/kimutai99" target="_blank">GitHub</a>
-      <a href="https://kimutai99.github.io/briankimutai.github.io/" target="_blank">Portfolio</a>
-      <a href="mailto:korosbrian574@gmail.com">Email</a>
+    <div class="container">
+      <h3 style="color: white;">Connect for Industrial AI Solutions</h3>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/kimutai99" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:korosbrian574@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+      <p class="copyright">&copy; 2025 Brian Kimutai | Industrial AI Specialist</p>
     </div>
-    <p>&copy; 2025 Brian Kimutai | Machine Failure Predictor Project</p>
-    <p>This project is available for collaboration and consulting opportunities</p>
   </footer>
 
 </body>

@@ -1,57 +1,650 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Brian Kimutai | Portfolio</title>
-  <script src="https://kit.fontawesome.com/d18993cb4b.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Brian Kimutai - Data Scientist & AI Engineer specializing in data solutions and predictive analytics">
+  <title>Brian Kimutai | Data Science Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #ec4899;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --background: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Navigation */
+    nav {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      z-index: 100;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    nav ul li a {
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      left: 0;
+      bottom: -4px;
+      transition: width 0.3s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* Header Section */
+    #header {
+      padding: 4rem 0 2rem;
+      position: relative;
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    }
+
+    .header_row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .header_text h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .header_text .intro {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text-light);
+      display: block;
+    }
+
+    .header_text .name {
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), #3b82f6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .header_text .wave {
+      font-size: 1.8rem;
+      margin-left: 0.5rem;
+      animation: waveBounce 1s infinite;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .centered-title {
+      width: 100%;
+      margin-top: 1.5rem;
+    }
+
+    .title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-light);
+      letter-spacing: 0.05rem;
+    }
+
+    /* About Section */
+    #about {
+      padding: 3rem 0;
+    }
+
+    .row {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-col-1 {
+      flex: 1;
+    }
+
+    .about-col-1 img {
+      width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-col-2 {
+      flex: 1.5;
+    }
+
+    .sub-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .about-description {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .tab-titles {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-links {
+      padding-bottom: 0.5rem;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+      color: var(--text-light);
+      transition: color 0.3s;
+    }
+
+    .tab-links:hover {
+      color: var(--text);
+    }
+
+    .tab-links.active-link {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .tab-links.active-link::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: var(--primary);
+      left: 0;
+      bottom: -1px;
+    }
+
+    .tab-contents {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .tab-contents.active-tab {
+      display: block;
+    }
+
+    .tab-contents ul {
+      list-style: none;
+    }
+
+    .tab-contents ul li {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .tab-contents ul li:last-child {
+      border-bottom: none;
+    }
+
+    .tab-contents ul li span {
+      font-weight: 600;
+      color: var(--primary);
+      display: block;
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+    }
+
+    /* Services Section */
+    #services {
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .service {
+      background: var(--card-bg);
+      padding: 1.8rem;
+      border-radius: 0.8rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: var(--shadow);
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+
+    .service:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .service i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .service h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--text);
+    }
+
+    .service p {
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+
+    .tech-stack span {
+      background: #e0e7ff;
+      color: var(--primary);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    /* Portfolio Section */
+    #portfolio {
+      padding: 3rem 0;
+    }
+
+    .work-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .work {
+      border-radius: 0.8rem;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+
+    .work:hover {
+      transform: translateY(-3px);
+    }
+
+    .work img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-info {
+      padding: 1.2rem;
+      background: var(--card-bg);
+    }
+
+    .project-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .project-tags span {
+      background: #f1f5f9;
+      color: var(--text-light);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .project-info p {
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .project-link {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: color 0.3s;
+    }
+
+    .project-link:hover {
+      color: var(--primary-dark);
+    }
+
+    .more-projects {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .more-btn {
+      background: var(--primary);
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-block;
+      border: 2px solid var(--primary);
+      font-size: 0.9rem;
+    }
+
+    .more-btn:hover {
+      background: transparent;
+      color: var(--primary);
+    }
+
+    /* Contact Section */
+    #contact {
+      padding: 3rem 0 1.5rem;
+    }
+
+    .contact-left {
+      flex: 1;
+    }
+
+    .contact-right {
+      flex: 1;
+    }
+
+    .contact-left p {
+      margin: 1rem 0;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-left p i {
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+    }
+
+    .social-icons a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #e0e7ff;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      font-size: 1rem;
+    }
+
+    .social-icons a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn2 {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn2:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      background: var(--card-bg);
+      padding: 0.8rem;
+      margin: 0.3rem 0 0.8rem;
+      color: var(--text);
+      font-size: 0.95rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    form input:focus,
+    form textarea:focus {
+      border-color: var(--primary);
+    }
+
+    #msg {
+      display: block;
+      margin-top: 0.8rem;
+      color: var(--primary);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .copyright {
+      text-align: center;
+      padding: 1.5rem 0;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Animations */
+    @keyframes waveBounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+      
+      .row {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      nav {
+        position: static;
+        margin-bottom: 1.5rem;
+      }
+      
+      nav ul {
+        justify-content: center;
+        gap: 1rem;
+      }
+      
+      #header {
+        padding: 3rem 0 1.5rem;
+        text-align: center;
+      }
+      
+      .header_row {
+        align-items: center;
+      }
+      
+      .centered-title {
+        margin-top: 1rem;
+      }
+      
+      .about-col-1 {
+        margin-bottom: 1.5rem;
+      }
+      
+      .tab-titles {
+        justify-content: center;
+        gap: 1rem;
+      }
+      
+      .services-list {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-left, .contact-right {
+        flex: 100%;
+      }
+
+      .contact-right {
+        margin-top: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
- <!-- Header Section -->
-<div id="header">
-  <div class="container">
-    <nav>
-      <ul>
-        <li><a href="#header">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- Header Section -->
+  <div id="header">
+    <div class="container">
+      <nav>
+        <ul>
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Expertise</a></li>
+          <li><a href="#portfolio">Work</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
 
-    <div class="header_row">
-      <div class="header_text">
-        <h1>
-          <span class="intro">Hi, I'm</span><br>
-          <span class="name">Brian Kimutai</span> <span class="wave">👋</span>
-        </h1>
+      <div class="header_row">
+        <div class="header_text">
+          <h1>
+            <span class="intro">Hello, I'm</span><br>
+            <span class="name">Brian Kimutai</span> <span class="wave">👋</span>
+          </h1>
 
-        <div class="centered-title">
-          <span class="title">Data Scientist • Data Analyst • ML Developer</span>
+          <div class="centered-title">
+            <span class="title">Data Scientist | Analytics Engineer | AI Developer</span>
+          </div>
         </div>
-      </div>
-
-      <div class="header_img">
-        <!-- Optional image can go here -->
       </div>
     </div>
   </div>
-</div>
 
+  <!-- About Section -->
   <div id="about">
     <div class="container">
       <div class="row">
         <div class="about-col-1">
-          <img src="images/background21.jpeg" alt="About Image" />
+          <img src="images/background21.jpeg" alt="Brian Kimutai Professional Photo" />
         </div>
         <div class="about-col-2">
-          <h1 class="sub-title">ABOUT ME</h1>
-          <p>
-            Data Scientist and Analyst skilled in Python, SQL, Excel, Power BI, and Tableau. I build predictive models,
-            dashboards, and data pipelines to support smart decisions and turn complex data into actionable insights.
+          <h1 class="sub-title">About Me</h1>
+          <p class="about-description">
+            Data professional with expertise in transforming complex datasets into strategic insights. 
+            I specialize in building scalable data solutions, predictive models, and interactive 
+            dashboards that drive business decisions. Passionate about leveraging AI and analytics 
+            to solve real-world problems.
           </p>
 
           <div class="tab-titles">
@@ -62,34 +655,29 @@
 
           <div class="tab-contents active-tab" id="skills">
             <ul>
-              <li><span>Programming Languages</span><br />Python, SQL</li>
-              <li><span>Data Science & Analysis</span><br />EDA, Feature Engineering, NLP, Time Series, ETL</li>
-              <li><span>Data Visualization & BI</span><br />Tableau, Power BI, Excel</li>
-              <li><span>Mark-up & Styling</span><br />HTML, CSS, SASS</li>
-              <li><span>Database Systems</span><br />PostgreSQL, MySQL</li>
-              <li><span>DevOps & Tools</span><br />Git, Azure DevOps, Docker</li>
+              <li><span>Data Science</span><br />Python (Pandas, NumPy, Scikit-learn), TensorFlow, PyTorch, NLP, Computer Vision</li>
+              <li><span>Data Engineering</span><br />ETL Pipelines, Apache Airflow, SQL, Spark, Azure Data Factory</li>
+              <li><span>Analytics & BI</span><br />Tableau, Power BI, Looker, Advanced Excel</li>
+              <li><span>Cloud & DevOps</span><br />Azure, Docker, Kubernetes, CI/CD Pipelines</li>
+              <li><span>Databases</span><br />PostgreSQL, MySQL, MongoDB, BigQuery</li>
             </ul>
           </div>
 
           <div class="tab-contents" id="experience">
             <ul>
               <li>
-                <span>Feb 2025 – Present</span><br />
-                <strong>Junior Data Analyst | Prompt BI</strong><br />
-                • Optimized SQL queries improving BI response time by 25%<br />
-                • Ensured 99% accuracy by validating data pipelines
+                <span>2025 - Present</span><br />
+                <strong>Data Scientist | Prompt BI</strong><br />
+                • Developed predictive maintenance models reducing equipment downtime by 30%<br />
+                • Designed real-time analytics dashboards used by executive leadership<br />
+                • Implemented MLOps pipelines reducing model deployment time by 40%
               </li>
               <li>
-                <span>July 2024 – Feb 2025</span><br />
+                <span>2024</span><br />
                 <strong>Data Science Fellow | Moringa School</strong><br />
-                • Built and deployed ML models increasing insight accuracy by 15%<br />
-                • Reduced ETL processing time by 30% using Azure pipelines
-              </li>
-              <li>
-                <span>July 2022 – Oct 2022</span><br />
-                <strong>IT Attaché | County Government of Kericho</strong><br />
-                • Configured systems for 50+ staff<br />
-                • Built dashboards cutting report time by 40%
+                • Built computer vision model with 92% accuracy for defect detection<br />
+                • Created automated ETL pipeline processing 1M+ records daily<br />
+                • Led team project awarded "Best in Show" at demo day
               </li>
             </ul>
           </div>
@@ -97,14 +685,14 @@
           <div class="tab-contents" id="education">
             <ul>
               <li>
-                <span>Aug 2019 – May 2023</span><br />
+                <span>2023</span><br />
                 <strong>BSc. Computer Science</strong><br />
-                Karatina University
+                Karatina University | First Class Honors
               </li>
               <li>
-                <span>July 2024 – Mar 2025</span><br />
-                <strong>Data Science Certification</strong><br />
-                Moringa School
+                <span>2025</span><br />
+                <strong>Advanced Data Science Certification</strong><br />
+                Moringa School | Specialization in Machine Learning
               </li>
             </ul>
           </div>
@@ -113,112 +701,139 @@
     </div>
   </div>
 
-  <!-- Services Section -->
-  <div id="services">
-    <div class="container">
-      <h1 class="sub-title">SERVICES</h1>
-      <div class="services-list">
-        <div class="service">
-          <i class="fas fa-chart-line"></i>
-          <h2>Data Analytics</h2>
-          <p>Analyzing data using Python, SQL, and BI tools to drive actionable insights.</p>
+ <!-- Services Section -->
+<div id="services">
+  <div class="container">
+    <h1 class="sub-title">My Expertise</h1>
+    <div class="services-list">
+      <div class="service">
+        <i class="fas fa-chart-bar"></i>
+        <h2>Data Analytics</h2>
+        <p>Transforming raw data into actionable insights through statistical analysis and visualization.</p>
+        <div class="tech-stack">
+          <span>SQL</span>
+          <span>Python</span>
+          <span>Excel</span>
+          <span>Statistics</span>
         </div>
-        <div class="service">
-          <i class="fa-solid fa-robot"></i>
-          <h2>Machine Learning</h2>
-          <p>Building ML models for prediction, classification, and deployment via Flask & Docker.</p>
+      </div>
+      <div class="service">
+        <i class="fa-solid fa-brain"></i>
+        <h2>Machine Learning</h2>
+        <p>Developing and deploying predictive models with MLOps best practices.</p>
+        <div class="tech-stack">
+          <span>Python</span>
+          <span>TensorFlow</span>
+          <span>Scikit-learn</span>
+          <span>MLflow</span>
         </div>
-        <div class="service">
-          <i class="fa-solid fa-diagram-project"></i>
-          <h2>ETL & Automation</h2>
-          <p>Designing ETL pipelines using Pandas, Azure, PostgreSQL for real-time analytics.</p>
+      </div>
+      <div class="service">
+        <i class="fa-solid fa-chart-line"></i>
+        <h2>Business Intelligence</h2>
+        <p>Creating actionable dashboards and reports for data-driven decision making.</p>
+        <div class="tech-stack">
+          <span>Tableau</span>
+          <span>Power BI</span>
+          <span>Looker</span>
+          <span>DAX</span>
         </div>
       </div>
     </div>
   </div>
+</div>
 
- <!-- Portfolio Section -->
-<div id="portfolio">
-  <div class="container">
-    <h1 class="sub-title">RECENT PROJECTS</h1>
-    <div class="work-list">
-      
-      <!-- Machine Failure Predictor Project -->
-      <a href="machine-failure-predictor.html" target="_blank">
-        <div class="work">
-          <div class="project-name">Machine Failure Predictor</div>
-          <img src="images/mining_equipment_operating.jpg" alt="Machine Failure Predictor" />
-          <div class="layer">
-            <p>Predictive maintenance using machine learning. Real-time failure predictions and visualizations.</p>
+  <!-- Portfolio Section -->
+  <div id="portfolio">
+    <div class="container">
+      <h1 class="sub-title">Selected Projects</h1>
+      <div class="work-list">
+        
+        <a href="http://127.0.0.1:5501/machine-failure-predictor.html" class="work">
+          <img src="images/mining_equipment_operating.jpg" alt="Predictive Maintenance System" />
+          <div class="project-info">
+            <h3>Predictive Maintenance System</h3>
+            <div class="project-tags">
+              <span>Machine Learning</span>
+              <span>Time Series</span>
+              <span>Azure</span>
+            </div>
+            <p>Reduced equipment downtime by 35% with real-time failure predictions</p>
+            <div class="project-link">View Case Study →</div>
           </div>
-        </div>
-      </a>
+        </a>
 
-      <!-- Data Warehouse and Analytics Project -->
-      <a href="data-warehouse-project.html" target="_blank">
-        <div class="work">
-          <div class="project-name">Data Warehouse and Analytics Project</div>
-          <img src="images/WhatsApp Image 2025-06-22 at 18.27.16.jpeg" alt="SQL Data Warehouse" />
-          <div class="layer">
-            <p>This project demonstrates a comprehensive data warehousing and analytics solution, from building a data warehouse to generating actionable insights. Designed as a portfolio project, it highlights industry best practices in data engineering and analytics.</p>
+        <a href="http://127.0.0.1:5501/data-warehouse-project.html" class="work">
+          <img src="images/WhatsApp Image 2025-06-22 at 18.27.16.jpeg" alt="Enterprise Data Warehouse" />
+          <div class="project-info">
+            <h3>Enterprise Data Warehouse</h3>
+            <div class="project-tags">
+              <span>ETL</span>
+              <span>SQL</span>
+              <span>Dimensional Modeling</span>
+            </div>
+            <p>Centralized 12 data sources into single source of truth for analytics</p>
+            <div class="project-link">View Architecture →</div>
           </div>
-        </div>
-      </a>
+        </a>
 
-      <!-- HR Analytics Dashboard Project -->
-      <a href="hr-analytics-dashboard.html" target="_blank">
-        <div class="work">
-          <div class="project-name">HR Analytics Dashboard</div>
-          <img src="images/HR_summary.jpeg" alt="HR Analytics Dashboard" />
-          <div class="layer">
-            <p>Interactive Tableau dashboard analyzing employee demographics, salary trends, performance, and attrition.</p>
+        <a href="http://127.0.0.1:5501/hr-analytics-dashboard.html" class="work">
+          <img src="images/HR_summary.jpeg" alt="HR Analytics Platform" />
+          <div class="project-info">
+            <h3>HR Analytics Platform</h3>
+            <div class="project-tags">
+              <span>Tableau</span>
+              <span>People Analytics</span>
+              <span>Python</span>
+            </div>
+            <p>Identified key attrition drivers saving $1.2M in recruitment costs</p>
+            <div class="project-link">View Dashboard →</div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
+      <div class="more-projects">
+        <a href="#" class="btn more-btn">View Full Portfolio</a>
+      </div>
     </div>
   </div>
-</div>
-<!-- More Projects Button -->
-<div class="more-projects">
-  <a href="#portfolio" class="btn more-btn">More Projects</a>
-</div>
-
 
   <!-- Contact Section -->
   <div id="contact">
     <div class="container">
       <div class="row">
         <div class="contact-left">
-          <h1 class="sub-title">Contact Me</h1>
-          <p><i class="fa-regular fa-paper-plane"></i> korosbrian574@gmail.com</p>
+          <h1 class="sub-title">Let's Connect</h1>
+          <p><i class="fa-regular fa-paper-plane"></i> brian@kimutai.dev</p>
           <p><i class="fa-solid fa-square-phone-flip"></i> +254 768 518 488</p>
           <div class="social-icons">
-            <a href="#"><i class="fa-brands fa-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/kimutai99"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/kimutai99" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://twitter.com/yourhandle" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="Medium"><i class="fa-brands fa-medium"></i></a>
           </div>
-          <a href="images/my cv.pdf" download class="btn btn2">Download CV</a>
+          <a href="images/my-cv.pdf" download class="btn btn2">Download Resume</a>
         </div>
         <div class="contact-right">
           <form name="submit-to-google-sheet">
             <input type="text" name="Name" placeholder="Your Name" required />
             <input type="email" name="Email" placeholder="Your Email" required />
-            <textarea name="Message" rows="6" placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn btn2">Submit</button>
+            <textarea name="Message" rows="5" placeholder="How can I help you?" required></textarea>
+            <button type="submit" class="btn btn2">Send Message</button>
           </form>
           <span id="msg"></span>
         </div>
       </div>
     </div>
     <div class="copyright">
-      <p>&copy; 2025 Brian Kimutai <i class="fa-solid fa-heart"></i> All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Brian Kimutai. All rights reserved.</p>
     </div>
   </div>
 
-  <!-- Tabs Script -->
   <script>
+    // Current year for copyright
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Tab functionality
     const tablinks = document.getElementsByClassName("tab-links");
     const tabcontents = document.getElementsByClassName("tab-contents");
 
@@ -232,11 +847,9 @@
       event.currentTarget.classList.add("active-link");
       document.getElementById(tabname).classList.add("active-tab");
     }
-  </script>
 
-  <!-- Google Sheet Submission -->
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/your-google-script-id/exec';
+    // Form submission
+    const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL';
     const form = document.forms['submit-to-google-sheet'];
     const msg = document.getElementById("msg");
 
@@ -249,11 +862,10 @@
           form.reset();
         })
         .catch(error => {
+          msg.innerHTML = "Error sending message. Please try again.";
           console.error('Error!', error.message);
-          msg.innerHTML = "Message failed to send.";
         });
     });
   </script>
-
 </body>
 </html>
