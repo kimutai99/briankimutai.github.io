@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HR Analytics Dashboard | Brian Kimutai</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #2980b9, #6dd5fa);
+      color: #333;
+    }
+
+    /* Header Section */
+    header {
+      text-align: center;
+      padding: 60px 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-bottom: 2px solid #00b4d8;
+    }
+
+    header h1 {
+      font-size: 60px;
+      color: #fff;
+      font-weight: 800;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    header h2 {
+      font-size: 28px;
+      color: #ff007f;
+      margin: 15px 0;
+    }
+
+    header p {
+      font-size: 20px;
+      color: #ecf0f1;
+    }
+
+    /* Section Styling */
+    .container {
+      padding: 50px 10%;
+      text-align: left;
+      background-color: #f9f9f9;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+      background: #00b4d8;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 6px;
+      margin-top: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background 0.3s ease-in-out;
+      border: 2px solid #00b4d8;
+    }
+
+    .btn:hover {
+      background: #90e0ef;
+      transform: scale(1.05);
+    }
+
+    .project-description {
+      margin: 30px 0;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .project-description h3 {
+      font-size: 28px;
+      color: #00b4d8;
+    }
+
+    .image-container {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer Section */
+    footer {
+      text-align: center;
+      background: #2c3e50;
+      padding: 30px;
+      font-size: 16px;
+      color: #fff;
+      border-top: 2px solid #00b4d8;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #ff007f;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>HR Analytics Dashboard</h1>
+    <p>A fully interactive dashboard designed to analyze employee data</p>
+  </header>
+
+  <div class="container">
+    <h2>📌 Project Overview</h2>
+    <p>This project showcases a fully interactive HR Analytics Dashboard built in Tableau, designed to simulate real-world data visualization for workforce analytics. It enables exploration of key HR metrics such as hiring trends, demographics, performance ratings, and salary distribution.</p>
+
+    <div class="project-description">
+      <h3>Key Dashboard Features</h3>
+      <ul>
+        <li><strong>Overview:</strong> KPIs on total hired, active, and terminated employees, hiring/termination trends, workforce breakdown, and HQ vs. branch employee comparison.</li>
+        <li><strong>Demographics:</strong> Gender distribution, age and education level breakdown, performance ratings by education level.</li>
+        <li><strong>Income Analysis:</strong> Salary comparisons by gender and education level, salary vs. age across departments.</li>
+        <li><strong>Employee Directory:</strong> Dynamic, searchable employee table, filterable by various criteria like department, gender, and more.</li>
+      </ul>
+    </div>
+
+    <div class="image-container">
+      <h3>📷 HR Dashboard Preview</h3>
+      <img src="images/HR_summary.jpeg" alt="HR Dashboard Preview" />
+    </div>
+
+    <h3>🌐 Live Dashboard</h3>
+    <p><a href="https://public.tableau.com/shared/C3NYQQ76R?:display_count=n&:origin=viz_share_link" target="_blank" class="btn">Click here to view the live HR Analytics Dashboard</a></p>
+
+    <div class="project-description">
+      <h3>Tools & Technologies</h3>
+      <ul>
+        <li>Tableau Public – Data visualization</li>
+        <li>Python Faker – Data simulation</li>
+        <li>Photopea – Icon customization</li>
+        <li>Procreate / draw.io / Figma – UI/UX mockup and background design tools</li>
+      </ul>
+    </div>
+
+    <div class="project-description">
+      <h3>Insights Unlocked</h3>
+      <ul>
+        <li>Track organizational hiring and attrition patterns</li>
+        <li>Discover demographic or pay gaps</li>
+        <li>Analyze salary distributions by department and age</li>
+        <li>View detailed employee records in one place</li>
+      </ul>
+    </div>
+
+    <h3>🌐 GitHub Repository</h3>
+    <p>Access the source code and resources for this project on GitHub: 
+       <a href="https://github.com/kimutai99/tableau-hr-dashboard" target="_blank" class="btn">View on GitHub</a>
+    </p>
+  </div>
+
+  <!-- Detailed Features Breakdown -->
+  <div class="container">
+    <h2>📊 Detailed Dashboard Features</h2>
+    <div class="feature-container">
+      <div class="feature-card">
+        <h4>Employee Engagement Analysis</h4>
+        <ul>
+          <li>Track employee satisfaction scores and correlates with retention rates</li>
+          <li>Identify areas of improvement in employee engagement programs</li>
+          <li>Visualize the effectiveness of training programs on employee performance</li>
+        </ul>
+      </div>
+
+      <div class="feature-card">
+        <h4>Performance Management</h4>
+        <ul>
+          <li>Track employee performance reviews across departments</li>
+          <li>Compare performance metrics year-over-year</li>
+          <li>Highlight high-performing teams and individuals for promotion considerations</li>
+        </ul>
+      </div>
+
+      <div class="feature-card">
+        <h4>Workforce Diversity Analysis</h4>
+        <ul>
+          <li>Visualize gender, race, and age demographics in your workforce</li>
+          <li>Track hiring and promotion trends based on diversity targets</li>
+          <li>Identify gaps in diversity and inclusivity initiatives</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case Study -->
+  <div class="case-study">
+    <div class="container">
+      <h2>📈 Case Study: Optimizing Employee Retention</h2>
+      <p>The HR Analytics Dashboard was implemented at XYZ Corporation to improve employee retention rates. The dashboard revealed several key trends:</p>
+
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-value">15%</div>
+          <div>Retention Increase</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">25%</div>
+          <div>Reduced Hiring Costs</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">10%</div>
+          <div>Improved Employee Satisfaction</div>
+        </div>
+      </div>
+
+      <div class="project-description">
+        <h3>Key Insights & Results</h3>
+        <ul>
+          <li>Identified a clear correlation between employee engagement scores and retention</li>
+          <li>Provided actionable insights for improving employee well-being programs</li>
+          <li>Enabled leadership to allocate resources efficiently to key departments with high turnover rates</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business Impact Metrics -->
+  <div class="container">
+    <h2>📊 Business Impact Metrics</h2>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-value">50%</div>
+        <div>Improvement in Employee Engagement</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">18%</div>
+        <div>Decreased Unplanned Turnover</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">$500K</div>
+        <div>Annual Savings in Recruitment Costs</div>
+      </div>
+    </div>
+
+    <div class="project-description">
+      <h3>Real-World Results</h3>
+      <ul>
+        <li>Saved XYZ Corp $500,000 annually in recruitment costs</li>
+        <li>Decreased unplanned turnover by 18% through targeted engagement strategies</li>
+        <li>Improved overall employee engagement scores by 50%, resulting in higher productivity and morale</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <h3>Connect With Me</h3>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/kimutai99" target="_blank">GitHub</a>
+      <a href="https://kimutai99.github.io/briankimutai.github.io/" target="_blank">Portfolio</a>
+      <a href="mailto:korosbrian574@gmail.com">Email</a>
+    </div>
+    <p>&copy; 2025 Brian Kimutai | HR Analytics Dashboard Project</p>
+  </footer>
+
+</body>
+</html>

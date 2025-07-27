@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ukraine War Data Pipeline | Brian Kimutai</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8fafc;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    h1, h2 {
+      color: #1e3a8a;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+    }
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+    pre, code {
+      background-color: #e2e8f0;
+      padding: 0.5rem;
+      border-radius: 5px;
+      display: block;
+      white-space: pre-wrap;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    table, th, td {
+      border: 1px solid #cbd5e1;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #e0f2fe;
+    }
+    img {
+      margin-top: 1rem;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Russia-Ukraine War: Data Pipeline Project</h1>
+
+    <p>This project demonstrates a complete <strong>ETL (Extract, Transform, Load)</strong> pipeline built using <strong>KoboToolbox</strong>, <strong>Python</strong>, and <strong>PostgreSQL</strong>, visualized using <strong>Power BI</strong>.</p>
+
+    <h2>📌 Project Overview</h2>
+    <ul>
+      <li><strong>Extract</strong>: Download CSV data from KoboToolbox using authentication</li>
+      <li><strong>Transform</strong>: Clean and manipulate data using <code>pandas</code></li>
+      <li><strong>Load</strong>: Insert into PostgreSQL database</li>
+      <li><strong>Visualize</strong>: Connect to Power BI for analysis</li>
+    </ul>
+
+    <h2>📂 Project Structure</h2>
+    <pre><code>Russia-Ukraine-Conflict/
+├── .env
+├── .gitignore
+├── pipeline.py
+├── README.md
+├── requirements.txt</code></pre>
+
+    <h2>⚙️ Technologies Used</h2>
+    <ul>
+      <li>Python 3.10+</li>
+      <li>Pandas, Requests, psycopg2, dotenv</li>
+      <li>PostgreSQL, KoboToolbox</li>
+    </ul>
+
+    <h2>🔐 Environment Variables</h2>
+    <pre><code>KOBO_USERNAME=your_kobo_username
+KOBO_PASSWORD=your_kobo_password
+PG_HOST=your_postgres_host
+PG_DATABASE=your_database_name
+PG_USERNAME=your_postgres_user
+PG_PASSWORD=your_postgres_password
+PG_PORT=5432</code></pre>
+
+    <h2>🚀 How to Run the Pipeline</h2>
+    <ol>
+      <li>Install dependencies:
+        <pre><code>pip install -r requirements.txt</code></pre>
+      </li>
+      <li>Create a .env file and fill in your credentials</li>
+      <li>Run the script:
+        <pre><code>python pipeline.py</code></pre>
+      </li>
+    </ol>
+
+    <h2>🧠 Key Transformations</h2>
+    <ul>
+      <li>Standardized column names</li>
+      <li>Parsed date formats</li>
+      <li>Computed <code>Total_Soldier_Casualties = casualties + injured + captured</code></li>
+    </ul>
+
+    <h2>📃 PostgreSQL Schema</h2>
+    <p><strong>Schema:</strong> <code>war</code> &nbsp; <strong>Table:</strong> <code>russia_ukraine_war</code></p>
+    <table>
+      <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+      <tr><td>start</td><td>TEXT</td><td>Submission start timestamp</td></tr>
+      <tr><td>end</td><td>TEXT</td><td>Submission end timestamp</td></tr>
+      <tr><td>date</td><td>DATE</td><td>Event date</td></tr>
+      <tr><td>country</td><td>TEXT</td><td>Country involved</td></tr>
+      <tr><td>event</td><td>TEXT</td><td>Type or description of event</td></tr>
+      <tr><td>oblast</td><td>TEXT</td><td>Region (oblast)</td></tr>
+      <tr><td>casualties</td><td>INT</td><td>Number of soldier casualties</td></tr>
+      <tr><td>injured</td><td>INT</td><td>Number of injured soldiers</td></tr>
+      <tr><td>captured</td><td>INT</td><td>Number of captured personnel</td></tr>
+      <tr><td>civilian_casualties</td><td>INT</td><td>Number of civilian casualties</td></tr>
+      <tr><td>new_recruits</td><td>INT</td><td>Reported new recruits</td></tr>
+      <tr><td>combat_intensity</td><td>FLOAT</td><td>Conflict intensity (0–10 scale)</td></tr>
+      <tr><td>territory_status</td><td>TEXT</td><td>Territory status</td></tr>
+      <tr><td>percentage_occupied</td><td>FLOAT</td><td>Percent of oblast occupied</td></tr>
+      <tr><td>area_occupied</td><td>FLOAT</td><td>Area occupied (sq. km)</td></tr>
+      <tr><td>Total_Soldier_Casualties</td><td>INT</td><td>Computed: casualties + injured + captured</td></tr>
+    </table>
+
+    <h2>📊 Power BI Dashboard</h2>
+    <p>Connected to PostgreSQL and created visuals:</p>
+    <ul>
+      <li>Trends in total casualties</li>
+      <li>Casualty breakdown by oblast</li>
+      <li>Combat intensity heatmaps</li>
+      <li>Territory occupation analysis</li>
+    </ul>
+    <img src="images/image.png" alt="Russia-Ukraine War Dashboard Screenshot">
+
+    <h2>📧 Contact</h2>
+    <p>
+      For feedback or collaboration:
+      <br>📧 <a href="mailto:korosbrian574@gmail.com">korosbrian574@gmail.com</a>
+      <br>📞 +254 768 518 488
+      <br>💼 <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" target="_blank">LinkedIn</a>
+    </p>
+  </div>
+</body>
+</html>

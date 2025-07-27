@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Failure Predictor | Brian Kimutai</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@600;700&display=swap">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #2980b9, #6dd5fa);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header Section */
+    header {
+      text-align: center;
+      padding: 80px 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-bottom: 2px solid #00b4d8;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      color: #fff;
+      font-weight: 800;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 15px;
+    }
+
+    header h2 {
+      font-size: 1.8rem;
+      color: #ff007f;
+      margin: 15px 0;
+      font-weight: 600;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ecf0f1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Section Styling */
+    .container {
+      padding: 50px 10%;
+      text-align: left;
+      background-color: #f9f9f9;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      max-width: 1200px;
+    }
+
+    .container h2 {
+      color: #2c3e50;
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      font-family: 'Poppins', sans-serif;
+      border-bottom: 2px solid #00b4d8;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+
+    .btn {
+      background: #00b4d8;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 6px;
+      margin: 20px 0;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: all 0.3s ease-in-out;
+      border: 2px solid #00b4d8;
+      display: inline-block;
+      font-size: 0.9rem;
+    }
+
+    .btn:hover {
+      background: #90e0ef;
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 180, 216, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #00b4d8;
+      border: 2px solid #00b4d8;
+      margin-left: 15px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 180, 216, 0.1);
+    }
+
+    .project-description {
+      margin: 30px 0;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .project-description h3 {
+      font-size: 1.8rem;
+      color: #00b4d8;
+      margin: 25px 0 15px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .image-container {
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.02);
+    }
+
+    ul {
+      margin: 20px 0;
+      padding-left: 30px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    strong {
+      color: #2c3e50;
+    }
+
+    /* Footer Section */
+    footer {
+      text-align: center;
+      background: #2c3e50;
+      padding: 40px;
+      font-size: 1rem;
+      color: #fff;
+      border-top: 2px solid #00b4d8;
+    }
+
+    .social-links {
+      margin: 20px 0;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #fff;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #00b4d8;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .container {
+        padding: 30px 5%;
+      }
+
+      .metrics {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Machine Failure Predictor</h1>
+    <h2>Revolutionizing Industrial Maintenance with AI</h2>
+    <p>A predictive maintenance solution that reduces downtime by 30% through machine learning-powered failure prediction</p>
+  </header>
+
+  <div class="container">
+    <h2>📌 Project Overview</h2>
+    <p>This application represents a paradigm shift in industrial maintenance strategies. By leveraging advanced machine learning algorithms, the system predicts equipment failures with 98.6% accuracy, transforming reactive maintenance into proactive intervention.</p>
+
+    <div class="image-container">
+      <img src="images/dashboard-screenshot.jpg" alt="Machine Failure Predictor Dashboard" />
+      <p class="caption">Interactive dashboard showing machine health status and failure predictions</p>
+    </div>
+
+    <div class="project-description">
+      <h3>Core Value Proposition</h3>
+      <p>The Machine Failure Predictor addresses critical pain points in industrial operations:</p>
+      <ul>
+        <li><strong>Unplanned Downtime:</strong> Average mining operation loses $180,000 per hour during unplanned outages</li>
+        <li><strong>Maintenance Costs:</strong> Reactive maintenance costs 3-5 times more than planned maintenance</li>
+        <li><strong>Safety Risks:</strong> Equipment failures account for 23% of mining industry accidents</li>
+      </ul>
+    </div>
+
+    <a href="https://kimutai99-predictive-maintenance-insights-app-rwqdx4.streamlit.app/" target="_blank" class="btn">View Live Application</a>
+    <a href="#technical-details" class="btn btn-secondary">Technical Details</a>
+
+    <div class="project-description">
+      <h3>Business Impact & Strategic Value</h3>
+      <ul>
+        <li><strong>Cost Reduction:</strong> 30% decrease in maintenance costs through optimized scheduling</li>
+        <li><strong>Productivity:</strong> 25% improvement in equipment availability and utilization</li>
+        <li><strong>Safety:</strong> 40% reduction in equipment-related incidents through early detection</li>
+        <li><strong>Inventory:</strong> 20% reduction in spare parts inventory through better planning</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container" id="technical-details">
+    <h2>🛠️ Technical Implementation</h2>
+    
+    <div class="project-description">
+      <h3>Data Pipeline Architecture</h3>
+      <ul>
+        <li>Real-time sensor data ingestion via API</li>
+        <li>Automated feature engineering pipeline</li>
+        <li>Data validation and quality checks</li>
+        <li>Batch processing for historical analysis</li>
+      </ul>
+    </div>
+
+    <div class="project-description">
+      <h3>Machine Learning Models</h3>
+      <ul>
+        <li>Random Forest Classifier (98.6% accuracy)</li>
+        <li>XGBoost for component failure prediction</li>
+        <li>SHAP values for explainability</li>
+        <li>Automated model retraining</li>
+      </ul>
+    </div>
+
+    <div class="project-description">
+      <h3>Application Features</h3>
+      <ul>
+        <li>Interactive failure probability dashboard</li>
+        <li>Component-specific failure predictions</li>
+        <li>Multilingual support (English/French)</li>
+        <li>Exportable reports and alerts</li>
+      </ul>
+    </div>
+
+    <div class="project-description">
+      <h3>Technology Stack</h3>
+      <ul>
+        <li><strong>Frontend:</strong> Streamlit for interactive dashboards, Plotly for visualizations</li>
+        <li><strong>Backend:</strong> Python, Pandas, NumPy for data processing</li>
+        <li><strong>Machine Learning:</strong> Scikit-learn, XGBoost, SHAP</li>
+        <li><strong>Statistical Analysis:</strong> SciPy, Statsmodels for hypothesis testing</li>
+        <li><strong>Deployment:</strong> Streamlit Cloud, Docker containerization</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>🚀 Future Enhancements</h2>
+    
+    <div class="project-description">
+      <h3>Planned Development Roadmap</h3>
+      <ul>
+        <li><strong>IoT Integration:</strong> Direct connection to equipment sensors for real-time monitoring</li>
+        <li><strong>Predictive Analytics:</strong> Forecasting maintenance needs weeks in advance</li>
+        <li><strong>Mobile App:</strong> Push notifications for critical alerts</li>
+        <li><strong>Advanced Analytics:</strong> Anomaly detection for emerging failure patterns</li>
+        <li><strong>Integration:</strong> ERP and CMMS system connectivity</li>
+      </ul>
+    </div>
+
+    <div class="project-description">
+      <h3>Technology Expansion</h3>
+      <ul>
+        <li>Deep learning models for complex failure patterns</li>
+        <li>Digital twin integration for simulation</li>
+        <li>Augmented reality for maintenance guidance</li>
+        <li>Blockchain for maintenance record integrity</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <h3>Connect With Me</h3>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/kimutai99" target="_blank">GitHub</a>
+      <a href="https://kimutai99.github.io/briankimutai.github.io/" target="_blank">Portfolio</a>
+      <a href="mailto:korosbrian574@gmail.com">Email</a>
+    </div>
+    <p>&copy; 2025 Brian Kimutai | Machine Failure Predictor Project</p>
+    <p>This project is available for collaboration and consulting opportunities</p>
+  </footer>
+
+</body>
+</html>

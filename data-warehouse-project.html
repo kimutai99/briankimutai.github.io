@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Warehouse and Analytics Project | Brian Kimutai</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #2980b9, #6dd5fa); /* Clean and readable gradient */
+      color: #333; /* Darker text color for better readability */
+    }
+
+    /* Header Section */
+    header {
+      text-align: center;
+      padding: 60px 0;
+      background-color: rgba(0, 0, 0, 0.7); /* Darker header to contrast with the text */
+      border-bottom: 2px solid #00b4d8;
+    }
+
+    header h1 {
+      font-size: 60px;
+      color: #fff;
+      font-weight: 800;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    header h2 {
+      font-size: 28px;
+      color: #ff007f;
+      margin: 15px 0;
+    }
+
+    header p {
+      font-size: 20px;
+      color: #ecf0f1;
+    }
+
+    /* Section Styling */
+    .container {
+      padding: 50px 10%;
+      text-align: left;
+      background-color: #f9f9f9; /* Light background for content */
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    }
+
+    .btn {
+      background: #00b4d8;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 6px;
+      margin-top: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background 0.3s ease-in-out;
+      border: 2px solid #00b4d8;
+      display: inline-block;
+      font-size: 0.9rem;
+    }
+
+    .btn:hover {
+      background: #90e0ef;
+      transform: scale(1.05);
+    }
+
+    .project-description {
+      margin: 30px 0;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .project-description h3 {
+      font-size: 28px;
+      color: #00b4d8;
+    }
+
+    .image-container {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer Section */
+    footer {
+      text-align: center;
+      background: #2c3e50;
+      padding: 30px;
+      font-size: 16px;
+      color: #fff;
+      border-top: 2px solid #00b4d8;
+    }
+
+    footer a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #ff007f;
+    }
+
+    /* Align Project Overview and other sections */
+    .project-overview, .tools-techniques, .key-insights {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .project-overview ul, .tools-techniques ul, .key-insights ul {
+      list-style-type: none;
+      padding: 10px;
+    }
+
+    .project-overview li, .tools-techniques li, .key-insights li {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Data Warehouse and Analytics Project</h1>
+    <p>Building a robust data infrastructure for retail industry insights and decision-making</p>
+  </header>
+
+  <div class="container">
+    <h2>📌 Project Overview</h2>
+    <p>This project demonstrates a comprehensive data warehousing and analytics solution designed for the retail industry. By leveraging industry-standard tools like SQL Server, Power BI, and Tableau, this solution streamlines sales, customer, and product data into actionable insights to optimize business performance and decision-making.</p>
+
+    <div class="project-description">
+      <h3>Project Structure</h3>
+      <div class="project-overview">
+        <ul>
+          <li><strong>Data Architecture</strong>: Built a modern data warehouse following the Medallion Architecture to support reporting and analytics for retail operations.</li>
+          <li><strong>ETL Pipelines</strong>: Utilized industry-standard ETL processes to extract, transform, and load data from various systems like ERP and CRM into the warehouse.</li>
+          <li><strong>Data Modeling</strong>: Designed star schemas and fact-dimension models for sales, customer, and inventory data.</li>
+          <li><strong>Analytics & Reporting</strong>: Delivered real-time insights with Power BI and Tableau dashboards for sales, profit, and customer behavior analysis.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="image-container">
+      <h3>📷 Data Architecture</h3>
+      <img src="images/data_architecture.png" alt="Data Architecture Diagram" />
+    </div>
+
+    <div class="image-container">
+      <h3>📈 Data Flow Diagram</h3>
+      <img src="images/data_flow.png" alt="Data Flow Diagram" />
+    </div>
+  </div>
+
+  <!-- Key Insights & Techniques -->
+  <div class="container">
+    <h2>📚 Key Project Insights & Techniques</h2>
+
+    <div class="key-insights">
+      <h3>SQL Data Warehouse Overview</h3>
+      <ul>
+        <li><strong>Data Architecture</strong>: This project utilizes a Star Schema structure with fact and dimension tables. We have relationships and foreign keys connecting various entities, with surrogate keys for efficient querying.</li>
+        <li><strong>ETL Process</strong>: The data is extracted from CSV files, transformed for consistency and structure, and loaded into SQL tables using BULK INSERT. Data is stored in schema layers, such as the gold schema.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Customer Dashboard Requirements -->
+  <div class="container">
+    <h2>📊 Customer Dashboard | Requirements</h2>
+    <p>The customer dashboard aims to provide an overview of customer data, trends, and behaviors. It will help marketing teams and management to understand customer segments and improve customer satisfaction.</p>
+    <h3>Key Requirements:</h3>
+    <ul>
+      <li><strong>KPI Overview</strong>: Display a summary of total number of customers, total sales per customer, and total number of orders for the current year and the previous year.</li>
+      <li><strong>Customer Trends</strong>: Present the data for each KPI on a monthly basis for both the current year and the previous year. Identify months with highest and lowest sales and make them easy to recognize.</li>
+      <li><strong>Customer Distribution by Number of Orders</strong>: Represent the distribution of customers based on the number of orders they have placed to provide insights into customer behavior, loyalty, and engagement.</li>
+      <li><strong>Top 10 Customers By Profit</strong>: Present the top 10 customers who have generated the highest profits for the company, showing additional information like rank, number of orders, current sales, current profit, and the last order date.</li>
+    </ul>
+  </div>
+
+  <!-- Sales Dashboard Requirements -->
+  <div class="container">
+    <h2>📊 Sales Dashboard | Requirements</h2>
+    <p>The purpose of the sales dashboard is to present an overview of the sales metrics and trends to analyze year-over-year sales performance and understand sales trends.</p>
+    <h3>Key Requirements:</h3>
+    <ul>
+      <li><strong>KPI Overview</strong>: Display a summary of total sales, profits, and quantity for the current year and the previous year.</li>
+      <li><strong>Sales Trends</strong>: Present the data for each KPI on a monthly basis for both the current year and the previous year. Identify months with highest and lowest sales and make them easy to recognize.</li>
+      <li><strong>Product Subcategory Comparison</strong>: Compare sales performance by different product subcategories for the current year and the previous year. Include a comparison of sales with profit.</li>
+      <li><strong>Weekly Trends for Sales & Profit</strong>: Present weekly sales and profit data for the current year, displaying the average weekly values.</li>
+    </ul>
+  </div>
+
+  <!-- Sales Dashboard Section -->
+  <div class="container">
+    <h2>📊 Sales Dashboard</h2>
+    <p>Explore this interactive sales dashboard visualizing key metrics such as total sales, profit, and quantity for 2023, compared to 2022. This dashboard is built to provide real-time insights for retail managers and executives to make data-driven decisions.</p>
+
+    <!-- Sales Dashboard Image -->
+    <div class="image-container">
+      <img src="images/WhatsApp Image 2025-06-22 at 18.27.16.jpeg" alt="Sales Dashboard" />
+    </div>
+
+    <p>Click <a href="https://public.tableau.com/app/profile/kimutai99/viz/ClimateDashboard" target="_blank" class="btn">here</a> to view the interactive version of the dashboard.</p>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Brian Kimutai | <a href="mailto:korosbrian574@gmail.com">Contact</a> | <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/">LinkedIn</a></p>
+  </footer>
+
+</body>
+</html>
