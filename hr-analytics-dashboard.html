@@ -159,13 +159,17 @@
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
       background: white;
-      padding: 0.5rem;
+      padding: 1rem;
+      text-align: center;
     }
 
-    .image-container img {
-      width: 100%;
-      display: block;
+    .dashboard-image {
+      max-width: 100%;
+      height: auto;
       border-radius: 0.25rem;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     /* Dashboard Embed */
@@ -407,12 +411,12 @@
           Built with Tableau and powered by simulated HR data, the solution enables data-driven decision making across the employee lifecycle.
         </p>
 
-        <div class="dashboard-embed">
-          <iframe src="https://public.tableau.com/views/HRDashboard_17517922680590/HRsummary?:embed=true&:display_count=yes&:showVizHome=no" 
-                  title="HR Analytics Dashboard"
-                  allowfullscreen>
-          </iframe>
-        </div>
+        <div class="image-container">
+          <img src="images/HR_summary.jpeg" 
+               alt="HR Analytics Dashboard" 
+               title="HR Analytics Dashboard"
+               class="dashboard-image">
+        </div>        
 
         <div class="card-grid">
           <div class="card">
