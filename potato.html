@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Potato Disease Recognition App by Brian Kimutai">
+  <title>Potato Disease Recognition | Brian Kimutai | AI Engineer</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #ec4899;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --background: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header Section */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 4rem 0 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      opacity: 0.9;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    /* Button Styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 0.4rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: 2px solid transparent;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    /* Project Section */
+    .project-section {
+      padding: 2.5rem 0;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50%;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .project-description {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .feature-list {
+      margin: 1.25rem 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      margin-bottom: 0.75rem;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+
+    /* Image Container */
+    .image-container {
+      margin: 1.75rem 0;
+      border-radius: 0.6rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .image-container img {
+      width: 100%;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    /* Metrics */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.25rem;
+      margin: 1.75rem 0;
+    }
+
+    .metric-card {
+      padding: 1.25rem 0.75rem;
+      background: var(--card-bg);
+      border-radius: 0.6rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .accuracy { color: var(--success); }
+    .precision { color: var(--primary); }
+    .recall { color: var(--warning); }
+    .f1 { color: var(--danger); }
+
+    /* Cards Layout */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 1.75rem 0;
+    }
+
+    .card {
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border-radius: 0.6rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Tech Stack */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #e0e7ff;
+      color: var(--primary);
+      padding: 0.4rem 0.8rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Code blocks */
+    pre, code {
+      background-color: #e2e8f0;
+      padding: 0.75rem;
+      border-radius: 6px;
+      display: block;
+      white-space: pre-wrap;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+    }
+
+    code {
+      padding: 0.25rem 0.5rem;
+      display: inline;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+
+    th {
+      background-color: #e0f2fe;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--background);
+    }
+
+    /* Disease Status Indicators */
+    .disease-status {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .healthy { background: #d1fae5; color: #065f46; }
+    .early-blight { background: #fef3c7; color: #92400e; }
+    .late-blight { background: #fee2e2; color: #991b1b; }
+
+    /* Footer */
+    footer {
+      background: var(--text);
+      color: white;
+      padding: 2.5rem 0 1.5rem;
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 3rem 0 1.5rem;
+      }
+      
+      .header-actions {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+      
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+      
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Potato Disease Recognition</h1>
+      <p>Deep learning solution for detecting potato leaf diseases with 96% accuracy</p>
+      <div class="header-actions">
+        <a href="https://github.com/kimutai99/Potato-Leaf-Classification" target="_blank" class="btn btn-primary">
+          <i class="fab fa-github"></i> GitHub Repository
+        </a>
+        <a href="#technical-details" class="btn btn-outline">
+          <i class="fas fa-code"></i> Technical Details
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-title">Solution Overview</h2>
+        <p class="project-description">
+          This AI-powered application helps farmers detect potato leaf diseases early using deep learning.
+          The system classifies potato leaves into healthy, early blight, and late blight categories with
+          high accuracy, enabling timely intervention to protect crops.
+        </p>
+
+        <div class="image-container">
+          <img src="images/potato-disease-comparison.jpg" alt="Potato Disease Recognition App Interface" loading="lazy">
+        </div>
+
+        <div class="metrics">
+          <div class="metric-card">
+            <div class="metric-value accuracy">96%</div>
+            <p>Accuracy</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value precision">94%</div>
+            <p>Precision</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value recall">95%</div>
+            <p>Recall</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value f1">95%</div>
+            <p>F1 Score</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" style="background-color: #f8fafc;">
+      <div class="container">
+        <h2 class="section-title">Key Features</h2>
+        
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-camera"></i> Image Recognition</h3>
+            <ul class="feature-list">
+              <li>Real-time classification of potato leaf images</li>
+              <li>Supports JPG, PNG, and JPEG formats</li>
+              <li>Mobile-friendly interface for field use</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-brain"></i> Deep Learning</h3>
+            <ul class="feature-list">
+              <li>Custom CNN architecture optimized for plant disease</li>
+              <li>Transfer learning with EfficientNet backbone</li>
+              <li>Data augmentation for robust performance</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-leaf"></i> Disease Detection</h3>
+            <ul class="feature-list">
+              <li>Identifies <span class="disease-status healthy">Healthy</span> leaves</li>
+              <li>Detects <span class="disease-status early-blight">Early Blight</span> infection</li>
+              <li>Recognizes <span class="disease-status late-blight">Late Blight</span> disease</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" id="technical-details">
+      <div class="container">
+        <h2 class="section-title">Technical Implementation</h2>
+        
+        <h3>Technology Stack</h3>
+        <div class="tech-stack">
+          <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
+          <span class="tech-badge"><i class="fas fa-project-diagram"></i> TensorFlow</span>
+          <span class="tech-badge"><i class="fas fa-flask"></i> Flask</span>
+          <span class="tech-badge"><i class="fab fa-docker"></i> Docker</span>
+          <span class="tech-badge"><i class="fas fa-database"></i> OpenCV</span>
+          <span class="tech-badge"><i class="fas fa-cloud"></i> Heroku</span>
+        </div>
+
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-brain"></i> Model Architecture</h3>
+            <ul class="feature-list">
+              <li>Custom CNN with 5 convolutional layers</li>
+              <li>Batch normalization and dropout for regularization</li>
+              <li>GlobalAveragePooling2D for dimensionality reduction</li>
+              <li>Softmax output layer with 3 classes</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-database"></i> Dataset</h3>
+            <ul class="feature-list">
+              <li>3,000+ images from PlantVillage dataset</li>
+              <li>Balanced classes (1,000 images per category)</li>
+              <li>80/10/10 train/validation/test split</li>
+              <li>Augmented with rotation, zoom, and flip transforms</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-server"></i> Deployment</h3>
+            <ul class="feature-list">
+              <li>Flask backend for model serving</li>
+              <li>Docker container for portability</li>
+              <li>Heroku cloud deployment</li>
+              <li>CI/CD pipeline with GitHub Actions</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 2rem;">Installation & Setup</h3>
+        <pre><code># Clone the repository
+git clone https://github.com/kimutai99/Potato-Leaf-Classification.git
+cd Potato-Leaf-Classification
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the application
+python app.py</code></pre>
+
+        <h3 style="margin-top: 2rem;">Docker Deployment</h3>
+        <pre><code># Build the Docker image
+docker build -t potato-disease-app .
+
+# Run the container
+docker run -p 5000:5000 potato-disease-app
+
+# Access the application
+http://localhost:5000</code></pre>
+      </div>
+    </section>
+
+    <section class="project-section" style="background-color: #f1f5f9;">
+      <div class="container">
+        <h2 class="section-title">Model Performance</h2>
+        
+        <div class="card">
+          <h3>Classification Report</h3>
+          <table>
+            <tr><th>Class</th><th>Precision</th><th>Recall</th><th>F1-Score</th><th>Support</th></tr>
+            <tr><td>Healthy</td><td>0.97</td><td>0.98</td><td>0.97</td><td>100</td></tr>
+            <tr><td>Early Blight</td><td>0.94</td><td>0.92</td><td>0.93</td><td>100</td></tr>
+            <tr><td>Late Blight</td><td>0.95</td><td>0.96</td><td>0.95</td><td>100</td></tr>
+            <tr><th>Accuracy</th><td colspan="3">0.96</td><td>300</td></tr>
+          </table>
+        </div>
+
+        <div style="margin-top: 2rem;">
+          <h3>Confusion Matrix</h3>
+          <div class="image-container">
+            <img src="images/confusion-matrix.png" alt="Confusion Matrix" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-title">Project Impact</h2>
+        
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-chart-line"></i> Agricultural Benefits</h3>
+            <ul class="feature-list">
+              <li>Early disease detection reduces crop losses by 30-40%</li>
+              <li>Targeted pesticide application saves costs</li>
+              <li>Increases yield quality and quantity</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-users"></i> User Experience</h3>
+            <ul class="feature-list">
+              <li>Simple interface for farmers with minimal tech skills</li>
+              <li>Instant results with actionable recommendations</li>
+              <li>Mobile-friendly for field use</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-expand"></i> Future Enhancements</h3>
+            <ul class="feature-list">
+              <li>Mobile app development</li>
+              <li>Integration with agricultural IoT devices</li>
+              <li>Expansion to other crop diseases</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <h3 style="color: white;">Connect for AI & Data Science Solutions</h3>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/kimutai99" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:korosbrian574@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+      <p class="copyright">&copy; 2025 Brian Kimutai | AI & Data Science Specialist</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
