@@ -4,79 +4,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Industrial AI Predictive Maintenance Solution by Brian Kimutai">
-  <title>Predictive Maintenance AI | Brian Kimutai | Machine Learning Engineer</title>
+  <title>Industrial Predictive Maintenance AI | Brian Kimutai | Machine Learning Engineer</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --accent: #ec4899;
-      --text: #1e293b;
-      --text-light: #64748b;
-      --background: #f8fafc;
+      --primary: #1a56db;
+      --primary-dark: #1e429f;
+      --accent: #046c4e;
+      --text: #111827;
+      --text-light: #6b7280;
+      --background: #f9fafb;
       --card-bg: #ffffff;
-      --border: #e2e8f0;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --border: #e5e7eb;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --section-spacing: 3rem;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     body {
       background-color: var(--background);
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.25rem; }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-light);
+      font-size: 1rem;
     }
 
     /* Header Section */
     header {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 4rem 0 2rem;
+      padding: 5rem 0 3rem;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
-    }
-
-    header h1 {
-      font-size: clamp(2rem, 5vw, 2.5rem);
-      font-weight: 700;
-      margin-bottom: 0.75rem;
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     header p {
       font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto 1.5rem;
       opacity: 0.9;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
     }
 
     /* Button Styles */
@@ -84,12 +87,13 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.65rem 1.25rem;
-      border-radius: 0.4rem;
+      padding: 0.65rem 1.5rem;
+      border-radius: 0.375rem;
       font-weight: 600;
       font-size: 0.95rem;
       text-decoration: none;
       transition: all 0.2s ease;
+      cursor: pointer;
     }
 
     .btn-primary {
@@ -106,90 +110,79 @@
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+      background: #03563f;
+    }
+
+    .btn-outline:hover {
+      border-color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
     }
 
     /* Project Section */
     .project-section {
-      padding: 2.5rem 0;
+      padding: var(--section-spacing) 0;
     }
 
     .section-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
+      position: relative;
+      margin-bottom: 1.5rem;
+      color: var(--text);
     }
 
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: -0.75rem;
       left: 0;
-      width: 50%;
+      width: 3rem;
       height: 3px;
-      background: var(--primary);
+      background: var(--accent);
       border-radius: 2px;
-    }
-
-    .project-description {
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-      color: var(--text-light);
-    }
-
-    .feature-list {
-      margin: 1.25rem 0;
-      list-style: none;
-    }
-
-    .feature-list li {
-      margin-bottom: 0.75rem;
-      padding-left: 1.25rem;
-      position: relative;
-    }
-
-    .feature-list li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
     }
 
     /* Image Container */
     .image-container {
-      margin: 1.75rem 0;
-      border-radius: 0.6rem;
+      margin: 1.5rem 0;
+      border-radius: 0.5rem;
       overflow: hidden;
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
+      background: white;
+      padding: 0.5rem;
     }
 
     .image-container img {
       width: 100%;
       display: block;
-      transition: transform 0.3s ease;
+      border-radius: 0.25rem;
     }
 
-    /* Metrics */
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1.25rem;
-      margin: 1.75rem 0;
-    }
-
-    .metric-card {
-      padding: 1.25rem 0.75rem;
-      background: var(--card-bg);
-      border-radius: 0.6rem;
+    /* Dashboard Embed */
+    .dashboard-embed {
+      margin: 1.5rem 0;
+      border-radius: 0.5rem;
+      overflow: hidden;
       box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      height: 800px;
+      background: white;
     }
 
-    .metric-value {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.25rem;
+    .dashboard-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
     /* Cards Layout */
@@ -197,25 +190,57 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      margin: 1.75rem 0;
+      margin: 2rem 0;
     }
 
     .card {
       padding: 1.5rem;
       background: var(--card-bg);
-      border-radius: 0.6rem;
+      border-radius: 0.5rem;
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary);
     }
 
     .card h3 {
       font-size: 1.15rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       color: var(--primary);
       display: flex;
       align-items: center;
       gap: 0.5rem;
+    }
+
+    .card-icon {
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+
+    /* Feature List */
+    .feature-list {
+      list-style: none;
+    }
+
+    .feature-list li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
     }
 
     /* Tech Stack */
@@ -223,70 +248,135 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin: 1.25rem 0;
+      margin: 1.5rem 0;
     }
 
     .tech-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       background: #e0e7ff;
       color: var(--primary);
-      padding: 0.4rem 0.8rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 100px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 500;
+    }
+
+    /* Metrics */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .metric-card {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
     }
 
     /* Footer */
     footer {
-      background: var(--text);
+      background: #111827;
       color: white;
-      padding: 2.5rem 0 1.5rem;
+      padding: 3rem 0 2rem;
       text-align: center;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-content h3 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer-content p {
+      color: rgba(255, 255, 255, 0.8);
     }
 
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 1.25rem;
+      gap: 1rem;
       margin: 1.5rem 0;
     }
 
     .social-links a {
       color: white;
       font-size: 1.1rem;
-      transition: color 0.3s;
+      transition: all 0.3s;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .social-links a:hover {
-      color: var(--accent);
+      color: white;
+      background: var(--accent);
+      transform: translateY(-2px);
     }
 
     .copyright {
       margin-top: 1.5rem;
       font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.6);
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
+      :root {
+        --section-spacing: 2.5rem;
+      }
+      
+      .container {
+        padding: 0 1.5rem;
+      }
+      
       header {
-        padding: 3rem 0 1.5rem;
+        padding: 4rem 0 2rem;
+      }
+      
+      header h1 {
+        font-size: 2rem;
       }
       
       .header-actions {
         flex-direction: column;
+        gap: 0.75rem;
       }
       
       .btn {
         width: 100%;
-        text-align: center;
         justify-content: center;
       }
-      
-      .metrics {
-        grid-template-columns: 1fr;
+
+      .dashboard-embed {
+        height: 600px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .dashboard-embed {
+        height: 400px;
       }
     }
   </style>
@@ -294,9 +384,9 @@
 <body>
 
   <header>
-    <div class="container">
-      <h1>Predictive Maintenance AI</h1>
-      <p>Machine learning solution reducing industrial downtime by 30% through proactive failure prediction</p>
+    <div class="container header-content">
+      <h1>Industrial Predictive Maintenance AI</h1>
+      <p>Machine learning solution that reduces unplanned downtime by 30% through proactive equipment failure prediction</p>
       <div class="header-actions">
         <a href="https://kimutai99-predictive-maintenance-insights-app-rwqdx4.streamlit.app/" target="_blank" class="btn btn-primary">
           <i class="fas fa-external-link-alt"></i> View Live Demo
@@ -312,15 +402,92 @@
     <section class="project-section">
       <div class="container">
         <h2 class="section-title">Solution Overview</h2>
-        <p class="project-description">
-          This AI-powered predictive maintenance system analyzes equipment sensor data to forecast failures with 98.6% accuracy,
-          transforming maintenance operations from reactive to proactive.
+        <p>
+          This AI-driven predictive maintenance platform analyzes real-time sensor data and operational parameters to identify equipment degradation patterns before failures occur. The system provides actionable insights to maintenance teams, enabling proactive interventions.
         </p>
 
         <div class="image-container">
-          <img src="images/login.png" alt="Predictive Maintenance Dashboard" loading="lazy">
+          <img src="images/login.png" alt="Predictive Maintenance Dashboard showing equipment health metrics" loading="lazy">
         </div>
 
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-money-bill-wave card-icon"></i> Cost Optimization</h3>
+            <ul class="feature-list">
+              <li>Reduce unplanned maintenance costs by 30%</li>
+              <li>Optimize spare parts inventory</li>
+              <li>Extend equipment lifespan</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-chart-line card-icon"></i> Operational Excellence</h3>
+            <ul class="feature-list">
+              <li>Improve maintenance planning by 40%</li>
+              <li>Increase equipment availability</li>
+              <li>Reduce mean time to repair</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-shield-alt card-icon"></i> Risk Mitigation</h3>
+            <ul class="feature-list">
+              <li>40% reduction in safety incidents</li>
+              <li>Early warning system for failures</li>
+              <li>Compliance with regulations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" style="background-color: #f3f4f6;">
+      <div class="container" id="technical-details">
+        <h2 class="section-title">Technical Implementation</h2>
+        
+        <p>The solution combines advanced machine learning techniques with a robust data pipeline to deliver reliable predictions.</p>
+
+        <h3>Technology Stack</h3>
+        <div class="tech-stack">
+          <span class="tech-badge"><i class="fas fa-brain"></i> Python</span>
+          <span class="tech-badge"><i class="fas fa-project-diagram"></i> Scikit-learn</span>
+          <span class="tech-badge"><i class="fas fa-chart-bar"></i> XGBoost</span>
+          <span class="tech-badge"><i class="fas fa-database"></i> Pandas</span>
+          <span class="tech-badge"><i class="fas fa-tachometer-alt"></i> SHAP</span>
+          <span class="tech-badge"><i class="fas fa-laptop-code"></i> Streamlit</span>
+        </div>
+
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-microchip card-icon"></i> Machine Learning Core</h3>
+            <ul class="feature-list">
+              <li>Random Forest Classifier with 98.6% accuracy</li>
+              <li>XGBoost for failure prediction</li>
+              <li>SHAP values for interpretability</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-server card-icon"></i> Data Infrastructure</h3>
+            <ul class="feature-list">
+              <li>Real-time sensor data ingestion</li>
+              <li>Automated feature engineering</li>
+              <li>Data validation and monitoring</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-tv card-icon"></i> Visualization Dashboard</h3>
+            <ul class="feature-list">
+              <li>Interactive health monitoring</li>
+              <li>Failure probability heatmaps</li>
+              <li>Component-specific diagnostics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-title">Key Metrics</h2>
+        
         <div class="metrics">
           <div class="metric-card">
             <div class="metric-value">98.6%</div>
@@ -328,115 +495,43 @@
           </div>
           <div class="metric-card">
             <div class="metric-value">30%</div>
-            <p>Reduction in Downtime</p>
+            <p>Downtime Reduction</p>
           </div>
           <div class="metric-card">
             <div class="metric-value">25%</div>
-            <p>Maintenance Cost Savings</p>
+            <p>Cost Savings</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="project-section" style="background-color: #f8fafc;">
+    <section class="project-section" style="background-color: #f9fafb;">
       <div class="container">
-        <h2 class="section-title">Business Impact</h2>
+        <h2 class="section-title">Implementation Roadmap</h2>
         
         <div class="card-grid">
           <div class="card">
-            <h3><i class="fas fa-money-bill-wave"></i> Cost Reduction</h3>
+            <h3><i class="fas fa-plug card-icon"></i> Phase 1: Core</h3>
             <ul class="feature-list">
-              <li>30% decrease in unplanned maintenance costs</li>
-              <li>20% reduction in spare parts inventory</li>
-              <li>15% improvement in equipment lifespan</li>
+              <li>Sensor data integration</li>
+              <li>Baseline model development</li>
+              <li>Dashboard prototype</li>
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-chart-line"></i> Operational Efficiency</h3>
+            <h3><i class="fas fa-robot card-icon"></i> Phase 2: Advanced</h3>
             <ul class="feature-list">
-              <li>40% improvement in maintenance planning</li>
-              <li>25% increase in equipment availability</li>
-              <li>60% faster failure diagnosis</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3><i class="fas fa-shield-alt"></i> Safety Improvements</h3>
-            <ul class="feature-list">
-              <li>40% reduction in equipment-related incidents</li>
-              <li>Early warning for critical failures</li>
-              <li>Reduced emergency maintenance work</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="project-section" id="technical-details">
-      <div class="container">
-        <h2 class="section-title">Technical Implementation</h2>
-        
-        <h3>Technology Stack</h3>
-        <div class="tech-stack">
-          <span class="tech-badge"><i class="fas fa-chart-line"></i> Machine Learning</span>
-          <span class="tech-badge"><i class="fas fa-database"></i> Data Pipeline</span>
-          <span class="tech-badge"><i class="fas fa-laptop-code"></i> Streamlit</span>
-          <span class="tech-badge"><i class="fas fa-project-diagram"></i> SHAP</span>
-          <span class="tech-badge"><i class="fas fa-cloud"></i> Docker</span>
-        </div>
-
-        <div class="card-grid">
-          <div class="card">
-            <h3><i class="fas fa-brain"></i> Machine Learning</h3>
-            <ul class="feature-list">
-              <li>Random Forest Classifier (98.6% accuracy)</li>
-              <li>XGBoost for component failure prediction</li>
-              <li>SHAP values for model explainability</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3><i class="fas fa-database"></i> Data Pipeline</h3>
-            <ul class="feature-list">
-              <li>Real-time sensor data ingestion</li>
-              <li>Automated feature engineering</li>
-              <li>Data validation and quality checks</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3><i class="fas fa-tv"></i> Dashboard</h3>
-            <ul class="feature-list">
-              <li>Interactive failure probability visualization</li>
-              <li>Component-specific health monitoring</li>
-              <li>Exportable reports and alerts</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="project-section" style="background-color: #f1f5f9;">
-      <div class="container">
-        <h2 class="section-title">Future Roadmap</h2>
-        
-        <div class="card-grid">
-          <div class="card">
-            <h3><i class="fas fa-plug"></i> IoT Integration</h3>
-            <ul class="feature-list">
-              <li>Direct equipment sensor connectivity</li>
-              <li>Edge computing for real-time analysis</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3><i class="fas fa-robot"></i> Advanced Analytics</h3>
-            <ul class="feature-list">
-              <li>Deep learning for complex patterns</li>
+              <li>Edge computing capabilities</li>
               <li>Digital twin integration</li>
+              <li>Anomaly detection</li>
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-mobile-alt"></i> Mobile Experience</h3>
+            <h3><i class="fas fa-expand card-icon"></i> Phase 3: Scaling</h3>
             <ul class="feature-list">
-              <li>Push notifications for critical alerts</li>
-              <li>AR maintenance guidance</li>
+              <li>Multi-site deployment</li>
+              <li>Mobile alerting system</li>
+              <li>CMMS integration</li>
             </ul>
           </div>
         </div>
@@ -445,8 +540,9 @@
   </main>
 
   <footer>
-    <div class="container">
-      <h3 style="color: white;">Connect for Industrial AI Solutions</h3>
+    <div class="container footer-content">
+      <h3>Connect for Industrial AI Solutions</h3>
+      <p>Let's discuss how predictive maintenance can transform your operations</p>
       <div class="social-links">
         <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" target="_blank" aria-label="LinkedIn">
           <i class="fab fa-linkedin-in"></i>
@@ -458,7 +554,7 @@
           <i class="fas fa-envelope"></i>
         </a>
       </div>
-      <p class="copyright">&copy; 2025 Brian Kimutai | Industrial AI Specialist</p>
+      <p class="copyright">&copy; 2023 Brian Kimutai | Machine Learning Engineer</p>
     </div>
   </footer>
 

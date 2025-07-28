@@ -9,67 +9,77 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --accent: #ec4899;
-      --text: #1e293b;
-      --text-light: #64748b;
-      --background: #f8fafc;
+      --primary: #1a56db;
+      --primary-dark: #1e429f;
+      --accent: #046c4e;
+      --text: #111827;
+      --text-light: #6b7280;
+      --background: #f9fafb;
       --card-bg: #ffffff;
-      --border: #e2e8f0;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --border: #e5e7eb;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --section-spacing: 3rem;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     body {
       background-color: var(--background);
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.25rem; }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-light);
+      font-size: 1rem;
     }
 
     /* Header Section */
     header {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
-      padding: 4rem 0 2rem;
+      padding: 5rem 0 3rem;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
-    }
-
-    header h1 {
-      font-size: clamp(2rem, 5vw, 2.5rem);
-      font-weight: 700;
-      margin-bottom: 0.75rem;
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     header p {
       font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto 1.5rem;
       opacity: 0.9;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
     }
 
     /* Button Styles */
@@ -77,12 +87,13 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.65rem 1.25rem;
-      border-radius: 0.4rem;
+      padding: 0.65rem 1.5rem;
+      border-radius: 0.375rem;
       font-weight: 600;
       font-size: 0.95rem;
       text-decoration: none;
       transition: all 0.2s ease;
+      cursor: pointer;
     }
 
     .btn-primary {
@@ -99,68 +110,62 @@
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+      background: #03563f;
+    }
+
+    .btn-outline:hover {
+      border-color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
     }
 
     /* Project Section */
     .project-section {
-      padding: 2.5rem 0;
+      padding: var(--section-spacing) 0;
     }
 
     .section-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
+      position: relative;
+      margin-bottom: 1.5rem;
+      color: var(--text);
     }
 
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: -0.75rem;
       left: 0;
-      width: 50%;
+      width: 3rem;
       height: 3px;
-      background: var(--primary);
+      background: var(--accent);
       border-radius: 2px;
-    }
-
-    .project-description {
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-      color: var(--text-light);
-    }
-
-    .feature-list {
-      margin: 1.25rem 0;
-      list-style: none;
-    }
-
-    .feature-list li {
-      margin-bottom: 0.75rem;
-      padding-left: 1.25rem;
-      position: relative;
-    }
-
-    .feature-list li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
     }
 
     /* Image Container */
     .image-container {
-      margin: 1.75rem 0;
-      border-radius: 0.6rem;
+      margin: 1.5rem 0;
+      border-radius: 0.5rem;
       overflow: hidden;
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
+      background: white;
+      padding: 0.5rem;
     }
 
     .image-container img {
       width: 100%;
       display: block;
-      transition: transform 0.3s ease;
+      border-radius: 0.25rem;
     }
 
     /* Cards Layout */
@@ -168,79 +173,159 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      margin: 1.75rem 0;
+      margin: 2rem 0;
     }
 
     .card {
       padding: 1.5rem;
       background: var(--card-bg);
-      border-radius: 0.6rem;
+      border-radius: 0.5rem;
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary);
     }
 
     .card h3 {
       font-size: 1.15rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       color: var(--primary);
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
-    /* Technical Badges */
+    .card-icon {
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+
+    /* Feature List */
+    .feature-list {
+      list-style: none;
+    }
+
+    .feature-list li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Tech Stack */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+    }
+
     .tech-badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       background: #e0e7ff;
       color: var(--primary);
-      padding: 0.25rem 0.75rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 100px;
       font-size: 0.85rem;
       font-weight: 500;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
     }
 
     /* Footer */
     footer {
-      background: var(--text);
+      background: #111827;
       color: white;
-      padding: 2.5rem 0 1.5rem;
+      padding: 3rem 0 2rem;
       text-align: center;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-content h3 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer-content p {
+      color: rgba(255, 255, 255, 0.8);
     }
 
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 1.25rem;
+      gap: 1rem;
       margin: 1.5rem 0;
     }
 
     .social-links a {
       color: white;
       font-size: 1.1rem;
-      transition: color 0.3s;
+      transition: all 0.3s;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .social-links a:hover {
-      color: var(--accent);
+      color: white;
+      background: var(--accent);
+      transform: translateY(-2px);
     }
 
     .copyright {
       margin-top: 1.5rem;
       font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.6);
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
-      header {
-        padding: 3rem 0 1.5rem;
+      :root {
+        --section-spacing: 2.5rem;
       }
       
-      .section-title {
-        font-size: 1.5rem;
+      .container {
+        padding: 0 1.5rem;
+      }
+      
+      header {
+        padding: 4rem 0 2rem;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .header-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>
@@ -248,9 +333,17 @@
 <body>
 
   <header>
-    <div class="container">
+    <div class="container header-content">
       <h1>Retail Data Warehouse Solution</h1>
       <p>End-to-end data infrastructure enabling actionable insights for retail decision-making</p>
+      <div class="header-actions">
+        <a href="https://public.tableau.com/app/profile/kimutai99/viz/ClimateDashboard" target="_blank" class="btn btn-primary">
+          <i class="fas fa-external-link-alt"></i> View Dashboard
+        </a>
+        <a href="#technical-details" class="btn btn-outline">
+          <i class="fas fa-code"></i> Technical Details
+        </a>
+      </div>
     </div>
   </header>
 
@@ -258,7 +351,7 @@
     <section class="project-section">
       <div class="container">
         <h2 class="section-title">Project Overview</h2>
-        <p class="project-description">
+        <p>
           Designed and implemented a comprehensive data warehouse solution for a retail chain with 150+ locations, 
           consolidating transactional data from 12 source systems into a unified analytics platform.
         </p>
@@ -269,7 +362,7 @@
 
         <div class="card-grid">
           <div class="card">
-            <h3><i class="fas fa-layer-group"></i> Architecture</h3>
+            <h3><i class="fas fa-layer-group card-icon"></i> Architecture</h3>
             <ul class="feature-list">
               <li>Medallion architecture (Bronze → Silver → Gold)</li>
               <li>Star schema dimensional modeling</li>
@@ -277,7 +370,7 @@
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-tachometer-alt"></i> Performance</h3>
+            <h3><i class="fas fa-tachometer-alt card-icon"></i> Performance</h3>
             <ul class="feature-list">
               <li>Query response times under 2 seconds</li>
               <li>Handles 5M+ daily transactions</li>
@@ -285,7 +378,7 @@
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-chart-line"></i> Business Impact</h3>
+            <h3><i class="fas fa-chart-line card-icon"></i> Business Impact</h3>
             <ul class="feature-list">
               <li>15% reduction in out-of-stock events</li>
               <li>12% improvement in inventory turnover</li>
@@ -296,19 +389,19 @@
       </div>
     </section>
 
-    <section class="project-section" style="background-color: #f8fafc;">
-      <div class="container">
+    <section class="project-section" style="background-color: #f3f4f6;">
+      <div class="container" id="technical-details">
         <h2 class="section-title">Technical Implementation</h2>
         
-        <div>
-          <h3>Technology Stack</h3>
-          <div style="margin: 1.25rem 0;">
-            <span class="tech-badge"><i class="fas fa-database"></i> Microsoft SQL Server</span>
-            <span class="tech-badge"><i class="fas fa-server"></i> Azure Synapse Analytics</span>
-            <span class="tech-badge"><i class="fas fa-code"></i> Python</span>
-            <span class="tech-badge"><i class="fas fa-table"></i> Power BI</span>
-            <span class="tech-badge"><i class="fas fa-project-diagram"></i> Azure Data Factory</span>
-          </div>
+        <p>The solution combines modern data engineering techniques with a scalable architecture to deliver reliable analytics and business intelligence.</p>
+
+        <h3>Technology Stack</h3>
+        <div class="tech-stack">
+          <span class="tech-badge"><i class="fas fa-database"></i> Microsoft SQL Server</span>
+          <span class="tech-badge"><i class="fas fa-server"></i> Azure Synapse Analytics</span>
+          <span class="tech-badge"><i class="fas fa-code"></i> Python</span>
+          <span class="tech-badge"><i class="fas fa-table"></i> Power BI</span>
+          <span class="tech-badge"><i class="fas fa-project-diagram"></i> Azure Data Factory</span>
         </div>
 
         <div class="image-container">
@@ -317,7 +410,7 @@
 
         <div class="card-grid">
           <div class="card">
-            <h3><i class="fas fa-upload"></i> Data Ingestion</h3>
+            <h3><i class="fas fa-upload card-icon"></i> Data Ingestion</h3>
             <ul class="feature-list">
               <li>API-based extraction from POS systems</li>
               <li>Change data capture for inventory DB</li>
@@ -325,7 +418,7 @@
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-cogs"></i> Transformation</h3>
+            <h3><i class="fas fa-cogs card-icon"></i> Transformation</h3>
             <ul class="feature-list">
               <li>Data validation rules</li>
               <li>Business rule application</li>
@@ -333,7 +426,7 @@
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-chart-pie"></i> Analytics</h3>
+            <h3><i class="fas fa-chart-pie card-icon"></i> Analytics</h3>
             <ul class="feature-list">
               <li>Pre-aggregated cubes</li>
               <li>Materialized views</li>
@@ -354,18 +447,15 @@
 
         <div class="card-grid">
           <div class="card">
-            <h3><i class="fas fa-shopping-cart"></i> Sales Analytics</h3>
+            <h3><i class="fas fa-shopping-cart card-icon"></i> Sales Analytics</h3>
             <ul class="feature-list">
               <li>Real-time sales by region</li>
               <li>Year-over-year comparisons</li>
               <li>Product performance</li>
             </ul>
-            <a href="https://public.tableau.com/app/profile/kimutai99/viz/ClimateDashboard" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">
-              <i class="fas fa-external-link-alt"></i> View Dashboard
-            </a>
           </div>
           <div class="card">
-            <h3><i class="fas fa-boxes"></i> Inventory Management</h3>
+            <h3><i class="fas fa-boxes card-icon"></i> Inventory Management</h3>
             <ul class="feature-list">
               <li>Stock-out predictions</li>
               <li>Turnover rates</li>
@@ -373,7 +463,7 @@
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-users"></i> Customer Insights</h3>
+            <h3><i class="fas fa-users card-icon"></i> Customer Insights</h3>
             <ul class="feature-list">
               <li>Lifetime value analysis</li>
               <li>Purchase frequency</li>
@@ -384,13 +474,13 @@
       </div>
     </section>
 
-    <section class="project-section" style="background-color: #f1f5f9;">
+    <section class="project-section" style="background-color: #f9fafb;">
       <div class="container">
         <h2 class="section-title">Business Impact</h2>
         
         <div class="card-grid">
           <div class="card">
-            <h3><i class="fas fa-money-bill-wave"></i> Revenue Impact</h3>
+            <h3><i class="fas fa-money-bill-wave card-icon"></i> Revenue Impact</h3>
             <ul class="feature-list">
               <li>8% increase in same-store sales</li>
               <li>12% improvement in margin</li>
@@ -398,7 +488,7 @@
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-clock"></i> Operational Efficiency</h3>
+            <h3><i class="fas fa-clock card-icon"></i> Operational Efficiency</h3>
             <ul class="feature-list">
               <li>80% reduction in report generation time</li>
               <li>60% faster decision-making</li>
@@ -406,7 +496,7 @@
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-lightbulb"></i> Strategic Benefits</h3>
+            <h3><i class="fas fa-lightbulb card-icon"></i> Strategic Benefits</h3>
             <ul class="feature-list">
               <li>Data-driven culture adoption</li>
               <li>Improved cross-department alignment</li>
@@ -414,19 +504,14 @@
             </ul>
           </div>
         </div>
-
-        <div style="text-align: center; margin-top: 2rem;">
-          <a href="https://github.com/kimutai99/" target="_blank" class="btn btn-primary">
-            <i class="fab fa-github"></i> View on GitHub
-          </a>
-        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <h3 style="color: white;">Connect With Me</h3>
+    <div class="container footer-content">
+      <h3>Connect for Data Engineering Solutions</h3>
+      <p>Let's discuss how data infrastructure can transform your business operations</p>
       <div class="social-links">
         <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" target="_blank" aria-label="LinkedIn">
           <i class="fab fa-linkedin-in"></i>

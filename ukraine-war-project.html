@@ -9,38 +9,53 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
+      --primary: #1a56db;
+      --primary-dark: #1e429f;
       --accent: #ec4899;
-      --text: #1e293b;
-      --text-light: #64748b;
-      --background: #f8fafc;
+      --text: #111827;
+      --text-light: #6b7280;
+      --background: #f9fafb;
       --card-bg: #ffffff;
-      --border: #e2e8f0;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --border: #e5e7eb;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --section-spacing: 2.5rem;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     body {
       background-color: var(--background);
       color: var(--text);
-      line-height: 1.5;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.25rem; }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-light);
+      font-size: 1rem;
     }
 
     /* Header Section */
@@ -53,34 +68,18 @@
       overflow: hidden;
     }
 
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
-    }
-
-    header h1 {
-      font-size: clamp(2rem, 5vw, 2.5rem);
-      font-weight: 700;
-      margin-bottom: 0.75rem;
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     header p {
       font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto 1.5rem;
       opacity: 0.9;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
     }
 
     /* Button Styles */
@@ -88,12 +87,13 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.65rem 1.25rem;
-      border-radius: 0.4rem;
+      padding: 0.65rem 1.5rem;
+      border-radius: 0.375rem;
       font-weight: 600;
       font-size: 0.95rem;
       text-decoration: none;
       transition: all 0.2s ease;
+      cursor: pointer;
     }
 
     .btn-primary {
@@ -110,93 +110,62 @@
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+      background: #d43382;
+    }
+
+    .btn-outline:hover {
+      border-color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
     }
 
     /* Project Section */
     .project-section {
-      padding: 2.5rem 0;
-      scroll-margin-top: 20px; /* Add space for fixed headers if any */
+      padding: var(--section-spacing) 0;
     }
 
     .section-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
       position: relative;
+      margin-bottom: 1.5rem;
+      color: var(--text);
     }
 
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: -0.75rem;
       left: 0;
-      width: 50%;
+      width: 3rem;
       height: 3px;
-      background: var(--primary);
+      background: var(--accent);
       border-radius: 2px;
-    }
-
-    .project-description {
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-      color: var(--text-light);
-    }
-
-    .feature-list {
-      margin: 1.25rem 0;
-      list-style: none;
-    }
-
-    .feature-list li {
-      margin-bottom: 0.75rem;
-      padding-left: 1.25rem;
-      position: relative;
-    }
-
-    .feature-list li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
     }
 
     /* Image Container */
     .image-container {
-      margin: 1.75rem 0;
-      border-radius: 0.6rem;
+      margin: 1.5rem 0;
+      border-radius: 0.5rem;
       overflow: hidden;
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
+      background: white;
+      padding: 0.5rem;
     }
 
     .image-container img {
       width: 100%;
       display: block;
-      transition: transform 0.3s ease;
-    }
-
-    /* Metrics */
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1.25rem;
-      margin: 1.75rem 0;
-    }
-
-    .metric-card {
-      padding: 1.25rem 0.75rem;
-      background: var(--card-bg);
-      border-radius: 0.6rem;
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-
-    .metric-value {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.25rem;
+      border-radius: 0.25rem;
     }
 
     /* Cards Layout */
@@ -204,29 +173,57 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      margin: 1.75rem 0;
+      margin: 1.5rem 0;
     }
 
     .card {
       padding: 1.5rem;
       background: var(--card-bg);
-      border-radius: 0.6rem;
+      border-radius: 0.5rem;
       box-shadow: var(--shadow);
       border: 1px solid var(--border);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary);
     }
 
     .card h3 {
       font-size: 1.15rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
       color: var(--primary);
       display: flex;
       align-items: center;
       gap: 0.5rem;
+    }
+
+    .card-icon {
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+
+    /* Feature List */
+    .feature-list {
+      list-style: none;
+    }
+
+    .feature-list li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
     }
 
     /* Tech Stack */
@@ -234,32 +231,33 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin: 1.25rem 0;
+      margin: 1.5rem 0;
     }
 
     .tech-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       background: #e0e7ff;
       color: var(--primary);
-      padding: 0.4rem 0.8rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 100px;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 500;
     }
 
     /* Code blocks */
     pre, code {
-      background-color: #e2e8f0;
+      background-color: #f3f4f6;
       padding: 0.75rem;
       border-radius: 6px;
       display: block;
       white-space: pre-wrap;
       font-family: 'Courier New', monospace;
       font-size: 0.9rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       overflow-x: auto;
+      border: 1px solid var(--border);
     }
 
     code {
@@ -271,10 +269,11 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 1.5rem 0;
+      margin: 1rem 0;
       box-shadow: var(--shadow);
       border-radius: 8px;
       overflow: hidden;
+      font-size: 0.9rem;
     }
 
     th, td {
@@ -294,58 +293,84 @@
 
     /* Footer */
     footer {
-      background: var(--text);
+      background: #111827;
       color: white;
-      padding: 2.5rem 0 1.5rem;
+      padding: 3rem 0 2rem;
       text-align: center;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-content h3 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer-content p {
+      color: rgba(255, 255, 255, 0.8);
     }
 
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 1.25rem;
+      gap: 1rem;
       margin: 1.5rem 0;
     }
 
     .social-links a {
       color: white;
       font-size: 1.1rem;
-      transition: color 0.3s;
+      transition: all 0.3s;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .social-links a:hover {
-      color: var(--accent);
+      color: white;
+      background: var(--accent);
+      transform: translateY(-2px);
     }
 
     .copyright {
       margin-top: 1.5rem;
       font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.6);
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
+      :root {
+        --section-spacing: 2rem;
+      }
+      
+      .container {
+        padding: 0 1.5rem;
+      }
+      
       header {
         padding: 3rem 0 1.5rem;
       }
       
+      header h1 {
+        font-size: 2rem;
+      }
+      
       .header-actions {
         flex-direction: column;
+        gap: 0.75rem;
       }
       
       .btn {
         width: 100%;
-        text-align: center;
         justify-content: center;
-      }
-      
-      .metrics {
-        grid-template-columns: 1fr;
-      }
-      
-      table {
-        display: block;
-        overflow-x: auto;
       }
     }
   </style>
@@ -353,7 +378,7 @@
 <body>
 
   <header>
-    <div class="container">
+    <div class="container header-content">
       <h1>Ukraine War Data Pipeline</h1>
       <p>ETL solution for analyzing conflict data with PostgreSQL storage and Power BI visualization</p>
       <div class="header-actions">
@@ -371,7 +396,7 @@
     <section class="project-section">
       <div class="container">
         <h2 class="section-title">Solution Overview</h2>
-        <p class="project-description">
+        <p>
           This data pipeline extracts, transforms, and loads conflict data from KoboToolbox to PostgreSQL, enabling powerful analysis of war dynamics through Power BI dashboards.
         </p>
 
@@ -379,60 +404,41 @@
           <img src="images/image.png" alt="Ukraine War Dashboard" loading="lazy">
         </div>
 
-        <div class="metrics">
-          <div class="metric-card">
-            <div class="metric-value">100%</div>
-            <p>Automated Data Flow</p>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value">10x</div>
-            <p>Faster Analysis</p>
-          </div>
-          <div class="metric-card">
-            <div class="metric-value">15+</div>
-            <p>Key Metrics Tracked</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="project-section" style="background-color: #f8fafc;">
-      <div class="container">
-        <h2 class="section-title">Project Features</h2>
-        
         <div class="card-grid">
           <div class="card">
-            <h3><i class="fas fa-download"></i> Data Extraction</h3>
+            <h3><i class="fas fa-layer-group card-icon"></i> Architecture</h3>
             <ul class="feature-list">
-              <li>API authentication with KoboToolbox</li>
-              <li>Automatic CSV data download</li>
-              <li>Secure credential management</li>
+              <li>API-based data extraction</li>
+              <li>Automated transformation pipeline</li>
+              <li>PostgreSQL data warehouse</li>
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-exchange-alt"></i> Data Transformation</h3>
+            <h3><i class="fas fa-tachometer-alt card-icon"></i> Performance</h3>
             <ul class="feature-list">
-              <li>Standardized column names and formats</li>
-              <li>Calculated derived metrics</li>
-              <li>Data validation checks</li>
+              <li>100% automated data flow</li>
+              <li>10x faster analysis</li>
+              <li>Handles 1000+ records daily</li>
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-database"></i> Data Loading</h3>
+            <h3><i class="fas fa-chart-line card-icon"></i> Analytics</h3>
             <ul class="feature-list">
-              <li>PostgreSQL database integration</li>
-              <li>Optimized table schema</li>
-              <li>Batch insertion for efficiency</li>
+              <li>15+ key metrics tracked</li>
+              <li>Interactive Power BI dashboards</li>
+              <li>Time-series analysis</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="project-section" id="technical-implementation">
-      <div class="container">
+    <section class="project-section" style="background-color: #f3f4f6;">
+      <div class="container" id="technical-implementation">
         <h2 class="section-title">Technical Implementation</h2>
         
+        <p>The solution combines modern data engineering techniques with a scalable architecture to deliver reliable analytics and insights.</p>
+
         <h3>Technology Stack</h3>
         <div class="tech-stack">
           <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
@@ -443,39 +449,40 @@
           <span class="tech-badge"><i class="fas fa-key"></i> psycopg2</span>
         </div>
 
+        <div class="image-container">
+          <img src="images/data_flow.png" alt="ETL Data Flow Diagram" loading="lazy">
+        </div>
+
         <div class="card-grid">
           <div class="card">
-            <h3><i class="fas fa-key"></i> Environment Setup</h3>
-            <pre><code>KOBO_USERNAME=your_kobo_username
-KOBO_PASSWORD=your_kobo_password
-PG_HOST=your_postgres_host
-PG_DATABASE=your_database_name
-PG_USERNAME=your_postgres_user
-PG_PASSWORD=your_postgres_password
-PG_PORT=5432</code></pre>
-          </div>
-          <div class="card">
-            <h3><i class="fas fa-play"></i> How to Run</h3>
-            <ol class="feature-list">
-              <li>Install dependencies: <code>pip install -r requirements.txt</code></li>
-              <li>Create .env file with credentials</li>
-              <li>Execute pipeline: <code>python pipeline.py</code></li>
-            </ol>
-          </div>
-          <div class="card">
-            <h3><i class="fas fa-exchange-alt"></i> Key Transformations</h3>
+            <h3><i class="fas fa-upload card-icon"></i> Data Ingestion</h3>
             <ul class="feature-list">
-              <li>Standardized date formats</li>
-              <li>Calculated total casualties</li>
-              <li>Normalized geographic data</li>
-              <li>Data quality validation</li>
+              <li>API authentication with KoboToolbox</li>
+              <li>Automatic CSV data download</li>
+              <li>Secure credential management</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-cogs card-icon"></i> Transformation</h3>
+            <ul class="feature-list">
+              <li>Standardized column names and formats</li>
+              <li>Calculated derived metrics</li>
+              <li>Data validation checks</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-database card-icon"></i> Data Loading</h3>
+            <ul class="feature-list">
+              <li>PostgreSQL database integration</li>
+              <li>Optimized table schema</li>
+              <li>Batch insertion for efficiency</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="project-section" style="background-color: #f1f5f9;">
+    <section class="project-section">
       <div class="container">
         <h2 class="section-title">Database Schema</h2>
         
@@ -494,7 +501,7 @@ PG_PORT=5432</code></pre>
             <tr><td>captured</td><td>INT</td><td>Number of captured personnel</td></tr>
             <tr><td>civilian_casualties</td><td>INT</td><td>Number of civilian casualties</td></tr>
             <tr><td>new_recruits</td><td>INT</td><td>Reported new recruits</td></tr>
-            <tr><td>combat_intensity</td><td>FLOAT</td><td>Conflict intensity (0–10 scale)</td></tr>
+            <tr><td>combat_intensity</td><td>FLOAT</td><td>Conflict intensity (0-10 scale)</td></tr>
             <tr><td>territory_status</td><td>TEXT</td><td>Territory status</td></tr>
             <tr><td>percentage_occupied</td><td>FLOAT</td><td>Percent of oblast occupied</td></tr>
             <tr><td>area_occupied</td><td>FLOAT</td><td>Area occupied (sq. km)</td></tr>
@@ -504,13 +511,13 @@ PG_PORT=5432</code></pre>
       </div>
     </section>
 
-    <section class="project-section">
+    <section class="project-section" style="background-color: #f9fafb;">
       <div class="container">
         <h2 class="section-title">Analytics Capabilities</h2>
         
         <div class="card-grid">
           <div class="card">
-            <h3><i class="fas fa-chart-line"></i> Time Analysis</h3>
+            <h3><i class="fas fa-chart-pie card-icon"></i> Time Analysis</h3>
             <ul class="feature-list">
               <li>Casualty trends over time</li>
               <li>Combat intensity changes</li>
@@ -518,7 +525,7 @@ PG_PORT=5432</code></pre>
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-map-marked-alt"></i> Geographic Analysis</h3>
+            <h3><i class="fas fa-map-marked-alt card-icon"></i> Geographic Analysis</h3>
             <ul class="feature-list">
               <li>Regional heatmaps</li>
               <li>Territory control changes</li>
@@ -526,7 +533,7 @@ PG_PORT=5432</code></pre>
             </ul>
           </div>
           <div class="card">
-            <h3><i class="fas fa-flag"></i> Strategic Insights</h3>
+            <h3><i class="fas fa-lightbulb card-icon"></i> Strategic Insights</h3>
             <ul class="feature-list">
               <li>Event type correlations</li>
               <li>Occupied area trends</li>
@@ -539,8 +546,9 @@ PG_PORT=5432</code></pre>
   </main>
 
   <footer>
-    <div class="container">
-      <h3 style="color: white;">Connect for Data Engineering Solutions</h3>
+    <div class="container footer-content">
+      <h3>Connect for Data Engineering Solutions</h3>
+      <p>Let's discuss how data infrastructure can transform your analysis capabilities</p>
       <div class="social-links">
         <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" target="_blank" aria-label="LinkedIn">
           <i class="fab fa-linkedin-in"></i>
@@ -552,23 +560,9 @@ PG_PORT=5432</code></pre>
           <i class="fas fa-envelope"></i>
         </a>
       </div>
-      <p class="copyright">&copy; 2025 Brian Kimutai | Data Engineering Specialist</p>
+      <p class="copyright">&copy; 2025 Brian Kimutai | Data Engineering Professional</p>
     </div>
   </footer>
 
-  <script>
-    // Fallback for smooth scrolling in case CSS doesn't work
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-  </script>
 </body>
 </html>
