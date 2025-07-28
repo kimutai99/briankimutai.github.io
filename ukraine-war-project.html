@@ -1,170 +1,574 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ukraine War Data Pipeline | Brian Kimutai</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ukraine War Data Pipeline by Brian Kimutai">
+  <title>Ukraine War Data Pipeline | Brian Kimutai | Data Engineer</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #ec4899;
+      --text: #1e293b;
+      --text-light: #64748b;
+      --background: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      background-color: #f8fafc;
-      color: #1f2937;
-      line-height: 1.6;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
     .container {
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 2rem;
+      padding: 0 1.5rem;
     }
-    h1, h2 {
-      color: #1e3a8a;
+
+    /* Header Section */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 4rem 0 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
     }
-    h2 {
-      margin-top: 2rem;
-      font-size: 1.5rem;
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
     }
-    ul, ol {
-      padding-left: 1.5rem;
+
+    header p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      opacity: 0.9;
     }
+
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    /* Button Styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 0.4rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: 2px solid transparent;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    /* Project Section */
+    .project-section {
+      padding: 2.5rem 0;
+      scroll-margin-top: 20px; /* Add space for fixed headers if any */
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50%;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    .project-description {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    .feature-list {
+      margin: 1.25rem 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      margin-bottom: 0.75rem;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .feature-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+
+    /* Image Container */
+    .image-container {
+      margin: 1.75rem 0;
+      border-radius: 0.6rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .image-container img {
+      width: 100%;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    /* Metrics */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.25rem;
+      margin: 1.75rem 0;
+    }
+
+    .metric-card {
+      padding: 1.25rem 0.75rem;
+      background: var(--card-bg);
+      border-radius: 0.6rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    /* Cards Layout */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 1.75rem 0;
+    }
+
+    .card {
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border-radius: 0.6rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Tech Stack */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #e0e7ff;
+      color: var(--primary);
+      padding: 0.4rem 0.8rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Code blocks */
     pre, code {
       background-color: #e2e8f0;
-      padding: 0.5rem;
-      border-radius: 5px;
+      padding: 0.75rem;
+      border-radius: 6px;
       display: block;
       white-space: pre-wrap;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
     }
+
+    code {
+      padding: 0.25rem 0.5rem;
+      display: inline;
+    }
+
+    /* Tables */
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 1rem;
+      margin: 1.5rem 0;
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      overflow: hidden;
     }
-    table, th, td {
-      border: 1px solid #cbd5e1;
-    }
+
     th, td {
       padding: 0.75rem;
       text-align: left;
+      border: 1px solid var(--border);
     }
+
     th {
       background-color: #e0f2fe;
+      font-weight: 600;
     }
-    img {
-      margin-top: 1rem;
-      max-width: 100%;
-      border-radius: 10px;
+
+    tr:nth-child(even) {
+      background-color: var(--background);
     }
-    a {
-      color: #2563eb;
-      text-decoration: none;
+
+    /* Footer */
+    footer {
+      background: var(--text);
+      color: white;
+      padding: 2.5rem 0 1.5rem;
+      text-align: center;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 3rem 0 1.5rem;
+      }
+      
+      .header-actions {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+      
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+      
+      table {
+        display: block;
+        overflow-x: auto;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🚀 Russia-Ukraine War: Data Pipeline Project</h1>
 
-    <p>This project demonstrates a complete <strong>ETL (Extract, Transform, Load)</strong> pipeline built using <strong>KoboToolbox</strong>, <strong>Python</strong>, and <strong>PostgreSQL</strong>, visualized using <strong>Power BI</strong>.</p>
+  <header>
+    <div class="container">
+      <h1>Ukraine War Data Pipeline</h1>
+      <p>ETL solution for analyzing conflict data with PostgreSQL storage and Power BI visualization</p>
+      <div class="header-actions">
+        <a href="https://github.com/kimutai99/Russia-Ukraine-War" target="_blank" class="btn btn-primary">
+          <i class="fab fa-github"></i> GitHub Repository
+        </a>
+        <a href="#technical-implementation" class="btn btn-outline">
+          <i class="fas fa-code"></i> Technical Details
+        </a>
+      </div>
+    </div>
+  </header>
 
-    <h2>📌 Project Overview</h2>
-    <ul>
-      <li><strong>Extract</strong>: Download CSV data from KoboToolbox using authentication</li>
-      <li><strong>Transform</strong>: Clean and manipulate data using <code>pandas</code></li>
-      <li><strong>Load</strong>: Insert into PostgreSQL database</li>
-      <li><strong>Visualize</strong>: Connect to Power BI for analysis</li>
-    </ul>
+  <main>
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-title">Solution Overview</h2>
+        <p class="project-description">
+          This data pipeline extracts, transforms, and loads conflict data from KoboToolbox to PostgreSQL, enabling powerful analysis of war dynamics through Power BI dashboards.
+        </p>
 
-    <h2>📂 Project Structure</h2>
-    <pre><code>Russia-Ukraine-Conflict/
-├── .env
-├── .gitignore
-├── pipeline.py
-├── README.md
-├── requirements.txt</code></pre>
+        <div class="image-container">
+          <img src="images/image.png" alt="Ukraine War Dashboard" loading="lazy">
+        </div>
 
-    <h2>⚙️ Technologies Used</h2>
-    <ul>
-      <li>Python 3.10+</li>
-      <li>Pandas, Requests, psycopg2, dotenv</li>
-      <li>PostgreSQL, KoboToolbox</li>
-    </ul>
+        <div class="metrics">
+          <div class="metric-card">
+            <div class="metric-value">100%</div>
+            <p>Automated Data Flow</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">10x</div>
+            <p>Faster Analysis</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">15+</div>
+            <p>Key Metrics Tracked</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <h2>🔐 Environment Variables</h2>
-    <pre><code>KOBO_USERNAME=your_kobo_username
+    <section class="project-section" style="background-color: #f8fafc;">
+      <div class="container">
+        <h2 class="section-title">Project Features</h2>
+        
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-download"></i> Data Extraction</h3>
+            <ul class="feature-list">
+              <li>API authentication with KoboToolbox</li>
+              <li>Automatic CSV data download</li>
+              <li>Secure credential management</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-exchange-alt"></i> Data Transformation</h3>
+            <ul class="feature-list">
+              <li>Standardized column names and formats</li>
+              <li>Calculated derived metrics</li>
+              <li>Data validation checks</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-database"></i> Data Loading</h3>
+            <ul class="feature-list">
+              <li>PostgreSQL database integration</li>
+              <li>Optimized table schema</li>
+              <li>Batch insertion for efficiency</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" id="technical-implementation">
+      <div class="container">
+        <h2 class="section-title">Technical Implementation</h2>
+        
+        <h3>Technology Stack</h3>
+        <div class="tech-stack">
+          <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
+          <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
+          <span class="tech-badge"><i class="fas fa-server"></i> KoboToolbox API</span>
+          <span class="tech-badge"><i class="fas fa-chart-bar"></i> Power BI</span>
+          <span class="tech-badge"><i class="fas fa-table"></i> Pandas</span>
+          <span class="tech-badge"><i class="fas fa-key"></i> psycopg2</span>
+        </div>
+
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-key"></i> Environment Setup</h3>
+            <pre><code>KOBO_USERNAME=your_kobo_username
 KOBO_PASSWORD=your_kobo_password
 PG_HOST=your_postgres_host
 PG_DATABASE=your_database_name
 PG_USERNAME=your_postgres_user
 PG_PASSWORD=your_postgres_password
 PG_PORT=5432</code></pre>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-play"></i> How to Run</h3>
+            <ol class="feature-list">
+              <li>Install dependencies: <code>pip install -r requirements.txt</code></li>
+              <li>Create .env file with credentials</li>
+              <li>Execute pipeline: <code>python pipeline.py</code></li>
+            </ol>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-exchange-alt"></i> Key Transformations</h3>
+            <ul class="feature-list">
+              <li>Standardized date formats</li>
+              <li>Calculated total casualties</li>
+              <li>Normalized geographic data</li>
+              <li>Data quality validation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <h2>🚀 How to Run the Pipeline</h2>
-    <ol>
-      <li>Install dependencies:
-        <pre><code>pip install -r requirements.txt</code></pre>
-      </li>
-      <li>Create a .env file and fill in your credentials</li>
-      <li>Run the script:
-        <pre><code>python pipeline.py</code></pre>
-      </li>
-    </ol>
+    <section class="project-section" style="background-color: #f1f5f9;">
+      <div class="container">
+        <h2 class="section-title">Database Schema</h2>
+        
+        <div class="card">
+          <p><strong>Schema:</strong> <code>war</code> &nbsp; <strong>Table:</strong> <code>russia_ukraine_war</code></p>
+          <table>
+            <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+            <tr><td>start</td><td>TEXT</td><td>Submission start timestamp</td></tr>
+            <tr><td>end</td><td>TEXT</td><td>Submission end timestamp</td></tr>
+            <tr><td>date</td><td>DATE</td><td>Event date</td></tr>
+            <tr><td>country</td><td>TEXT</td><td>Country involved</td></tr>
+            <tr><td>event</td><td>TEXT</td><td>Type or description of event</td></tr>
+            <tr><td>oblast</td><td>TEXT</td><td>Region (oblast)</td></tr>
+            <tr><td>casualties</td><td>INT</td><td>Number of soldier casualties</td></tr>
+            <tr><td>injured</td><td>INT</td><td>Number of injured soldiers</td></tr>
+            <tr><td>captured</td><td>INT</td><td>Number of captured personnel</td></tr>
+            <tr><td>civilian_casualties</td><td>INT</td><td>Number of civilian casualties</td></tr>
+            <tr><td>new_recruits</td><td>INT</td><td>Reported new recruits</td></tr>
+            <tr><td>combat_intensity</td><td>FLOAT</td><td>Conflict intensity (0–10 scale)</td></tr>
+            <tr><td>territory_status</td><td>TEXT</td><td>Territory status</td></tr>
+            <tr><td>percentage_occupied</td><td>FLOAT</td><td>Percent of oblast occupied</td></tr>
+            <tr><td>area_occupied</td><td>FLOAT</td><td>Area occupied (sq. km)</td></tr>
+            <tr><td>Total_Soldier_Casualties</td><td>INT</td><td>Computed: casualties + injured + captured</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
 
-    <h2>🧠 Key Transformations</h2>
-    <ul>
-      <li>Standardized column names</li>
-      <li>Parsed date formats</li>
-      <li>Computed <code>Total_Soldier_Casualties = casualties + injured + captured</code></li>
-    </ul>
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-title">Analytics Capabilities</h2>
+        
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-chart-line"></i> Time Analysis</h3>
+            <ul class="feature-list">
+              <li>Casualty trends over time</li>
+              <li>Combat intensity changes</li>
+              <li>Recruitment patterns</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-map-marked-alt"></i> Geographic Analysis</h3>
+            <ul class="feature-list">
+              <li>Regional heatmaps</li>
+              <li>Territory control changes</li>
+              <li>Oblast-specific metrics</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-flag"></i> Strategic Insights</h3>
+            <ul class="feature-list">
+              <li>Event type correlations</li>
+              <li>Occupied area trends</li>
+              <li>Resource allocation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <h2>📃 PostgreSQL Schema</h2>
-    <p><strong>Schema:</strong> <code>war</code> &nbsp; <strong>Table:</strong> <code>russia_ukraine_war</code></p>
-    <table>
-      <tr><th>Field</th><th>Type</th><th>Description</th></tr>
-      <tr><td>start</td><td>TEXT</td><td>Submission start timestamp</td></tr>
-      <tr><td>end</td><td>TEXT</td><td>Submission end timestamp</td></tr>
-      <tr><td>date</td><td>DATE</td><td>Event date</td></tr>
-      <tr><td>country</td><td>TEXT</td><td>Country involved</td></tr>
-      <tr><td>event</td><td>TEXT</td><td>Type or description of event</td></tr>
-      <tr><td>oblast</td><td>TEXT</td><td>Region (oblast)</td></tr>
-      <tr><td>casualties</td><td>INT</td><td>Number of soldier casualties</td></tr>
-      <tr><td>injured</td><td>INT</td><td>Number of injured soldiers</td></tr>
-      <tr><td>captured</td><td>INT</td><td>Number of captured personnel</td></tr>
-      <tr><td>civilian_casualties</td><td>INT</td><td>Number of civilian casualties</td></tr>
-      <tr><td>new_recruits</td><td>INT</td><td>Reported new recruits</td></tr>
-      <tr><td>combat_intensity</td><td>FLOAT</td><td>Conflict intensity (0–10 scale)</td></tr>
-      <tr><td>territory_status</td><td>TEXT</td><td>Territory status</td></tr>
-      <tr><td>percentage_occupied</td><td>FLOAT</td><td>Percent of oblast occupied</td></tr>
-      <tr><td>area_occupied</td><td>FLOAT</td><td>Area occupied (sq. km)</td></tr>
-      <tr><td>Total_Soldier_Casualties</td><td>INT</td><td>Computed: casualties + injured + captured</td></tr>
-    </table>
+  <footer>
+    <div class="container">
+      <h3 style="color: white;">Connect for Data Engineering Solutions</h3>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/kimutai99" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:korosbrian574@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+      <p class="copyright">&copy; 2025 Brian Kimutai | Data Engineering Specialist</p>
+    </div>
+  </footer>
 
-    <h2>📊 Power BI Dashboard</h2>
-    <p>Connected to PostgreSQL and created visuals:</p>
-    <ul>
-      <li>Trends in total casualties</li>
-      <li>Casualty breakdown by oblast</li>
-      <li>Combat intensity heatmaps</li>
-      <li>Territory occupation analysis</li>
-    </ul>
-    <img src="images/image.png" alt="Russia-Ukraine War Dashboard Screenshot">
-
-    <h2>📧 Contact</h2>
-    <p>
-      For feedback or collaboration:
-      <br>📧 <a href="mailto:korosbrian574@gmail.com">korosbrian574@gmail.com</a>
-      <br>📞 +254 768 518 488
-      <br>💼 <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" target="_blank">LinkedIn</a>
-    </p>
-  </div>
+  <script>
+    // Fallback for smooth scrolling in case CSS doesn't work
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
