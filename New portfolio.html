@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Brian Kimutai's professional portfolio showcasing data analysis, visualization, and machine learning projects">
+  <title>Brian Kimutai | Data Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary-color: #3f37c9;
+      --dark-color: #1a1a2e;
+      --light-color: #f8f9fa;
+      --text-color: #4a4a4a;
+      --heading-color: #2b2d42;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      background-color: #f5f7ff;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--heading-color);
+      font-weight: 600;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Navigation */
+    #navbar {
+      background-color: white;
+      box-shadow: var(--box-shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--dark-color);
+    }
+    
+    .logo-icon {
+      color: var(--primary-color);
+      font-size: 1.5rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .nav-cta {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+    }
+    
+    .nav-cta:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--dark-color);
+    }
+    
+    /* Portfolio Section */
+    #portfolio {
+      padding: 5rem 0;
+    }
+    
+    .portfolio-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-color);
+      opacity: 0.9;
+    }
+    
+    .portfolio-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 3rem;
+    }
+    
+    .filter-btn {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--primary-color);
+      background: transparent;
+      color: var(--primary-color);
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary-color);
+      color: white;
+      box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+    }
+    
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .portfolio-item {
+      background: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .project-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .portfolio-item:hover .project-image img {
+      transform: scale(1.05);
+    }
+    
+    .portfolio-info {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .portfolio-info h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+    
+    .portfolio-info p {
+      color: var(--text-color);
+      margin-bottom: 1.25rem;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+    
+    .portfolio-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .portfolio-tag {
+      background: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .portfolio-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: auto;
+    }
+    
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-color);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.5rem 0;
+    }
+    
+    .portfolio-link i {
+      font-size: 0.8rem;
+    }
+    
+    .portfolio-link:hover {
+      color: var(--primary-dark);
+    }
+    
+    .featured-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary-color);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 1;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--dark-color);
+      color: white;
+      padding: 3rem 0 2rem;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      text-align: center;
+    }
+    
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    
+    .footer-links a {
+      opacity: 0.8;
+    }
+    
+    .footer-links a:hover {
+      opacity: 1;
+      color: white;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+    }
+    
+    .footer-social a:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .portfolio-header {
+        margin-bottom: 2rem;
+      }
+      
+      .portfolio-filters {
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <i class="fas fa-chart-line logo-icon"></i>
+        <span>Brian Kimutai</span>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#experience">Experience</a></li>
+        <li><a href="index.html#services">Expertise</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="#" class="nav-cta">Resume</a></li>
+      </ul>
+      
+      <button class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="portfolio-header">
+        <h1 class="section-title">Data Portfolio</h1>
+        <p class="section-subtitle">
+          Explore my collection of data projects showcasing analytical skills, machine learning expertise, and data visualization capabilities
+        </p>
+      </div>
+      
+      <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="dashboard">Dashboards</button>
+        <button class="filter-btn" data-filter="analysis">Analysis</button>
+        <button class="filter-btn" data-filter="ml">Machine Learning</button>
+        <button class="filter-btn" data-filter="viz">Visualizations</button>
+        <button class="filter-btn" data-filter="pipeline">Data Pipelines</button>
+      </div>
+      
+      <div class="portfolio-grid">
+        <!-- Featured Projects -->
+        <div class="portfolio-item featured" data-category="ml">
+          <span class="featured-badge">Featured</span>
+          <div class="project-image">
+            <img src="images/mining_equipment_operating.jpg" alt="Predictive Maintenance System">
+          </div>
+          <div class="portfolio-info">
+            <h3>Predictive Maintenance System</h3>
+            <p>Machine learning system predicting equipment failures with 98.6% accuracy, optimizing maintenance schedules and reducing downtime.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Python</span>
+              <span class="portfolio-tag">XGBoost</span>
+              <span class="portfolio-tag">Streamlit</span>
+              <span class="portfolio-tag">Scikit-learn</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="projects/machine-failure-predictor.html" class="portfolio-link">
+                <i class="fas fa-info-circle"></i> Details
+              </a>
+              <a href="https://kimutai99-predictive-maintenance-insights-app-rwqdx4.streamlit.app/" class="portfolio-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+              <a href="https://github.com/kimutai99/predictive-maintenance" class="portfolio-link" target="_blank">
+                <i class="fab fa-github"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="portfolio-item featured" data-category="pipeline">
+          <span class="featured-badge">Featured</span>
+          <div class="project-image">
+            <img src="images/data-warehousing1.png" alt="Enterprise Data Warehouse">
+          </div>
+          <div class="portfolio-info">
+            <h3>Enterprise Data Warehouse</h3>
+            <p>Designed and implemented a full-stack data warehouse using Medallion architecture in SQL Server with ETL processes.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">SQL Server</span>
+              <span class="portfolio-tag">ETL</span>
+              <span class="portfolio-tag">Data Modeling</span>
+              <span class="portfolio-tag">SSIS</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="projects/data-warehouse-project.html" class="portfolio-link">
+                <i class="fas fa-info-circle"></i> Case Study
+              </a>
+              <a href="https://public.tableau.com/app/profile/brian.siele/viz/SalesandCustomerDashboard_17505889969040/SalesDashboard?publish=yes" class="portfolio-link" target="_blank">
+                <i class="fas fa-chart-bar"></i> Dashboard
+              </a>              
+              <a href="https://github.com/kimutai99/sql-data-warehouse-project" class="portfolio-link" target="_blank">
+                <i class="fab fa-github"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="portfolio-item featured" data-category="dashboard">
+          <span class="featured-badge">Featured</span>
+          <div class="project-image">
+            <img src="images/HR_summary.jpeg" alt="HR Analytics Platform">
+          </div>
+          <div class="portfolio-info">
+            <h3>HR Analytics Dashboard</h3>
+            <p>Interactive Tableau dashboard analyzing employee attrition drivers, workforce trends, and HR KPIs with actionable insights.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Tableau</span>
+              <span class="portfolio-tag">Data Visualization</span>
+              <span class="portfolio-tag">HR Analytics</span>
+              <span class="portfolio-tag">People Analytics</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="projects/hr-analytics-dashboard.html" class="portfolio-link">
+                <i class="fas fa-info-circle"></i> Details
+              </a>
+              <a href="https://public.tableau.com/app/profile/brian.siele/viz/HRDashboard_17517922680590/HRsummary" class="portfolio-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i> View Dashboard
+              </a>              
+              <a href="https://github.com/kimutai99/hr-analytics" class="portfolio-link" target="_blank">
+                <i class="fab fa-github"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Other Projects -->
+        <div class="portfolio-item" data-category="ml">
+          <div class="project-image">
+            <img src="images/potato.png" alt="Potato Disease Recognition">
+          </div>
+          <div class="portfolio-info">
+            <h3>Potato Disease Recognition</h3>
+            <p>Deep learning solution for detecting potato leaf diseases with 96% accuracy using convolutional neural networks.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Python</span>
+              <span class="portfolio-tag">TensorFlow</span>
+              <span class="portfolio-tag">CNN</span>
+              <span class="portfolio-tag">Flask</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="projects/potato.html" class="portfolio-link">
+                <i class="fas fa-info-circle"></i> Details
+              </a>
+              <a href="https://github.com/kimutai99/Potato-Leaf-Classification" class="portfolio-link" target="_blank">
+                <i class="fab fa-github"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="portfolio-item" data-category="pipeline">
+          <div class="project-image">
+            <img src="images/image.png" alt="Ukraine War Data Pipeline">
+          </div>
+          <div class="portfolio-info">
+            <h3>Ukraine War Data Pipeline</h3>
+            <p>ETL solution for analyzing conflict data with PostgreSQL storage and Power BI visualization of key metrics.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Python</span>
+              <span class="portfolio-tag">PostgreSQL</span>
+              <span class="portfolio-tag">ETL</span>
+              <span class="portfolio-tag">Power BI</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="projects/ukraine-war-project.html" class="portfolio-link">
+                <i class="fas fa-info-circle"></i> Details
+              </a>
+              <a href="https://github.com/kimutai99/Russia-Ukraine-War" class="portfolio-link" target="_blank">
+                <i class="fab fa-github"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="portfolio-item" data-category="dashboard">
+          <div class="project-image">
+            <img src="images/WhatsApp Image 2025-06-22 at 18.27.16.jpeg" alt="Sales & Customer Dashboard">
+          </div>
+          <div class="portfolio-info">
+            <h3>Sales & Customer Dashboard</h3>
+            <p>Interactive Tableau dashboard analyzing sales performance, customer behavior, and revenue trends.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Tableau</span>
+              <span class="portfolio-tag">SQL</span>
+              <span class="portfolio-tag">Business Intelligence</span>
+              <span class="portfolio-tag">Sales Analytics</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="projects/Sales & Customer.html" class="portfolio-link">
+                <i class="fas fa-info-circle"></i> Details
+              </a>
+              <a href="https://public.tableau.com/app/profile/brian.siele/viz/SalesandCustomerDashboard_17505889969040/SalesDashboard?publish=yes" class="portfolio-link" target="_blank">
+                <i class="fas fa-external-link-alt"></i> View Dashboard
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="portfolio-item" data-category="ml">
+          <div class="project-image">
+            <img src="images/diamond.png" alt="Diamond Price Prediction">
+          </div>
+          <div class="portfolio-info">
+            <h3>Diamond Price Prediction</h3>
+            <p>End-to-end machine learning pipeline for predicting diamond prices with regression analysis and MLOps practices.</p>
+            <div class="portfolio-tags">
+              <span class="portfolio-tag">Python</span>
+              <span class="portfolio-tag">MLFlow</span>
+              <span class="portfolio-tag">DVC</span>
+              <span class="portfolio-tag">Flask</span>
+            </div>
+            <div class="portfolio-links">
+              <a href="projects/daimond.html" class="portfolio-link">
+                <i class="fas fa-info-circle"></i> Details
+              </a>
+              <a href="https://github.com/kimutai99/Diamond-Price-Prediction" class="portfolio-link" target="_blank">
+                <i class="fab fa-github"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <a href="index.html" class="footer-logo">Brian Kimutai</a>
+        
+        <div class="footer-links">
+          <a href="index.html#about">About</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="index.html#services">Expertise</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" aria-label="LinkedIn" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/kimutai99" aria-label="GitHub" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" aria-label="Twitter" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+        
+        <p class="copyright">
+          &copy; <span id="year"></span> Brian Kimutai. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Portfolio filtering functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const portfolioItems = document.querySelectorAll('.portfolio-item');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all buttons
+          filterBtns.forEach(btn => btn.classList.remove('active'));
+          // Add active class to clicked button
+          btn.classList.add('active');
+          
+          const filter = btn.getAttribute('data-filter');
+          
+          portfolioItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.style.display = 'flex';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+      
+      // Update copyright year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>

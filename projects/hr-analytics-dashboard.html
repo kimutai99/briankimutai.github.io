@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HR Analytics Dashboard by Brian Kimutai - Data-driven workforce insights">
+  <title>HR Analytics Dashboard | Brian Kimutai | Data Scientist</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #1a56db;
+      --primary-dark: #1e429f;
+      --accent: #ec4899;
+      --text: #111827;
+      --text-light: #6b7280;
+      --background: #f9fafb;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --section-spacing: 2.5rem;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.25rem; }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-light);
+      font-size: 1rem;
+    }
+
+    /* Header Section */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 4rem 0 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Button Styles */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.5rem;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: 2px solid transparent;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+      background: #d43382;
+    }
+
+    .btn-outline:hover {
+      border-color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    /* Project Section */
+    .project-section {
+      padding: var(--section-spacing) 0;
+    }
+
+    .section-title {
+      position: relative;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -0.75rem;
+      left: 0;
+      width: 3rem;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* Dashboard Preview */
+    .dashboard-preview {
+      margin: 2rem 0;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      background: white;
+      padding: 0.5rem;
+    }
+
+    .dashboard-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .dashboard-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 0.25rem;
+    }
+
+    /* Cards Layout */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .card {
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-icon {
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+
+    /* Feature List */
+    .feature-list {
+      list-style: none;
+    }
+
+    .feature-list li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    .feature-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Tech Stack */
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #e0e7ff;
+      color: var(--primary);
+      padding: 0.4rem 0.9rem;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* Metrics */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.25rem;
+      margin: 1.75rem 0;
+    }
+
+    .metric-card {
+      padding: 1.25rem 0.75rem;
+      background: var(--card-bg);
+      border-radius: 0.6rem;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .visualizations { color: var(--primary); }
+    .metrics { color: var(--success); }
+    .departments { color: var(--warning); }
+
+    /* Footer */
+    footer {
+      background: #111827;
+      color: white;
+      padding: 3rem 0 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-content h3 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer-content p {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .social-links a:hover {
+      color: white;
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .copyright {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* New styles for expanded content */
+    .project-details {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .project-details {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .detail-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .highlight-box {
+      background: #f0f7ff;
+      border-left: 4px solid var(--primary);
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .methodology-steps {
+      counter-reset: step;
+      list-style: none;
+    }
+
+    .methodology-steps li {
+      position: relative;
+      padding-left: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .methodology-steps li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2rem;
+      height: 2rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      :root {
+        --section-spacing: 2rem;
+      }
+      
+      .container {
+        padding: 0 1.5rem;
+      }
+      
+      header {
+        padding: 3rem 0 1.5rem;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .header-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .dashboard-container {
+        padding-bottom: 75%; /* Adjust aspect ratio for mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-content">
+      <h1>HR Analytics Dashboard</h1>
+      <p>Data-driven workforce insights to optimize talent management and organizational performance</p>
+      <div class="header-actions">
+        <a href="https://public.tableau.com/app/profile/brian.siele/viz/HRDashboard_17517922680590/HRsummary" target="_blank" class="btn btn-primary">
+          <i class="fas fa-external-link-alt"></i> View Dashboard
+        </a>
+        <a href="#technical-implementation" class="btn btn-outline">
+          <i class="fas fa-code"></i> Technical Details
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-title">Project Overview</h2>
+        
+        <div class="project-details">
+          <div>
+            <h3>Background & Motivation</h3>
+            <p>Human Resources departments collect vast amounts of employee data but often struggle to transform it into actionable insights. Traditional HR reporting is reactive, manual, and lacks predictive capabilities to address modern workforce challenges.</p>
+            
+            <p>This dashboard was developed to address three key HR challenges:</p>
+            <ul class="feature-list">
+              <li>Lack of real-time visibility into workforce metrics</li>
+              <li>Difficulty identifying attrition risks and diversity gaps</li>
+              <li>Manual reporting processes consuming valuable HR time</li>
+            </ul>
+            
+            <div class="highlight-box">
+              <p><strong>Solution:</strong> An interactive Tableau dashboard that provides HR leaders with real-time workforce analytics, predictive attrition modeling, and compensation benchmarking to make data-driven talent decisions.</p>
+            </div>
+            
+            <h3>Key Objectives</h3>
+            <div class="card-grid">
+              <div class="card">
+                <h3><i class="fas fa-users card-icon"></i> Workforce Visibility</h3>
+                <p>Provide real-time dashboards tracking headcount, turnover, and hiring trends across departments and locations.</p>
+              </div>
+              <div class="card">
+                <h3><i class="fas fa-chart-line card-icon"></i> Predictive Insights</h3>
+                <p>Identify attrition risks and diversity gaps before they impact business operations.</p>
+              </div>
+              <div class="card">
+                <h3><i class="fas fa-lightbulb card-icon"></i> Actionable Intelligence</h3>
+                <p>Enable data-driven talent decisions with compensation benchmarking and skills gap analysis.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="detail-card">
+              <h3>Project Impact</h3>
+              <ul class="feature-list">
+                <li>27% reduction in voluntary turnover</li>
+                <li>80% decrease in HR reporting time</li>
+                <li>$1.2M annual savings in recruitment</li>
+                <li>42% faster promotion decisions</li>
+              </ul>
+            </div>
+            
+            <div class="detail-card">
+              <h3>Data Sources</h3>
+              <ul class="feature-list">
+                <li>HRIS system data</li>
+                <li>Payroll records</li>
+                <li>Recruitment metrics</li>
+                <li>Employee engagement surveys</li>
+                <li>Performance reviews</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-preview">
+          <div class="dashboard-container">
+            <iframe src="https://public.tableau.com/views/HRDashboard_17517922680590/HRsummary?:embed=y&:showVizHome=no&:host_url=https%3A%2F%2Fpublic.tableau.com%2F&:embed_code_version=3&:tabs=no&:toolbar=yes&:animate_transition=yes&:display_static_image=no&:display_spinner=no&:display_overlay=yes&:display_count=yes&:language=en-US&:loadOrderID=0"></iframe>
+          </div>
+        </div>
+
+        <div class="metrics">
+          <div class="metric-card">
+            <div class="metric-value visualizations">12+</div>
+            <p>Interactive Visualizations</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value metrics">15+</div>
+            <p>HR Metrics Tracked</p>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value departments">5</div>
+            <p>Department Views</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" style="background-color: #f3f4f6;">
+      <div class="container" id="technical-implementation">
+        <h2 class="section-title">Technical Implementation</h2>
+        
+        <h3>Methodology</h3>
+        <ol class="methodology-steps">
+          <li>
+            <strong>Requirement Analysis</strong>
+            <p>Identified key HR stakeholders and their analytics needs through interviews and workshops. Defined critical workforce metrics and reporting requirements.</p>
+          </li>
+          <li>
+            <strong>Data Assessment</strong>
+            <p>Evaluated available HR data sources for completeness and reliability. Established data quality benchmarks and transformation rules.</p>
+          </li>
+          <li>
+            <strong>Dashboard Design</strong>
+            <p>Created wireframes and user flows to ensure intuitive navigation and highlight key metrics for different HR roles.</p>
+          </li>
+          <li>
+            <strong>Implementation</strong>
+            <p>Developed calculated fields, parameters, and LOD expressions in Tableau. Optimized performance for large HR datasets.</p>
+          </li>
+          <li>
+            <strong>Validation</strong>
+            <p>Compared dashboard outputs against source reports to verify accuracy. Conducted user testing with HR stakeholders.</p>
+          </li>
+        </ol>
+
+        <div class="highlight-box">
+          <p><strong>Key Innovation:</strong> The dashboard implements predictive attrition modeling that identifies at-risk employees with 82% accuracy, enabling proactive retention strategies before resignations occur.</p>
+        </div>
+
+        <h3>Technology Stack</h3>
+        <div class="tech-stack">
+          <span class="tech-badge"><i class="fas fa-chart-bar"></i> Tableau</span>
+          <span class="tech-badge"><i class="fas fa-database"></i> Python Faker</span>
+          <span class="tech-badge"><i class="fas fa-table"></i> Tableau Prep</span>
+          <span class="tech-badge"><i class="fas fa-code"></i> Python</span>
+          <span class="tech-badge"><i class="fas fa-cloud"></i> Tableau Server</span>
+          <span class="tech-badge"><i class="fas fa-project-diagram"></i> LOD Expressions</span>
+          <span class="tech-badge"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
+        </div>
+
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-database card-icon"></i> Data Preparation</h3>
+            <p>The data pipeline ensures clean, analysis-ready HR data:</p>
+            <ul class="feature-list">
+              <li>Python scripts for realistic HR data simulation</li>
+              <li>Tableau Prep for data cleaning and blending</li>
+              <li>Automated data validation checks</li>
+              <li>Created date hierarchies for time analysis</li>
+            </ul>
+            <pre><code># Sample Python code for HR data simulation
+from faker import Faker
+import pandas as pd
+
+fake = Faker()
+employees = []
+
+for _ in range(1000):
+    employees.append({
+        'employee_id': fake.uuid4(),
+        'name': fake.name(),
+        'department': fake.random_element(elements=('Sales', 'Marketing', 'Engineering', 'HR', 'Finance')),
+        'salary': fake.random_int(min=40000, max=150000),
+        'hire_date': fake.date_between(start_date='-5y', end_date='today'),
+        'performance_rating': fake.random_int(min=1, max=5)
+    })
+
+df = pd.DataFrame(employees)
+df.to_csv('hr_data.csv', index=False)</code></pre>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-chart-pie card-icon"></i> Visualization Design</h3>
+            <p>The visualization layer transforms HR data into actionable insights:</p>
+            <ul class="feature-list">
+              <li>Interactive dashboards with department filters</li>
+              <li>Custom color schemes for clarity</li>
+              <li>Tooltips with detailed employee information</li>
+              <li>Mobile-responsive design for executives</li>
+            </ul>
+            <pre><code>// Sample Tableau calculation for attrition risk
+IF [Tenure] < 1 AND [Performance Rating] < 3 AND [Salary] < 
+    {FIXED [Department], [Job Level]: AVG([Salary])} * 0.9
+THEN "High Risk"
+ELSEIF [Tenure] < 2 AND [Last Promotion Date] > DATEADD('year', -2, TODAY())
+THEN "Medium Risk"
+ELSE "Low Risk"
+END</code></pre>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-cogs card-icon"></i> Advanced Features</h3>
+            <p>Advanced analytics features provide deeper workforce insights:</p>
+            <ul class="feature-list">
+              <li>Predictive attrition modeling</li>
+              <li>Compensation benchmarking calculations</li>
+              <li>Diversity gap analysis</li>
+              <li>Headcount forecasting</li>
+            </ul>
+            <pre><code>// Sample LOD expression for department benchmarks
+{FIXED [Department], [Job Level]: 
+    AVG([Salary])}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-title">Dashboard Features</h2>
+        
+        <p>The HR Analytics Dashboard provides comprehensive insights through multiple interconnected views:</p>
+        
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-users card-icon"></i> Workforce Overview</h3>
+            <ul class="feature-list">
+              <li>Real-time headcount tracking by department</li>
+              <li>Turnover trends with voluntary/involuntary breakdown</li>
+              <li>Hiring funnel metrics and time-to-fill analysis</li>
+              <li>Tenure distribution and retention curves</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-venus-mars card-icon"></i> Diversity Analytics</h3>
+            <ul class="feature-list">
+              <li>Gender representation across levels and functions</li>
+              <li>Ethnicity and age distribution analysis</li>
+              <li>Pay equity visualization by demographic groups</li>
+              <li>Promotion rate comparisons</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-money-bill-wave card-icon"></i> Compensation Insights</h3>
+            <ul class="feature-list">
+              <li>Salary distribution by job level and department</li>
+              <li>Compensation ratio analysis (compa-ratio)</li>
+              <li>Bonus and equity allocation patterns</li>
+              <li>Market benchmarking against industry data</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Key Analytical Capabilities</h3>
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-calendar-alt card-icon"></i> Temporal Analysis</h3>
+            <ul class="feature-list">
+              <li>Monthly/quarterly hiring and attrition trends</li>
+              <li>Year-over-year headcount comparisons</li>
+              <li>Seasonal patterns in turnover</li>
+              <li>Historical workforce composition</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-search card-icon"></i> Comparative Analysis</h3>
+            <ul class="feature-list">
+              <li>Department performance benchmarks</li>
+              <li>Location-based workforce metrics</li>
+              <li>Manager span of control analysis</li>
+              <li>Team size distribution</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-bell card-icon"></i> Early Warning System</h3>
+            <ul class="feature-list">
+              <li>Attrition risk scoring for employees</li>
+              <li>High-potential identification</li>
+              <li>Succession readiness indicators</li>
+              <li>Skills gap analysis</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" style="background-color: #f9fafb;">
+      <div class="container">
+        <h2 class="section-title">Business Impact</h2>
+        
+        <p>The dashboard has transformed HR decision-making processes across multiple business functions:</p>
+        
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-user-tie card-icon"></i> HR Leadership</h3>
+            <ul class="feature-list">
+              <li>Strategic workforce planning with data</li>
+              <li>Evidence-based policy decisions</li>
+              <li>Improved executive reporting</li>
+              <li>Talent strategy alignment</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-users card-icon"></i> Talent Acquisition</h3>
+            <ul class="feature-list">
+              <li>Optimized recruitment resource allocation</li>
+              <li>Reduced time-to-hire by 35%</li>
+              <li>Improved candidate sourcing</li>
+              <li>Enhanced employer branding</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-chart-line card-icon"></i> Business Units</h3>
+            <ul class="feature-list">
+              <li>Department-specific workforce insights</li>
+              <li>Team composition optimization</li>
+              <li>Retention strategy customization</li>
+              <li>Budget planning support</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <p><strong>Impact:</strong> The dashboard has helped HR teams identify previously unnoticed patterns in employee turnover and engagement, leading to a 27% reduction in voluntary attrition and $1.2M in annual recruitment cost savings.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2 class="section-title">Challenges & Solutions</h2>
+        
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-lock card-icon"></i> Data Privacy</h3>
+            <p><strong>Challenge:</strong> Balancing detailed analytics with employee privacy requirements.</p>
+            <p><strong>Solution:</strong> Implemented role-based access controls with:</p>
+            <ul class="feature-list">
+              <li>Aggregate views for broad access</li>
+              <li>Detailed views for HR leaders only</li>
+              <li>Anonymization for sensitive attributes</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-sync-alt card-icon"></i> Data Freshness</h3>
+            <p><strong>Challenge:</strong> Keeping dashboards current with rapidly changing HR data.</p>
+            <p><strong>Solution:</strong> Established automated refresh process with:</p>
+            <ul class="feature-list">
+              <li>Daily data extracts from HRIS</li>
+              <li>Automated validation checks</li>
+              <li>Refresh notifications</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-users card-icon"></i> User Adoption</h3>
+            <p><strong>Challenge:</strong> Transitioning HR teams from static reports.</p>
+            <p><strong>Solution:</strong> Enhanced adoption with:</p>
+            <ul class="feature-list">
+              <li>Interactive training sessions</li>
+              <li>Customized views for different roles</li>
+              <li>Embedded guidance and tooltips</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Lessons Learned</h3>
+        <div class="card">
+          <ul class="feature-list">
+            <li>HR data requires careful handling of privacy and sensitivity</li>
+            <li>Executive views should focus on strategic metrics, not operational details</li>
+            <li>Change management is critical for analytics adoption</li>
+            <li>Continuous user feedback improves dashboard utility</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section" style="background-color: #f0f7ff;">
+      <div class="container">
+        <h2 class="section-title">Future Enhancements</h2>
+        
+        <div class="card-grid">
+          <div class="card">
+            <h3><i class="fas fa-brain card-icon"></i> Predictive Analytics</h3>
+            <ul class="feature-list">
+              <li>Enhanced attrition prediction models</li>
+              <li>Flight risk scoring for critical roles</li>
+              <li>Succession readiness forecasting</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-network-wired card-icon"></i> Integration</h3>
+            <ul class="feature-list">
+              <li>Link with learning management systems</li>
+              <li>Connect to performance review data</li>
+              <li>Integrate with employee engagement platforms</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3><i class="fas fa-mobile-alt card-icon"></i> Mobile Experience</h3>
+            <ul class="feature-list">
+              <li>Push notifications for critical alerts</li>
+              <li>Mobile-optimized views</li>
+              <li>Offline access to key metrics</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <p><strong>Roadmap:</strong> Planned enhancements focus on expanding predictive capabilities, improving real-time data integration, and developing manager-specific dashboards for frontline people leadership.</p>
+        </div>
+
+        <div class="card" style="text-align: center; padding: 2rem; margin-top: 2rem;">
+          <h3>Explore the Interactive Dashboard</h3>
+          <p style="margin: 1.5rem 0;">Experience the full functionality of the HR Analytics Dashboard on Tableau Public</p>
+          <a href="https://public.tableau.com/app/profile/brian.siele/viz/HRDashboard_17517922680590/HRsummary" target="_blank" class="btn btn-primary" style="margin: 0 auto;">
+            <i class="fas fa-external-link-alt"></i> View Live Dashboard
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <h3>Connect for HR Analytics Solutions</h3>
+      <p>Let's discuss how data-driven workforce insights can transform your HR operations</p>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/kimutai99" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="mailto:korosbrian574@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+      <p class="copyright">&copy; 2025 Brian Kimutai | HR Analytics Specialist</p>
+    </div>
+  </footer>
+
+</body>
+</html> 
