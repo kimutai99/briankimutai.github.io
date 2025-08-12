@@ -4,28 +4,1161 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Brian Kimutai - Data Analyst specializing in business intelligence, data visualization, and predictive analytics">
-  <title>Brian Kimutai | Data Analyst</title>
+  <title>Brian Kimutai | Data Analyst Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Combined CSS for both portfolio pages */
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --accent: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #2c3e50;
+      --gray: #95a5a6;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 0;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+      position: relative;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+      margin: 0.5rem 0 1.5rem;
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-bottom: 3rem;
+      max-width: 700px;
+    }
+    
+    /* Navigation */
+    #navbar {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: var(--transition);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    
+    .logo-icon {
+      color: var(--secondary);
+      margin-right: 0.5rem;
+      font-size: 1.8rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+    
+    .nav-cta {
+      background: var(--secondary);
+      color: white !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      transition: var(--transition);
+    }
+    
+    .nav-cta:hover {
+      background: #2980b9;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--dark);
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    #hero {
+      padding-top: 100px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+    
+    .hero-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    
+    .hero-content {
+      flex: 1;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      line-height: 1.2;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .highlight {
+      color: var(--secondary);
+      position: relative;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: #555;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+    
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.8rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: var(--secondary);
+      color: white;
+      box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+    }
+    
+    .btn-primary:hover {
+      background: #2980b9;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(52, 152, 219, 0.4);
+    }
+    
+    .btn-secondary {
+      background: white;
+      color: var(--secondary);
+      border: 2px solid var(--secondary);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--secondary);
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    .btn i {
+      margin-right: 0.5rem;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--secondary);
+      color: white;
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+    
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      transition: transform 0.5s ease;
+    }
+    
+    .hero-image img:hover {
+      transform: scale(1.02);
+    }
+    
+    /* About Section */
+    .about-container {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+    
+    .about-image {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .about-image img {
+      max-width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .about-content {
+      flex: 1.5;
+    }
+    
+    .about-text {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+    
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .skill-category {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-5px);
+    }
+    
+    .skill-category h3 {
+      color: var(--secondary);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .skill-category h3 i {
+      margin-right: 0.7rem;
+    }
+    
+    .skill-category ul {
+      list-style: none;
+    }
+    
+    .skill-category li {
+      margin-bottom: 0.7rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+    
+    .skill-category li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-weight: bold;
+    }
+    
+    /* Experience Section */
+    #experience .section-title::after,
+    #services .section-title::after {
+      margin: 0.5rem 0 1.5rem;
+    }
+    
+    #experience .section-subtitle,
+    #services .section-subtitle {
+      text-align: left;
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    
+    .experience-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .tab-btn {
+      padding: 0.8rem 1.5rem;
+      background: white;
+      border: 2px solid var(--secondary);
+      border-radius: 30px;
+      color: var(--secondary);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .tab-btn:hover {
+      background: var(--secondary);
+      color: white;
+    }
+    
+    .tab-btn.active {
+      background: var(--secondary);
+      color: white;
+      box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+    }
+    
+    .experience-content {
+      display: none;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .experience-content.active {
+      display: block;
+    }
+    
+    .experience-item {
+      position: relative;
+    }
+    
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    
+    .experience-title {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+    
+    .experience-company {
+      font-size: 1.1rem;
+      color: var(--secondary);
+      font-weight: 600;
+    }
+    
+    .experience-date {
+      background: var(--light);
+      color: var(--dark);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+    
+    .experience-description {
+      color: #555;
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .experience-highlights {
+      padding-left: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .experience-highlights li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+      color: #444;
+    }
+    
+    .experience-highlights li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--secondary);
+      font-weight: bold;
+    }
+    
+    .present-tag {
+      background-color: #2ecc71;
+      color: white;
+      padding: 0.2rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    
+    .experience-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -2rem;
+      height: 100%;
+      width: 4px;
+      background: var(--secondary);
+      border-radius: 2px;
+    }
+    
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .service-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .service-icon {
+      font-size: 3rem;
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .service-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    
+    .service-description {
+      color: #555;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .tech-stack span {
+      background: var(--light);
+      color: var(--dark);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+    
+    .project-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .project-image {
+      height: 220px;
+      overflow: hidden;
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .project-card:hover .project-image img {
+      transform: scale(1.05);
+    }
+    
+    .project-content {
+      padding: 1.8rem;
+    }
+    
+    .project-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary);
+    }
+    
+    .project-description {
+      color: #555;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .project-tag {
+      background: var(--light);
+      color: var(--dark);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .project-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--secondary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    
+    .project-link:hover {
+      color: var(--accent);
+    }
+    
+    .project-link i {
+      margin-right: 0.5rem;
+    }
+    
+    /* Portfolio Section */
+    #portfolio {
+      padding-top: 100px;
+    }
+    
+    .portfolio-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .portfolio-header .section-title::after {
+      margin: 0.5rem auto 1.5rem;
+    }
+    
+    .portfolio-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .filter-btn {
+      padding: 0.8rem 1.5rem;
+      background: white;
+      border: 2px solid var(--secondary);
+      border-radius: 30px;
+      color: var(--secondary);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--secondary);
+      color: white;
+      box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+    }
+    
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2.5rem;
+    }
+    
+    .portfolio-item {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .portfolio-item .project-image {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+      background-color: #f0f4f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .portfolio-item .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .portfolio-item:hover .project-image img {
+      transform: scale(1.05);
+    }
+    
+    .featured-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      z-index: 1;
+      box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+    }
+    
+    .portfolio-info {
+      padding: 1.8rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .portfolio-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary);
+    }
+    
+    .portfolio-info p {
+      color: #555;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+    
+    .portfolio-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .portfolio-tag {
+      background: var(--light);
+      color: var(--dark);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    .portfolio-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: auto;
+    }
+    
+    .portfolio-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--secondary);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+    
+    .portfolio-link:hover {
+      color: var(--accent);
+    }
+    
+    .portfolio-link i {
+      margin-right: 0.5rem;
+    }
+    
+    /* Contact Section */
+    #contact {
+      padding-top: 100px;
+    }
+    
+    .contact-container {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+    
+    .contact-info {
+      flex: 1;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .contact-text {
+      color: #555;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+    
+    .contact-details {
+      margin-bottom: 2rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+    
+    .contact-item i {
+      font-size: 1.3rem;
+      color: var(--secondary);
+      margin-right: 1rem;
+      width: 30px;
+    }
+    
+    .contact-social {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .contact-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--secondary);
+      color: white;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    
+    .contact-social a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .contact-form {
+      flex: 1;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+    
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .submit-btn {
+      background: var(--secondary);
+      color: white;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .submit-btn:hover {
+      background: #2980b9;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+    }
+    
+    .submit-btn i {
+      margin-right: 0.7rem;
+    }
+    
+    .form-message {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      border-radius: 8px;
+      display: none;
+    }
+    
+    /* Back Button */
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding: 0.6rem 1.5rem;
+      background: white;
+      border: 2px solid var(--secondary);
+      border-radius: 30px;
+      color: var(--secondary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    
+    .back-button:hover {
+      background: var(--secondary);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .back-button i {
+      margin-right: 0.5rem;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 0 1.5rem;
+    }
+    
+    .footer-content {
+      text-align: center;
+    }
+    
+    .footer-logo {
+      display: inline-block;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    
+    .footer-social a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Page Transitions */
+    .page {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    .page.active {
+      display: block;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero-container {
+        flex-direction: column;
+      }
+      
+      .hero-content {
+        order: 2;
+        text-align: center;
+      }
+      
+      .hero-cta, .social-links {
+        justify-content: center;
+      }
+      
+      .about-container {
+        flex-direction: column;
+      }
+      
+      .contact-container {
+        flex-direction: column;
+      }
+      
+      .portfolio-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .hero-title {
+        font-size: 2.8rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .skills-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .projects-grid, .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .experience-header {
+        flex-direction: column;
+      }
+      
+      .experience-date {
+        margin-top: 1rem;
+      }
+      
+      .experience-tabs {
+        gap: 0.5rem;
+      }
+      
+      .tab-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .portfolio-filters {
+        gap: 0.5rem;
+      }
+      
+      .filter-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+    
+    .image-fallback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #7f8c8d;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .image-fallback i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .image-fallback span {
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
   <nav id="navbar">
     <div class="nav-container">
-      <a href="#" class="logo">
+      <a href="#" class="logo" data-page="home">
         <i class="fas fa-chart-line logo-icon"></i>
         <span>Brian Kimutai</span>
       </a>
       
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#services">Expertise</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about" data-section="about">About</a></li>
+        <li><a href="#experience" data-section="experience">Experience</a></li>
+        <li><a href="#services" data-section="services">Expertise</a></li>
+        <li><a href="#projects" data-section="projects">Projects</a></li>
+        <li><a href="#portfolio" data-section="portfolio">Full Portfolio</a></li>
+        <li><a href="#contact" data-section="contact">Contact</a></li>
         <li><a href="#" class="nav-cta">Resume</a></li>
       </ul>
       
@@ -35,447 +1168,705 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="hero">
-    <div class="container">
-      <div class="hero-container">
-        <div class="hero-content">
-          <h1 class="hero-title">
-            Hi, I'm <span class="highlight">Brian Kimutai</span>
-          </h1>
-          <p class="hero-subtitle">
-            Data Analyst with 2 years of experience transforming business data into actionable insights. 
-            I specialize in SQL, Power BI, and Python to drive data-driven decision making.
-          </p>
-          <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary">
-              <i class="fas fa-eye"></i> View Work
-            </a>
-            <a href="#contact" class="btn btn-secondary">
-              <i class="fas fa-paper-plane"></i> Contact Me
-            </a>
+  <!-- Main Portfolio Page -->
+  <div id="main-page" class="page active">
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-container">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              Hi, I'm <span class="highlight">Brian Kimutai</span>
+            </h1>
+            <p class="hero-subtitle">
+              Data Analyst with 2+ years of experience transforming business data into actionable insights. 
+              I specialize in SQL, Power BI, and Python to drive data-driven decision making.
+            </p>
+            <div class="hero-cta">
+              <a href="#projects" class="btn btn-primary">
+                <i class="fas fa-eye"></i> View Work
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <i class="fas fa-paper-plane"></i> Contact Me
+              </a>
+            </div>
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" aria-label="LinkedIn" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/kimutai99" aria-label="GitHub" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" aria-label="Twitter" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
           </div>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://github.com/kimutai99" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="#" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
+          <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Brian Kimutai - Data Analyst" />
           </div>
-        </div>
-        <div class="hero-image">
-          <img src="images/background21.jpeg" alt="Brian Kimutai - Data Analyst" />
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section -->
-  <section id="about">
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <p class="section-subtitle">
-        Data professional with expertise in analytics, visualization, and business intelligence, 
-        helping organizations make data-driven decisions.
-      </p>
-      
-      <div class="about-container">
-        <div class="about-image">
-          <img src="images/background21.jpeg" alt="Brian Kimutai Professional" />
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">
+          Data professional with expertise in analytics, visualization, and business intelligence, 
+          helping organizations make data-driven decisions.
+        </p>
+        
+        <div class="about-container">
+          <div class="about-image">
+            <img src="images/background21.jpeg" alt="Brian Kimutai Professional" />
+
+          </div>
+          <div class="about-content">
+            <p class="about-text">
+              I'm a data analyst passionate about turning complex data into clear insights that drive business value. 
+              With expertise in SQL, Python, and Power BI, I help organizations make data-driven decisions through 
+              intuitive dashboards and actionable reports.
+            </p>
+            <p class="about-text">
+              Currently working as a freelance data scientist, providing solutions to diverse clients across industries.
+              Previously at Prompt BI, where I improved data accessibility by 25% through optimized SQL queries and refined data workflows.
+            </p>
+            
+            <div class="skills-container">
+              <div class="skill-category">
+                <h3><i class="fas fa-chart-bar"></i> Data Analytics</h3>
+                <ul>
+                  <li>SQL & Database Management</li>
+                  <li>Python (Pandas, NumPy)</li>
+                  <li>Statistical Analysis</li>
+                  <li>A/B Testing</li>
+                  <li>Data Storytelling</li>
+                </ul>
+              </div>
+              
+              <div class="skill-category">
+                <h3><i class="fas fa-chart-pie"></i> Business Intelligence</h3>
+                <ul>
+                  <li>Power BI & Tableau</li>
+                  <li>Dashboard Development</li>
+                  <li>KPI Tracking</li>
+                  <li>Data Visualization</li>
+                  <li>Report Automation</li>
+                </ul>
+              </div>
+              
+              <div class="skill-category">
+                <h3><i class="fas fa-brain"></i> Data Science</h3>
+                <ul>
+                  <li>Predictive Modeling</li>
+                  <li>Machine Learning</li>
+                  <li>Feature Engineering</li>
+                  <li>Time Series Analysis</li>
+                  <li>Data Cleaning</li>
+                </ul>
+              </div>
+              
+              <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+                <ul>
+                  <li>Microsoft Azure</li>
+                  <li>Git & GitHub</li>
+                  <li>Excel & Google Sheets</li>
+                  <li>Docker</li>
+                  <li>Streamlit</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="about-content">
-          <p class="about-text">
-            I'm a data analyst passionate about turning complex data into clear insights that drive business value. 
-            With expertise in SQL, Python, and Power BI, I help organizations make data-driven decisions through 
-            intuitive dashboards and actionable reports.
-          </p>
-          <p class="about-text">
-            Currently working at Prompt BI, where I've improved data accessibility by 25% through optimized 
-            SQL queries and refined data workflows. My technical skills are complemented by strong communication 
-            abilities, enabling me to bridge the gap between data teams and business stakeholders.
-          </p>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-subtitle">
+          My career journey through organizations where I've delivered impactful data solutions.
+        </p>
+        
+        <div class="experience-tabs">
+          <button class="tab-btn active" data-tab="freelance">Freelance</button>
+          <button class="tab-btn" data-tab="ministry">Ministry of Youth</button>
+          <button class="tab-btn" data-tab="prompt">Prompt BI</button>
+          <button class="tab-btn" data-tab="moringa">Moringa School</button>
+          <button class="tab-btn" data-tab="county">County Government</button>
+        </div>
+        
+        <!-- Freelance Experience -->
+        <div class="experience-content active" id="freelance-tab">
+          <div class="experience-item">
+            <div class="experience-header">
+              <div>
+                <h3 class="experience-title">Freelance Data Scientist & Analyst</h3>
+                <span class="experience-company">Self-Employed</span>
+              </div>
+              <span class="experience-date">Aug 2025 - Present <span class="present-tag">Current</span></span>
+            </div>
+            <p class="experience-description">
+              Providing data science and analytics solutions to diverse clients across multiple industries after completing my contract at the Ministry of Youth Affairs.
+            </p>
+            <ul class="experience-highlights">
+              <li>Developed custom ML solutions for e-commerce clients, increasing conversion rates by 18% through personalized recommendation systems</li>
+              <li>Built automated reporting dashboards for healthcare startups, reducing manual reporting time by 65%</li>
+              <li>Created predictive maintenance models for manufacturing clients, decreasing equipment downtime by 27%</li>
+              <li>Optimized marketing spend allocation through customer segmentation and LTV modeling, improving ROI by 32%</li>
+              <li>Designed and implemented end-to-end data pipelines for fintech clients, enabling real-time fraud detection</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="experience-content" id="ministry-tab">
+          <div class="experience-item">
+            <div class="experience-header">
+              <div>
+                <h3 class="experience-title">Data Scientist (Contract)</h3>
+                <span class="experience-company">Sports Arts and Social Development Fund</span>
+              </div>
+              <span class="experience-date">Jul 2024 - Jul 2025</span>
+            </div>
+            <p class="experience-description">
+              Developed data-driven solutions for national sports performance optimization.
+            </p>
+            <ul class="experience-highlights">
+              <li>Developed predictive models for athlete performance using time-series analysis of biometric data</li>
+              <li>Built injury risk forecasting system with 89% accuracy using XGBoost/Random Forest</li>
+              <li>Created real-time Streamlit dashboard for sports KPIs, reducing decision latency by 35%</li>
+              <li>Implemented resource allocation algorithms saving 20% on training facility operations</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="experience-content" id="prompt-tab">
+          <div class="experience-item">
+            <div class="experience-header">
+              <div>
+                <h3 class="experience-title">Junior Data Analyst (Part-Time)</h3>
+                <span class="experience-company">Prompt BI</span>
+              </div>
+              <span class="experience-date">Jul 2024 - Sep 2025</span>
+            </div>
+            <p class="experience-description">
+              Improved BI platforms and data workflows for enterprise clients.
+            </p>
+            <ul class="experience-highlights">
+              <li>Optimized SQL queries and data workflows, enhancing data accessibility by 25%</li>
+              <li>Tested and validated data pipelines ensuring 99% data accuracy</li>
+              <li>Created interactive dashboards reducing report generation time by 30%</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="experience-content" id="moringa-tab">
+          <div class="experience-item">
+            <div class="experience-header">
+              <div>
+                <h3 class="experience-title">Data Science Fellow (Contract)</h3>
+                <span class="experience-company">Moringa School</span>
+              </div>
+              <span class="experience-date">Jan 2024 - Jun 2024</span>
+            </div>
+            <p class="experience-description">
+              Intensive training program focused on real-world data science applications.
+            </p>
+            <ul class="experience-highlights">
+              <li>Built predictive models improving client insights accuracy by 15% through statistical analysis</li>
+              <li>Developed scalable Azure ETL pipelines reducing processing time by 30%</li>
+              <li>Monitored production ML models improving system performance and reducing drift</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="experience-content" id="county-tab">
+          <div class="experience-item">
+            <div class="experience-header">
+              <div>
+                <h3 class="experience-title">IT Attaché (Contract)</h3>
+                <span class="experience-company">County Government of Kericho</span>
+              </div>
+              <span class="experience-date">Jul 2022 - Oct 2022</span>
+            </div>
+            <p class="experience-description">
+              IT systems management and development for local government operations.
+            </p>
+            <ul class="experience-highlights">
+              <li>Installed/configures Windows/Linux systems for 50+ staff enhancing operational efficiency</li>
+              <li>Managed IT asset inventory ensuring 100% tracking of licenses and hardware</li>
+              <li>Developed Django backend applications with integrated ML APIs</li>
+              <li>Created dashboards reducing report generation time by 40%</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">My Expertise</h2>
+        <p class="section-subtitle">
+          Data solutions tailored to your business needs.
+        </p>
+        
+        <div class="services-grid">
+          <div class="service-card">
+            <i class="fas fa-chart-bar service-icon"></i>
+            <h3 class="service-title">Data Analytics</h3>
+            <p class="service-description">
+              Transform raw data into meaningful insights through statistical analysis and business intelligence.
+            </p>
+            <div class="tech-stack">
+              <span>SQL</span>
+              <span>Python</span>
+              <span>Pandas</span>
+              <span>Statistics</span>
+              <span>Excel</span>
+            </div>
+          </div>
           
-          <div class="skills-container">
-            <div class="skill-category">
-              <h3><i class="fas fa-chart-bar"></i> Data Analytics</h3>
-              <ul>
-                <li>SQL & Database Management</li>
-                <li>Python (Pandas, NumPy)</li>
-                <li>Statistical Analysis</li>
-                <li>A/B Testing</li>
-                <li>Data Storytelling</li>
-              </ul>
+          <div class="service-card">
+            <i class="fas fa-chart-line service-icon"></i>
+            <h3 class="service-title">Business Intelligence</h3>
+            <p class="service-description">
+              Develop interactive dashboards and reports that drive data-informed decision making.
+            </p>
+            <div class="tech-stack">
+              <span>Power BI</span>
+              <span>Tableau</span>
+              <span>DAX</span>
+              <span>KPIs</span>
+              <span>Metrics</span>
+            </div>
+          </div>
+          
+          <div class="service-card">
+            <i class="fas fa-brain service-icon"></i>
+            <h3 class="service-title">Predictive Analytics</h3>
+            <p class="service-description">
+              Build machine learning models to forecast trends and identify business opportunities.
+            </p>
+            <div class="tech-stack">
+              <span>Scikit-learn</span>
+              <span>Time Series</span>
+              <span>Forecasting</span>
+              <span>Feature Eng</span>
+              <span>ML Models</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+          Selected work demonstrating my technical capabilities and problem-solving approach.
+        </p>
+        
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Predictive Maintenance System">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Predictive Maintenance System</h3>
+              <p class="project-description">
+                Machine learning system predicting equipment failures with 98.6% accuracy, optimizing maintenance schedules.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">XGBoost</span>
+                <span class="project-tag">Streamlit</span>
+              </div>
+              <div class="project-links">
+                <a href="projects/machine-failure-predictor.html" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> View Project
+                </a>
+                <a href="https://kimutai99-predictive-maintenance-insights-app-rwqdx4.streamlit.app/" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+                <a href="https://github.com/kimutai99/predictive-maintenance" class="project-link">
+                  <i class="fab fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Enterprise Data Warehouse">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Data Warehouse Project</h3>
+              <p class="project-description">
+                Designed and implemented a full-stack data warehouse using Medallion architecture in SQL Server.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">SQL</span>
+                <span class="project-tag">ETL</span>
+                <span class="project-tag">Data Modeling</span>
+              </div>
+              <div class="project-links">
+                <a href="projects/data-warehouse-project.html" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> Case Study
+                </a>
+                <a href="https://public.tableau.com/app/profile/brian.siele/viz/SalesandCustomerDashboard_17505889969040/SalesDashboard?publish=yes" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> View Dashboard
+                </a>              
+                <a href="https://github.com/kimutai99/sql-data-warehouse-project" class="project-link">
+                  <i class="fab fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="HR Analytics Platform" />
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">HR Analytics Dashboard</h3>
+              <p class="project-description">
+                Interactive Power BI dashboard analyzing employee attrition drivers and workforce trends.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">Power BI</span>
+                <span class="project-tag">DAX</span>
+                <span class="project-tag">HR Analytics</span>
+              </div>
+              <div class="project-links">
+                <a href="projects/hr-analytics-dashboard.html" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> View Project
+                </a>
+                <a href="https://public.tableau.com/app/profile/brian.siele/viz/HRDashboard_17517922680590/HRsummary" class="project-link">
+                  <i class="fas fa-external-link-alt"></i> View Dashboard
+                </a>              
+                <a href="https://github.com/kimutai99/hr-analytics" class="project-link">
+                  <i class="fab fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="#" class="btn btn-secondary" id="view-full-portfolio">
+            <i class="fas fa-book-open"></i> View Full Portfolio (12+ Projects)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">
+          Have a data challenge to solve or just want to connect? I'd love to hear from you.
+        </p>
+        
+        <div class="contact-container">
+          <div class="contact-info">
+            <p class="contact-text">
+              Whether you have a question about my work, want to discuss potential collaborations, 
+              or just want to say hello, feel free to reach out through any of these channels.
+            </p>
+            
+            <div class="contact-details">
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>korosbrian574@gmail.com</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone-alt"></i>
+                <span>+254 768 518 488</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Nairobi, Kenya</span>
+              </div>
             </div>
             
-            <div class="skill-category">
-              <h3><i class="fas fa-chart-pie"></i> Business Intelligence</h3>
-              <ul>
-                <li>Power BI & Tableau</li>
-                <li>Dashboard Development</li>
-                <li>KPI Tracking</li>
-                <li>Data Visualization</li>
-                <li>Report Automation</li>
-              </ul>
+            <div class="contact-social">
+              <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" aria-label="LinkedIn" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/kimutai99" aria-label="GitHub" target="_blank">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" aria-label="Twitter" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
             </div>
-            
-            <div class="skill-category">
-              <h3><i class="fas fa-brain"></i> Data Science</h3>
-              <ul>
-                <li>Predictive Modeling</li>
-                <li>Machine Learning</li>
-                <li>Feature Engineering</li>
-                <li>Time Series Analysis</li>
-                <li>Data Cleaning</li>
-              </ul>
-            </div>
-            
-            <div class="skill-category">
-              <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
-              <ul>
-                <li>Microsoft Azure</li>
-                <li>Git & GitHub</li>
-                <li>Excel & Google Sheets</li>
-                <li>Docker</li>
-                <li>Streamlit</li>
-              </ul>
-            </div>
+          </div>
+          
+          <div class="contact-form">
+            <form id="contactForm" novalidate>
+              <div class="form-group">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" id="name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Your Email</label>
+                <input type="email" id="email" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="message" class="form-label">Your Message</label>
+                <textarea id="message" class="form-control" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+              <div id="formMessage" class="form-message"></div>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <!-- Experience Section -->
-  <section id="experience">
-    <div class="container">
-      <h2 class="section-title">Professional Experience</h2>
-      <p class="section-subtitle">
-        My career journey through organizations where I've delivered impactful data solutions.
-      </p>
-      
-      <div class="experience-tabs">
-        <button class="tab-btn active" data-tab="prompt">Prompt BI</button>
-        <button class="tab-btn" data-tab="moringa">Moringa School</button>
-        <button class="tab-btn" data-tab="freelance">Freelance</button>
-      </div>
-      
-      <div class="experience-content active" id="prompt-tab">
-        <div class="experience-item">
-          <div class="experience-header">
-            <div>
-              <h3 class="experience-title">Junior Data Analyst</h3>
-              <span class="experience-company">Prompt BI</span>
-            </div>
-            <span class="experience-date">Feb 2025 - Present</span>
-          </div>
-          <p class="experience-description">
-            Contribute to BI platform development and data analysis for enterprise clients across various sectors.
-          </p>
-          <ul class="experience-highlights">
-            <li>Improved real-time BI platforms by refining data workflows and optimizing SQL queries, enhancing data accessibility by 25%</li>
-            <li>Tested and validated data pipelines, ensuring 99% data accuracy for reliable business decision-making</li>
-            <li>Created interactive dashboards that reduced report generation time by 30% for key stakeholders</li>
-            <li>Automated routine data processes, saving 15+ hours per week for the analytics team</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="experience-content" id="moringa-tab">
-        <div class="experience-item">
-          <div class="experience-header">
-            <div>
-              <h3 class="experience-title">Data Science Fellow</h3>
-              <span class="experience-company">Moringa School</span>
-            </div>
-            <span class="experience-date">Jul 2024 - Feb 2025</span>
-          </div>
-          <p class="experience-description">
-            Intensive 6-month training program focused on real-world data science applications.
-          </p>
-          <ul class="experience-highlights">
-            <li>Built and deployed predictive models that improved client insights accuracy by 15% through statistical analysis</li>
-            <li>Developed scalable ETL pipelines on Azure, reducing data processing time by 30%</li>
-            <li>Created interactive dashboards using Power BI for visualizing key business metrics</li>
-            <li>Led team project awarded "Best in Show" at demo day for innovative data solution</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="experience-content" id="freelance-tab">
-        <div class="experience-item">
-          <div class="experience-header">
-            <div>
-              <h3 class="experience-title">Freelance Data Analyst</h3>
-              <span class="experience-company">Various Clients</span>
-            </div>
-            <span class="experience-date">2023 - 2024</span>
-          </div>
-          <p class="experience-description">
-            Provided data analysis and visualization services for small businesses and startups.
-          </p>
-          <ul class="experience-highlights">
-            <li>Built sales forecasting models for e-commerce clients improving inventory planning accuracy</li>
-            <li>Created automated reporting systems saving 20+ hours weekly for marketing agencies</li>
-            <li>Developed customer segmentation models increasing campaign effectiveness by 25%</li>
-            <li>Designed interactive dashboards that reduced decision-making time by 40%</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services">
-    <div class="container">
-      <h2 class="section-title">My Expertise</h2>
-      <p class="section-subtitle">
-        Data solutions tailored to your business needs.
-      </p>
-      
-      <div class="services-grid">
-        <div class="service-card">
-          <i class="fas fa-chart-bar service-icon"></i>
-          <h3 class="service-title">Data Analytics</h3>
-          <p class="service-description">
-            Transform raw data into meaningful insights through statistical analysis and business intelligence.
-          </p>
-          <div class="tech-stack">
-            <span>SQL</span>
-            <span>Python</span>
-            <span>Pandas</span>
-            <span>Statistics</span>
-            <span>Excel</span>
-          </div>
-        </div>
-        
-        <div class="service-card">
-          <i class="fas fa-chart-line service-icon"></i>
-          <h3 class="service-title">Business Intelligence</h3>
-          <p class="service-description">
-            Develop interactive dashboards and reports that drive data-informed decision making.
-          </p>
-          <div class="tech-stack">
-            <span>Power BI</span>
-            <span>Tableau</span>
-            <span>DAX</span>
-            <span>KPIs</span>
-            <span>Metrics</span>
-          </div>
-        </div>
-        
-        <div class="service-card">
-          <i class="fas fa-brain service-icon"></i>
-          <h3 class="service-title">Predictive Analytics</h3>
-          <p class="service-description">
-            Build machine learning models to forecast trends and identify business opportunities.
-          </p>
-          <div class="tech-stack">
-            <span>Scikit-learn</span>
-            <span>Time Series</span>
-            <span>Forecasting</span>
-            <span>Feature Eng</span>
-            <span>ML Models</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title">Featured Projects</h2>
-      <p class="section-subtitle">
-        Selected work demonstrating my technical capabilities and problem-solving approach.
-      </p>
-      
-      <div class="projects-grid">
-        <div class="project-card">
-          <div class="project-image">
-            <img src="images/mining_equipment_operating.jpg" alt="Predictive Maintenance System" />
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Predictive Maintenance System</h3>
-            <p class="project-description">
-              Machine learning system predicting equipment failures with 98.6% accuracy, optimizing maintenance schedules.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">Python</span>
-              <span class="project-tag">XGBoost</span>
-              <span class="project-tag">Streamlit</span>
-            </div>
-            <div class="project-links">
-              <a href="projects/machine-failure-predictor.html" class="project-link">
-                <i class="fas fa-external-link-alt"></i> View Project
-              </a>
-              <a href="https://kimutai99-predictive-maintenance-insights-app-rwqdx4.streamlit.app/" class="project-link">
-                <i class="fas fa-external-link-alt"></i> Live Demo
-              </a>
-              <a href="https://github.com/kimutai99/predictive-maintenance" class="project-link">
-                <i class="fab fa-github"></i> Code
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="project-card">
-          <div class="project-image">
-            <img src="images/data-warehousing1.png" alt="Enterprise Data Warehouse" />
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Data Warehouse Project</h3>
-            <p class="project-description">
-              Designed and implemented a full-stack data warehouse using Medallion architecture in SQL Server.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">SQL</span>
-              <span class="project-tag">ETL</span>
-              <span class="project-tag">Data Modeling</span>
-            </div>
-            <div class="project-links">
-              <a href="projects/data-warehouse-project.html" class="project-link">
-                <i class="fas fa-external-link-alt"></i> Case Study
-              </a>
-              <a href="https://public.tableau.com/app/profile/brian.siele/viz/SalesandCustomerDashboard_17505889969040/SalesDashboard?publish=yes" class="project-link">
-                <i class="fas fa-external-link-alt"></i> View Dashboard
-              </a>              
-              <a href="https://github.com/kimutai99/sql-data-warehouse-project" class="project-link">
-                <i class="fab fa-github"></i> Code
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <div class="project-card">
-          <div class="project-image">
-            <img src="images/HR_summary.jpeg" alt="HR Analytics Platform" />
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">HR Analytics Dashboard</h3>
-            <p class="project-description">
-              Interactive Power BI dashboard analyzing employee attrition drivers and workforce trends.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">Power BI</span>
-              <span class="project-tag">DAX</span>
-              <span class="project-tag">HR Analytics</span>
-            </div>
-            <div class="project-links">
-              <a href="projects/hr-analytics-dashboard.html" class="project-link">
-                <i class="fas fa-external-link-alt"></i> View Project
-              </a>
-              <a href="https://public.tableau.com/app/profile/brian.siele/viz/HRDashboard_17517922680590/HRsummary" class="project-link">
-                <i class="fas fa-external-link-alt"></i> View Dashboard
-              </a>              
-              <a href="https://github.com/kimutai99/hr-analytics" class="project-link">
-                <i class="fab fa-github"></i> Code
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div style="text-align: center; margin-top: 2rem;">
-        <a href="New%20portfolio.html" class="btn btn-secondary">
-          <i class="fas fa-book-open"></i> View Full Portfolio (12+ Projects)
+  <!-- Full Portfolio Page -->
+  <div id="portfolio-page" class="page">
+    <section id="portfolio">
+      <div class="container">
+        <a href="#" class="back-button" id="back-to-main">
+          <i class="fas fa-arrow-left"></i> Back to Main Portfolio
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Get In Touch</h2>
-      <p class="section-subtitle">
-        Have a data challenge to solve or just want to connect? I'd love to hear from you.
-      </p>
-      
-      <div class="contact-container">
-        <div class="contact-info">
-          <p class="contact-text">
-            Whether you have a question about my work, want to discuss potential collaborations, 
-            or just want to say hello, feel free to reach out through any of these channels.
+        
+        <div class="portfolio-header">
+          <h2 class="section-title">Data Portfolio</h2>
+          <p class="section-subtitle">
+            Explore my collection of data projects showcasing analytical skills, machine learning expertise, and data visualization capabilities
           </p>
-          
-          <div class="contact-details">
-            <div class="contact-item">
-              <i class="fas fa-envelope"></i>
-              <span>korosbrian574@gmail.com</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-phone-alt"></i>
-              <span>+254 768 518 488</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>Nairobi, Kenya</span>
-            </div>
-          </div>
-          
-          <div class="contact-social">
-            <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://github.com/kimutai99" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="#" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </div>
         </div>
         
-        <div class="contact-form">
-          <form id="contactForm" novalidate>
-            <div class="form-group">
-              <label for="name" class="form-label">Your Name</label>
-              <input type="text" id="name" class="form-control" required>
+        <div class="portfolio-filters">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="dashboard">Dashboards</button>
+          <button class="filter-btn" data-filter="analysis">Analysis</button>
+          <button class="filter-btn" data-filter="ml">Machine Learning</button>
+          <button class="filter-btn" data-filter="viz">Visualizations</button>
+          <button class="filter-btn" data-filter="pipeline">Data Pipelines</button>
+        </div>
+        
+        <div class="portfolio-grid">
+          <!-- Featured Projects -->
+          <div class="portfolio-item featured" data-category="ml">
+            <span class="featured-badge">Featured</span>
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Predictive Maintenance System">
             </div>
-            <div class="form-group">
-              <label for="email" class="form-label">Your Email</label>
-              <input type="email" id="email" class="form-control" required>
+            <div class="portfolio-info">
+              <h3>Predictive Maintenance System</h3>
+              <p>Machine learning system predicting equipment failures with 98.6% accuracy, optimizing maintenance schedules and reducing downtime.</p>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">Python</span>
+                <span class="portfolio-tag">XGBoost</span>
+                <span class="portfolio-tag">Streamlit</span>
+                <span class="portfolio-tag">Scikit-learn</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="projects/machine-failure-predictor.html" class="portfolio-link">
+                  <i class="fas fa-info-circle"></i> Details
+                </a>
+                <a href="https://kimutai99-predictive-maintenance-insights-app-rwqdx4.streamlit.app/" class="portfolio-link" target="_blank">
+                  <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+                <a href="https://github.com/kimutai99/predictive-maintenance" class="portfolio-link" target="_blank">
+                  <i class="fab fa-github"></i> Code
+                </a>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="message" class="form-label">Your Message</label>
-              <textarea id="message" class="form-control" required></textarea>
+          </div>
+          
+          <div class="portfolio-item featured" data-category="pipeline">
+            <span class="featured-badge">Featured</span>
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Enterprise Data Warehouse">
             </div>
-            <button type="submit" class="submit-btn">
-              <i class="fas fa-paper-plane"></i> Send Message
-            </button>
-            <div id="formMessage" class="form-message"></div>
-          </form>
+            <div class="portfolio-info">
+              <h3>Enterprise Data Warehouse</h3>
+              <p>Designed and implemented a full-stack data warehouse using Medallion architecture in SQL Server with ETL processes.</p>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">SQL Server</span>
+                <span class="portfolio-tag">ETL</span>
+                <span class="portfolio-tag">Data Modeling</span>
+                <span class="portfolio-tag">SSIS</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="projects/data-warehouse-project.html" class="portfolio-link">
+                  <i class="fas fa-info-circle"></i> Case Study
+                </a>
+                <a href="https://public.tableau.com/app/profile/brian.siele/viz/SalesandCustomerDashboard_17505889969040/SalesDashboard?publish=yes" class="portfolio-link" target="_blank">
+                  <i class="fas fa-chart-bar"></i> Dashboard
+                </a>              
+                <a href="https://github.com/kimutai99/sql-data-warehouse-project" class="portfolio-link" target="_blank">
+                  <i class="fab fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="portfolio-item featured" data-category="dashboard">
+            <span class="featured-badge">Featured</span>
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="HR Analytics Platform" />
+            </div>
+            <div class="portfolio-info">
+              <h3>HR Analytics Dashboard</h3>
+              <p>Interactive Tableau dashboard analyzing employee attrition drivers, workforce trends, and HR KPIs with actionable insights.</p>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">Tableau</span>
+                <span class="portfolio-tag">Data Visualization</span>
+                <span class="portfolio-tag">HR Analytics</span>
+                <span class="portfolio-tag">People Analytics</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="projects/hr-analytics-dashboard.html" class="portfolio-link">
+                  <i class="fas fa-info-circle"></i> Details
+                </a>
+                <a href="https://public.tableau.com/app/profile/brian.siele/viz/HRDashboard_17517922680590/HRsummary" class="portfolio-link" target="_blank">
+                  <i class="fas fa-external-link-alt"></i> View Dashboard
+                </a>              
+                <a href="https://github.com/kimutai99/hr-analytics" class="portfolio-link" target="_blank">
+                  <i class="fab fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Other Projects -->
+          <div class="portfolio-item" data-category="ml">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1440&q=80" alt="Potato Disease Recognition">
+            </div>
+            <div class="portfolio-info">
+              <h3>Potato Disease Recognition</h3>
+              <p>Deep learning solution for detecting potato leaf diseases with 96% accuracy using convolutional neural networks.</p>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">Python</span>
+                <span class="portfolio-tag">TensorFlow</span>
+                <span class="portfolio-tag">CNN</span>
+                <span class="portfolio-tag">Flask</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="projects/potato.html" class="portfolio-link">
+                  <i class="fas fa-info-circle"></i> Details
+                </a>
+                <a href="https://github.com/kimutai99/Potato-Leaf-Classification" class="portfolio-link" target="_blank">
+                  <i class="fab fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="pipeline">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1584824486509-112e4181ff6b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Ukraine War Data Pipeline">
+            </div>
+            <div class="portfolio-info">
+              <h3>Ukraine War Data Pipeline</h3>
+              <p>ETL solution for analyzing conflict data with PostgreSQL storage and Power BI visualization of key metrics.</p>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">Python</span>
+                <span class="portfolio-tag">PostgreSQL</span>
+                <span class="portfolio-tag">ETL</span>
+                <span class="portfolio-tag">Power BI</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="projects/ukraine-war-project.html" class="portfolio-link">
+                  <i class="fas fa-info-circle"></i> Details
+                </a>
+                <a href="https://github.com/kimutai99/Russia-Ukraine-War" class="portfolio-link" target="_blank">
+                  <i class="fab fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-item" data-category="dashboard">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Sales & Customer Dashboard">
+            </div>
+            <div class="portfolio-info">
+              <h3>Sales & Customer Dashboard</h3>
+              <p>Interactive Tableau dashboard analyzing sales performance, customer behavior, and revenue trends.</p>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">Tableau</span>
+                <span class="portfolio-tag">SQL</span>
+                <span class="portfolio-tag">Business Intelligence</span>
+                <span class="portfolio-tag">Sales Analytics</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="projects/Sales & Customer.html" class="portfolio-link">
+                  <i class="fas fa-info-circle"></i> Details
+                </a>
+                <a href="https://public.tableau.com/app/profile/brian.siele/viz/SalesandCustomerDashboard_17505889969040/SalesDashboard?publish=yes" class="portfolio-link" target="_blank">
+                  <i class="fas fa-external-link-alt"></i> View Dashboard
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="ml">
+            <div class="project-image">
+              <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1440&q=80" alt="Diamond Price Prediction">
+            </div>
+            <div class="portfolio-info">
+              <h3>Diamond Price Prediction</h3>
+              <p>End-to-end machine learning pipeline for predicting diamond prices with regression analysis and MLOps practices.</p>
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">Python</span>
+                <span class="portfolio-tag">MLFlow</span>
+                <span class="portfolio-tag">DVC</span>
+                <span class="portfolio-tag">Flask</span>
+              </div>
+              <div class="portfolio-links">
+                <a href="projects/daimond.html" class="portfolio-link">
+                  <i class="fas fa-info-circle"></i> Details
+                </a>
+                <a href="https://github.com/kimutai99/Diamond-Price-Prediction" class="portfolio-link" target="_blank">
+                  <i class="fab fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <!-- Footer -->
   <footer>
     <div class="container">
       <div class="footer-content">
-        <a href="#" class="footer-logo">Brian Kimutai</a>
+        <a href="#" class="footer-logo" data-page="home">Brian Kimutai</a>
         
         <div class="footer-links">
-          <a href="#about">About</a>
-          <a href="#experience">Experience</a>
-          <a href="#services">Expertise</a>
-          <a href="#projects">Work</a>
-          <a href="#contact">Contact</a>
+          <a href="#about" data-section="about">About</a>
+          <a href="#experience" data-section="experience">Experience</a>
+          <a href="#services" data-section="services">Expertise</a>
+          <a href="#portfolio" data-section="portfolio">Portfolio</a>
+          <a href="#contact" data-section="contact">Contact</a>
         </div>
         
         <div class="footer-social">
-          <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/brian-kimutai-0888352b6/" aria-label="LinkedIn" target="_blank">
             <i class="fab fa-linkedin-in"></i>
           </a>
-          <a href="https://github.com/kimutai99" aria-label="GitHub">
+          <a href="https://github.com/kimutai99" aria-label="GitHub" target="_blank">
             <i class="fab fa-github"></i>
           </a>
-          <a href="#" aria-label="Twitter">
+          <a href="#" aria-label="Twitter" target="_blank">
             <i class="fab fa-twitter"></i>
           </a>
         </div>
@@ -487,6 +1878,161 @@
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set current year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+      
+      // Tab switching functionality
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.experience-content');
+      
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all buttons
+          tabBtns.forEach(b => b.classList.remove('active'));
+          // Add active class to clicked button
+          btn.classList.add('active');
+          
+          // Hide all tab contents
+          tabContents.forEach(content => content.classList.remove('active'));
+          
+          // Show the selected tab content
+          const tabId = btn.getAttribute('data-tab');
+          document.getElementById(`${tabId}-tab`).classList.add('active');
+        });
+      });
+      
+      // Portfolio filtering functionality
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const portfolioItems = document.querySelectorAll('.portfolio-item');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all buttons
+          filterBtns.forEach(btn => btn.classList.remove('active'));
+          // Add active class to clicked button
+          btn.classList.add('active');
+          
+          const filter = btn.getAttribute('data-filter');
+          
+          portfolioItems.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.style.display = 'flex';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+      
+      // Form submission
+      const contactForm = document.getElementById('contactForm');
+      const formMessage = document.getElementById('formMessage');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Form validation would go here
+          // For demo, just show a success message
+          formMessage.textContent = 'Thank you! Your message has been sent.';
+          formMessage.style.display = 'block';
+          formMessage.style.background = '#d4edda';
+          formMessage.style.color = '#155724';
+          
+          // Clear form
+          contactForm.reset();
+          
+          // Hide message after 5 seconds
+          setTimeout(() => {
+            formMessage.style.display = 'none';
+          }, 5000);
+        });
+      }
+      
+      // Page navigation functionality
+      const pages = document.querySelectorAll('.page');
+      const navLinks = document.querySelectorAll('a[data-page], a[data-section]');
+      const viewFullBtn = document.getElementById('view-full-portfolio');
+      const backToMainBtn = document.getElementById('back-to-main');
+      
+      // Function to show a specific page and hide others
+      function showPage(pageId) {
+        pages.forEach(page => {
+          page.classList.remove('active');
+          if (page.id === pageId) {
+            page.classList.add('active');
+          }
+        });
+        
+        // Scroll to top when switching pages
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      
+      // Function to scroll to a specific section
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const headerHeight = document.getElementById('navbar').offsetHeight;
+          const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          
+          window.scrollTo({
+            top: sectionPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+      
+      // Handle navigation links
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const page = this.getAttribute('data-page');
+          const section = this.getAttribute('data-section');
+          
+          if (page) {
+            e.preventDefault();
+            showPage(`${page}-page`);
+          }
+          
+          if (section) {
+            e.preventDefault();
+            showPage('main-page');
+            setTimeout(() => {
+              scrollToSection(section);
+            }, 100);
+          }
+        });
+      });
+      
+      // Handle "View Full Portfolio" button
+      if (viewFullBtn) {
+        viewFullBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          showPage('portfolio-page');
+        });
+      }
+      
+      // Handle "Back to Main" button
+      if (backToMainBtn) {
+        backToMainBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          showPage('main-page');
+        });
+      }
+      
+      // Handle image loading errors
+      document.querySelectorAll('.project-image img, .portfolio-item .project-image img').forEach(img => {
+        img.onerror = function() {
+          this.parentNode.innerHTML = `
+            <div class="image-fallback">
+              <i class="fas fa-image"></i>
+              <span>Project preview image</span>
+            </div>
+          `;
+        };
+      });
+    });
+  </script>
 </body>
 </html>
