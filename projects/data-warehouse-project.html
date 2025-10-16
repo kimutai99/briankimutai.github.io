@@ -111,6 +111,12 @@
       border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
+    .btn-secondary {
+      background: #7c3aed;
+      color: white;
+      border: 2px solid transparent;
+    }
+
     .btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -125,11 +131,16 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
+    .btn-secondary:hover {
+      background: #6d28d9;
+    }
+
     .header-actions {
       display: flex;
       gap: 1rem;
       justify-content: center;
       margin-top: 1.5rem;
+      flex-wrap: wrap;
     }
 
     /* Project Section */
@@ -519,6 +530,9 @@
         <a href="#technical-implementation" class="btn btn-outline">
           <i class="fas fa-code"></i> Technical Details
         </a>
+        <a href="https://married-impulse-65a.notion.site/SQL-Data-Warehouse-Project-28e11a2441d28027aecadc22a2edf1a8" target="_blank" class="btn btn-secondary">
+          <i class="fas fa-file-alt"></i> Notion Template
+        </a>
       </div>
     </div>
   </header>
@@ -586,7 +600,7 @@
         </div>
 
         <div class="image-container">
-          <img src="images/data_architecture.png" alt="Data Warehouse Architecture Overview" loading="lazy">
+          <img src="../images/data-warehousing1.png" alt="Data Warehouse Overview" loading="lazy">
         </div>
 
         <div class="metrics">
@@ -654,7 +668,7 @@
         </div>
 
         <div class="image-container">
-          <img src="images/data_flow.png" alt="Data Warehouse Architecture Diagram" loading="lazy">
+          <img src="../images/data_architecture.png" alt="Data Warehouse Architecture Overview" loading="lazy">
         </div>
 
         <div class="card-grid">
@@ -833,7 +847,7 @@ CREATE TABLE gold.fact_sales (
         </div>
 
         <div class="image-container">
-          <img src="images/dashboard_screenshot.png" alt="Sample Analytics Dashboard" loading="lazy">
+          <img src="../images/dashboard_screenshot.png" alt="Sample Analytics Dashboard" loading="lazy">
         </div>
       </div>
     </section>
